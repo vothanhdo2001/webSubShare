@@ -1,0 +1,27 @@
+body {
+    padding-top: 70px !important;
+}
+
+.getLink {
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.getLink:hover {
+    background-color: beige;
+}
+
+td.profile {
+    text-align: right;
+}
+
+th.profile {
+    text-align: left;
+}
