@@ -1,6 +1,6 @@
 <?php
 
-class actionjs
+class delete_edit
 {
     public $sheId;
     public $pName;
