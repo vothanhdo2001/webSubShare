@@ -1,19 +1,5 @@
 <?php
-
-class actionjs
-{
-    public $sheId;
-    public $pName;
-    public $cuId;
-    public $pLanguage;
-    public $category;
-    public $imagesLink;
-    public $videoLink;
-    public $price;
-    public $info;
-    public $tRequest;
-    public $private;
-}
+ include "delete&edit.php";
 
 //link test ?action=deleteShare&shId=4
 
@@ -22,11 +8,11 @@ $action = $_GET["action"];
 // die();
 
 if ($action == "deleteShare"){
-  $actionjsshId = $_GET["shId"];
-  deleteShare($actionjsshId);
+  $delete_editshId = $_GET["shId"];
+  deleteShare($delete_editshId);
 }
 
-function deleteShare($actionjsshId)
+function deleteShare($delete_editshId)
 {
     $servername = "localhost";
     $username = "root";
@@ -39,7 +25,7 @@ function deleteShare($actionjsshId)
     if($conn ->connect_error){
         die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "DELETE FROM share WHERE shId = $actionjsshId";
+    $sql = "DELETE FROM share WHERE shId = $delete_editshId";
     // echo $sql;
     // die();
         
