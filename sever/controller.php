@@ -1,20 +1,5 @@
 <?php
-
-class actionjs
-{
-    public $sheId;
-    public $pName;
-    public $cuId;
-    public $pLanguage;
-    public $category;
-    public $imagesLink;
-    public $videoLink;
-    public $price;
-    public $info;
-    public $tRequest;
-    public $private;
-}
-
+ include "delete&edit.php";
 //link test ?action=deleteShare&shId=4
 
 $action = $_GET["action"];
