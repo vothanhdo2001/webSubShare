@@ -84,6 +84,10 @@ else if ($action == "createShare"){
     createShare($post);
 }
 
+elseif($action == "LoadShareTable1"){
+  LoadShareTable1();
+}
+
 function deleteShare($delete_editshId)
 {
     $servername = "localhost";
@@ -303,6 +307,36 @@ function createShare($post){
     $conn -> close();
 }
 
+}
+
+
+function LoadShareTable1(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT pName, pLanguage, tShare FROM share";
+  $result = $conn->query($sql);
+ //   echo $sql;
+ //  die();
+
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+ } else {
+   echo "{result: \"no data\"}";
+ }
+$conn->close();
 }
 
 ?>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Trang chủ</title>
+    <title>Cá nhân</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="../assets/translator.png" />
     <!-- Bootstrap icons-->
@@ -14,11 +14,11 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/addStyles.css" rel="stylesheet" />
-    <script src="../client/js/action.js"></script>
+    <script src="../js/action.js"></script>
     <script src="../js/profile.js"></script>
 </head>
 
-<body>
+<body onload="LoadShareTable1()">
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container px-lg-5">
@@ -100,18 +100,16 @@
                                         <th scope="col">Cập nhật</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <div id="table_1">
+                                <tbody id="table_1">
+                                   <!--  <div>
                                         <tr>
-                                            <td class="getLink" onclick="getLinkProfile()">kimvinh</td>
-                                            <td>08/05/2021</td>
-                                            <td>Tiếng anh</td>
+                                            <td id = "tb11" class="getLink" onclick="getLinkProfile()">kimvinh</td>
+                                            <td id = "tb12">08/05/2021</td>
+                                            <td id = "tb13">Tiếng anh</td> 
                                             <td><button onclick="deleteShare()" class="btn btn-danger">Xoá</button></td>
                                             <td><button onclick="editShare()" class="btn btn-success"><a class="m-0 text-center text-white" href="../narbar/editShare.html">Cập nhật</a></button></td>
-
                                         </tr>
-                                    </div>
-
+                                    </div> -->
                                 </tbody>
                             </table>
                             <h2 class="fs-4 fw-bold">Chia sẻ gần đây</h2>
@@ -135,15 +133,13 @@
                                 <tbody>
                                     <div id="table_2">
                                         <tr>
-                                            <td scope="row" ass="getLink" onclick="getLinkProfile()">kimvinh</td>
-                                            <td>08/05/2021</td>
-                                            <td>Tiếng anh</td>
+                                            <td id = "tb1" scope="row" ass="getLink" onclick="getLinkProfile()">kimvinh</td>
+                                            <td id ="tb2">08/05/2021</td>
+                                            <td id = "tb3">Tiếng anh</td>
                                             <td><button onclick="deleteRequest()" class="btn btn-danger">Xoá</button></td>
                                             <td><button onclick="editRequest()" class="btn btn-success"><a class="m-0 text-center text-white" href="../narbar/editRequest.html">Cập nhật</a></button></td>
-
                                         </tr>
                                     </div>
-
                                 </tbody>
                             </table>
                             <h2 class="fs-4 fw-bold">Yêu cầu gần đây</h2>
@@ -195,7 +191,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="../js/scripts.js"></script>
+    <script src="../js/profile.js"></script>
 </body>
 
 </html>
