@@ -3,36 +3,17 @@
 
 //link test ?action=deleteShare&shId=4
 
-class Request
-{
-    public $reId;
-    public $cuId;
-    public $pName;
-    public $pLanguage;
-    public $category;
-    public $imagesLink;
-    public $videoLink;
-    public $price;
-    public $info;
-    public $tRequest;
-    public $pPrivate;
-}
-
-class Share extends Request
-{
-    public $shId;
-    public $subLink;
-    public $tShare;
-    public $rate;
-}
-
 $action = $_GET["action"];
 // echo($action);
 // die();
 // 
 if ($action == "deleteShare"){
-  $delete_editshId = $_GET["shId"];
-  deleteShare($delete_editshId);
+  $RequestshId = $_GET["shId"];
+  deleteShare($RequestshId);
+}
+elseif ($action == "deleteRequest"){
+  $RequestreId = $_GET["reId"];
+  deleteRequest($RequestreId);
 }
 else if($action == "searchTable1"){
     $keyword = $_GET["keyword"];
@@ -84,15 +65,51 @@ else if ($action == "createShare"){
     createShare($post);
 }
 
-elseif($action == "LoadShareTable1"){
-  LoadShareTable1();
+elseif($action == "LoadTable1"){
+  LoadTable1();
+}
+elseif($action == "LoadTable2"){
+  LoadTable2();
+}
+else if($action == "editShare"){
+
+  $postshId = $_GET["shId"];
+  $post = new Share();
+  $post->pName= $_GET["pName"];
+  $post->pLanguage = $_GET["pLanguage"];
+  $post->category = $_GET["category"];
+  $post->imagesLink = $_GET["imagesLink"];
+  $post->videoLink = $_GET["videoLink"];
+  $post->subLink = $_GET["subLink"];
+  $post->pPrivate = $_GET["pPrivate"];
+
+  editShare($postshId,$post);
+}
+else if($action == "editRequest"){
+
+  $postreId = $_GET["reId"];
+  $post = new Request();
+  $post->pName= $_GET["pName"];
+  $post->pLanguage = $_GET["pLanguage"];
+  $post->category = $_GET["category"];
+  $post->imagesLink = $_GET["imagesLink"];
+  $post->videoLink = $_GET["videoLink"];
+  $post->price = $_GET["price"];
+  $post->info = $_GET["info"];
+  $post->pPrivate = $_GET["pPrivate"];
+
+  editRequest($postreId,$post);
 }
 
+<<<<<<< HEAD
 else if($action == "loadHomeCategory"){
   loadHomeCategory();
 }
 
 function deleteShare($delete_editshId)
+=======
+function deleteShare($RequestshId)
+>>>>>>> 93b51e993494bbd4ed47ba204f69467c48535998
 {
     $servername = "localhost";
     $username = "root";
@@ -105,7 +122,32 @@ function deleteShare($delete_editshId)
     if($conn ->connect_error){
         die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "DELETE FROM share WHERE shId = $delete_editshId";
+    $sql = "DELETE FROM share WHERE shId = $RequestshId";
+    // echo $sql;
+    //die();
+        
+    if ($conn->query($sql) === TRUE) {
+        echo "Record deleted successfully";
+    } 
+    else {
+        echo "Error deleting record:". $conn->error;
+    }
+    $conn->close();
+}
+function deleteRequest($RequestreId)
+{
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "subshare";
+    
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn -> set_charset("utf8");
+    
+    if($conn ->connect_error){
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "DELETE FROM request WHERE reId = $RequestreId";
     // echo $sql;
     // die();
         
@@ -117,7 +159,6 @@ function deleteShare($delete_editshId)
     }
     $conn->close();
 }
-
 //search
 function searchTable1($keyword){
     //Get data from database
@@ -314,7 +355,7 @@ function createShare($post){
 }
 
 
-function LoadShareTable1(){
+function LoadTable1(){
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -326,7 +367,7 @@ function LoadShareTable1(){
   if($conn ->connect_error){
       die("Connection failed: " . $conn->connect_error);
   }
-  $sql = "SELECT pName, pLanguage, tShare FROM share";
+  $sql = "SELECT shId, pName, pLanguage, tShare FROM share";
   $result = $conn->query($sql);
  //   echo $sql;
  //  die();
@@ -342,12 +383,48 @@ function LoadShareTable1(){
  }
 $conn->close();
 }
-
-function loadHomeCategory(){
+function LoadTable2(){
   $servername = "localhost";
   $username = "root";
   $password = "";
   $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT reId, pName, pLanguage, tRequest FROM request";
+  $result = $conn->query($sql);
+    // echo $sql;
+    // die();
+
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+ } else {
+   echo "{result: \"no data\"}";
+ }
+$conn->close();
+}
+
+<<<<<<< HEAD
+function loadHomeCategory(){
+=======
+function editShare($postshId,$post){
+
+  //link test ?action=editShare&shId=72&pName=danghiraten&pLanguage=TiengTrung&category=Phim&imagesLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&videoLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&subLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&pPrivate=CongKhai
+
+>>>>>>> 93b51e993494bbd4ed47ba204f69467c48535998
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+<<<<<<< HEAD
   
   // Create connection
   $conn = new mysqli($servername, $username, $password, $dbname);
@@ -372,4 +449,61 @@ function loadHomeCategory(){
   $conn->close();
 }
 
+=======
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT * FROM share WHERE shId=$postshId";
+  $strsql = "UPDATE share SET pName='$post->pName', pLanguage='$post->pLanguage',
+  category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
+  subLink='$post->subLink', pPrivate='$post->pPrivate' WHERE shId=$postshId";
+  //  echo $sql;
+  //  echo $strsql;
+  //  die();
+  if ($conn->query($strsql) === TRUE) {
+      echo "Record updated successfully";
+  } else {
+      echo "Error: ".$strsql. "<br>" . $conn->error;
+  }
+
+  $conn->close();
+}
+
+function editRequest($postreId,$post){
+
+  //link test ?action=editRequest&reId=41&pName=danghiraten&pLanguage=TiengTrung&category=Phim&imagesLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&videoLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&price=25000&info=nhocnho@gmail.com&pPrivate=CongKhai
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT * FROM request WHERE reId=$postreId";
+  $strsql = "UPDATE request SET pName='$post->pName', pLanguage='$post->pLanguage',
+  category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
+  price=$post->price,info='$post->info', pPrivate='$post->pPrivate' WHERE reId=$postreId";
+    // echo $sql;
+    // echo $strsql;
+    // die();
+  if ($conn->query($strsql) === TRUE) {
+      echo "Record updated successfully";
+  } else {
+      echo "Error: ".$strsql. "<br>" . $conn->error;
+  }
+
+  $conn->close();
+}
+>>>>>>> 93b51e993494bbd4ed47ba204f69467c48535998
 ?>

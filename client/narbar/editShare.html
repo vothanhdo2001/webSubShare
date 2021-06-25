@@ -18,6 +18,35 @@
     <script src="../js/createRequest.js"></script>
 </head>
 
+<script>
+    //Hà Thị Kiều Phương-18521269
+    function editShare(){
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+          document.getElementById("txtStatus").innerHTML = this.responseText;
+        }
+      };
+
+      var id = document.getElementById("shId").value;
+      var pName = document.getElementById("pName").value;
+      var pLanguage = document.getElementById("pLanguage").value;
+      var category = document.getElementById("category").value;
+      var imagesLink = document.getElementById("imagesLink").value;
+      var videoLink = document.getElementById("videoLink").value;
+      var pPrivate = document.getElementById("pPrivate").value;
+      var subLink = document.getElementById("subLink").value;
+    
+      var url = "http://localhost:8888/webSubShare/sever/controller.php?action=editShare&shId="+id+
+      "&pName="+pName+"&pLanguage="+pLanguage+"&category="+category+"&imagesLink="
+      +imagesLink+"&videoLink="+videoLink+"&subLink="+subLink +"&pPrivate="+pPrivate;
+      alert(url);
+
+      xhttp.open("GET", url, true);
+      xhttp.send();
+    }
+  </script>
+
 <body>
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
@@ -43,19 +72,25 @@
     <section class="pt-5">
         <div class="container px-xl-0">
             <!-- Page Features-->
-
             <div class="row gx-xl-3">
                 <div class="col-lg-12 col-xl-12 mb-5">
                     <div class="card bg-light border-0 h-100">
                         <div class="card-body text-center p-4 p-lg-0 pt-0 pt-lg-0">
-                            <div class="bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><i class="bi bi-clock-history"></i></div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="pName">Tên sản phẩm</span>
-                                <input type="text" class="form-control" placeholder="Tên sản phẩm" aria-label="Tên sản phẩm" aria-describedby="pName">
+                            <div class=" bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><i class="bi bi-share"></i></div>
+                            <br>
+                            <!-- <input type = "hidden" name = "action" value = "editShare"> -->
+                            <div class="hidden" class="input-group mb-3">
+                                <label class="input-group-text" for="pName">Id</label>
+                                <input  type="text" class="form-control" id="shId" placeholder="shId" aria-label="shId" aria-describedby="shId">
                             </div>
                             <div class="input-group mb-3">
-                                <label class="input-group-text" for="planguage">Ngôn ngữ</label>
-                                <select class="form-select" id="planguage">
+                                <label class="input-group-text" for="pName">Tên sản phẩm</label>
+                                <input type="text" class="form-control" id="pName" placeholder="Tên sản phẩm" aria-label="Tên sản phẩm" aria-describedby="pName">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="pLanguage">Ngôn ngữ</label>
+                                <select class="form-select" id="pLanguage">
                                     <option selected>Chọn ngôn ngữ</option>
                                     <option value="Tiếng Việt">Tiếng Việt</option>
                                     <option value="Tiếng Anh">Tiếng Anh</option>
@@ -66,6 +101,8 @@
                                     <option value="Tiếng Ấn">Tiếng Ấn</option>
                                 </select>
                             </div>
+
+
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="category">Thể loại</label>
                                 <select class="form-select" id="category">
@@ -78,26 +115,22 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="imagesLink">Link ảnh</span>
-                                <input type="text" class="form-control" placeholder="Link ảnh" aria-label="Link ảnh" aria-describedby="imagesLink">
+                                <label class="input-group-text" for="imagesLink">Link ảnh</label>
+                                <input type="text" class="form-control" id="imagesLink" placeholder="Link ảnh" aria-label="Link ảnh" aria-describedby="imagesLink">
                             </div>
 
 
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="videoLink">Link video</span>
-                                <input type="text" class="form-control" placeholder="Link video" aria-label="Link video" aria-describedby="videoLink">
+                                <label class="input-group-text" for="videoLink">Link video</label>
+                                <input type="text" class="form-control" id="videoLink" placeholder="Link video" aria-label="Link video" aria-describedby="videoLink">
                             </div>
 
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="price">Giá đề nghị</span>
-                                <input type="text" class="form-control" placeholder="Giá đề nghị" aria-label="Giá đề nghị" aria-describedby="price">
+                                <label class="input-group-text" for="subLink">Link sub</label>
+                                <input type="text" class="form-control" id="subLink" placeholder="Link sub" aria-label="Link sub" aria-describedby="subLink">
                             </div>
 
 
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="info">Thông tin liên hệ</span>
-                                <input type="text" class="form-control" placeholder="Thông tin liên hệ" aria-label="Thông tin liên hệ" aria-describedby="info">
-                            </div>
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="pPrivate">Chia sẻ</label>
                                 <select class="form-select" id="pPrivate">
@@ -107,6 +140,7 @@
                                 </select>
                             </div>
                             <button class="btn btn-success" onclick="editShare()">Cập nhật</button>
+                            <p id="txtStatus"></p>
                         </div>
                     </div>
                 </div>
