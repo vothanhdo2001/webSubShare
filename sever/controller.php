@@ -88,6 +88,10 @@ elseif($action == "LoadShareTable1"){
   LoadShareTable1();
 }
 
+else if($action == "loadHomeCategory"){
+  loadHomeCategory();
+}
+
 function deleteShare($delete_editshId)
 {
     $servername = "localhost";
@@ -337,6 +341,35 @@ function LoadShareTable1(){
    echo "{result: \"no data\"}";
  }
 $conn->close();
+}
+
+function loadHomeCategory(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
 }
 
 ?>

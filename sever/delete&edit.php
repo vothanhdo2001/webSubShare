@@ -13,6 +13,7 @@ class delete_edit
     public $info;
     public $tRequest;
     public $private;
+    public $rate;
 }
 
 ?>

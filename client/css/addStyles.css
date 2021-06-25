@@ -25,3 +25,7 @@ td.profile {
 th.profile {
     text-align: left;
 }
+
+.pagination{
+    padding: 10px 330px;
+}
