@@ -19,7 +19,6 @@
 </head>
 
 <script>
-    //Hà Thị Kiều Phương-18521269
     function editShare(){
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function(){
@@ -28,7 +27,7 @@
         }
       };
 
-      var id = document.getElementById("shId").value;
+      var id = document.cookie;
       var pName = document.getElementById("pName").value;
       var pLanguage = document.getElementById("pLanguage").value;
       var category = document.getElementById("category").value;
@@ -79,10 +78,10 @@
                             <div class=" bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><i class="bi bi-share"></i></div>
                             <br>
                             <!-- <input type = "hidden" name = "action" value = "editShare"> -->
-                            <div class="hidden" class="input-group mb-3">
+                            <!-- <div class="hidden" class="input-group mb-3">
                                 <label class="input-group-text" for="pName">Id</label>
                                 <input  type="text" class="form-control" id="shId" placeholder="shId" aria-label="shId" aria-describedby="shId">
-                            </div>
+                            </div> -->
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="pName">Tên sản phẩm</label>
                                 <input type="text" class="form-control" id="pName" placeholder="Tên sản phẩm" aria-label="Tên sản phẩm" aria-describedby="pName">
