@@ -27,7 +27,7 @@ function createShare() {
     var subLink = document.getElementById("subLink").value;
     var pPrivate = document.getElementById("pPrivate").value;
 
-    var url  = "http://localhost:8080/webSubshare/webSubShare/sever/controller.php?action=createShare&pName="+pName+"&pLanguage="+pLanguage+"&category="+category+"&imagesLink="+imagesLink+"&videoLink="+videoLink+"&subLink"+subLink+"&pPrivate="+pPrivate;
+    var url  = "../server/controller.php?action=createShare&pName="+pName+"&pLanguage="+pLanguage+"&category="+category+"&imagesLink="+imagesLink+"&videoLink="+videoLink+"&subLink"+subLink+"&pPrivate="+pPrivate;
     // alert(url);
     
     //Send Ajax request

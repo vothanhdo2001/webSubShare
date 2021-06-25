@@ -28,7 +28,7 @@ function createRequest() {
     var info = document.getElementById("info").value;
     var pPrivate = document.getElementById("pPrivate").value;
     
-    var url = "http://localhost:8080/webSubshare/webSubShare/sever/controller.php?action=createRequest&pName="+pName+"&pLanguage="+pLanguage+"&category="+category+"&imagesLink="+imagesLink+"&videoLink="+videoLink+"&price="+price+"&info="+info+"&pPrivate="+pPrivate;
+    var url = "../server/controller.php?action=createRequest&pName="+pName+"&pLanguage="+pLanguage+"&category="+category+"&imagesLink="+imagesLink+"&videoLink="+videoLink+"&price="+price+"&info="+info+"&pPrivate="+pPrivate;
     // alert(url);
 
     //Send Ajax request
