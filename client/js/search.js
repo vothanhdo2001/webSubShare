@@ -13,7 +13,7 @@ function table1() {
             }
         }
     };
-    xhttp.open("GET", "http://localhost/SubShare/server/controler.php?action=searchTable1&keyword=" + keyword, true);
+    xhttp.open("GET", "../server/controller.php?action=searchTable1&keyword=" + keyword, true);
     xhttp.send();
 }
 
@@ -32,7 +32,7 @@ function table2() {
             }
         }
     };
-    xhttp.open("GET", "http://localhost/SubShare/server/controler.php?action=searchTable2&keyword=" + keyword, true);
+    xhttp.open("GET", "../server/controller.php?action=searchTable2&keyword=" + keyword, true);
     xhttp.send();
 }
 
@@ -52,7 +52,7 @@ function cTable1() {
     var time = document.getElementById("time").value;
     var planguage = document.getElementById("planguage").value;
 
-    xhttp.open("GET", "http://localhost/SubShare/server/controler.php?action=cSearchTable1&category=" + category + "&time=" + time + "&planguage=" + planguage);
+    xhttp.open("GET", "../server/controller.php?action=cSearchTable1&category=" + category + "&time=" + time + "&planguage=" + planguage);
     xhttp.send();
 }
 
@@ -72,7 +72,7 @@ function cTable2(str) {
     var time = document.getElementById("time").value;
     var planguage = document.getElementById("planguage").value;
 
-    xhttp.open("GET", "http://localhost/SubShare/server/controler.php?action=cSearchTable2&category=" + category + "&time=" + time + "&planguage=" + planguage);
+    xhttp.open("GET", "../server/controller.php?action=cSearchTable2&category=" + category + "&time=" + time + "&planguage=" + planguage);
     xhttp.send();
 }
 
