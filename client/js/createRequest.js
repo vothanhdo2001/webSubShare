@@ -29,7 +29,7 @@ function createRequest() {
     var pPrivate = document.getElementById("pPrivate").value;
 
     var url = "../server/controller.php?action=createRequest&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" + imagesLink + "&videoLink=" + videoLink + "&price=" + price + "&info=" + info + "&pPrivate=" + pPrivate;
-    // alert(url);
+    alert(url);
 
     //Send Ajax request
     xhttp.open("GET", url, true);
