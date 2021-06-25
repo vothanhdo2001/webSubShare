@@ -11,7 +11,7 @@ function table1() {
         }
     };
         
-    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeCategory",true);
+    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeTable1",true);
     xhttp.send();
 }
 
@@ -28,7 +28,7 @@ function table2() {
         }
     };
         
-    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeCategory",true);
+    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeTable2",true);
     xhttp.send();
 }
 
@@ -45,7 +45,7 @@ function table3() {
         }
     };
         
-    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeCategory",true);
+    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeTable3",true);
     xhttp.send();
 
 }
@@ -63,7 +63,7 @@ function table4() {
         }
     };
         
-    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeCategory",true);
+    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeTable4",true);
     xhttp.send();
 }
 
@@ -80,7 +80,7 @@ function table5() {
         }
     };
         
-    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeCategory",true);
+    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=loadHomeTable5",true);
     xhttp.send();
 }
 onload = function home() {

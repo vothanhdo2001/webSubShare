@@ -101,9 +101,42 @@ else if($action == "editRequest"){
   editRequest($post);
 }
 
-else if($action == "loadHomeCategory"){
-  loadHomeCategory();
+else if($action == "loadHomeTable1"){
+  loadHomeTable1();
 }
+
+else if($action == "loadHomeTable2"){
+  loadHomeTable2();
+}
+
+else if($action == "loadHomeTable3"){
+  loadHomeTable3();
+}
+
+else if($action == "loadHomeTable4"){
+  loadHomeTable4();
+}
+
+else if($action == "loadHomeTable5"){
+  loadHomeTable5();
+}
+
+else if($action == "loadCategoryTable1"){
+  loadCategoryTable1();
+}
+
+else if($action == "loadCategoryTable2"){
+  loadCategoryTable2();
+}
+
+else if($action == "loadCategoryTable3"){
+  loadCategoryTable3();
+}
+
+else if($action == "loadCategoryTable4"){
+  loadCategoryTable4();
+}
+
 
 function deleteShare($RequestshId)
 {
@@ -408,36 +441,6 @@ function LoadTable2(){
 $conn->close();
 }
 
-function loadHomeCategory(){
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "subshare";
-  
-  // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  $conn -> set_charset("utf8");
-  // Check connection
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
-  
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
-
-  $result = $conn->query($sql);
-  
-  if ($result->num_rows > 0) {
-      $data = $result->fetch_all(MYSQLI_ASSOC);
-      // var_dump($data);
-      // die();
-      echo json_encode($data);
-  } else {
-      echo "{result:\"No result found\"}";
-  }
-  $conn->close();
-}
-
-
 function editShare($post){
 
   //link test ?action=editShare&shId=72&pName=danghiraten&pLanguage=TiengTrung&category=Phim&imagesLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&videoLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&subLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&pPrivate=CongKhai
@@ -501,5 +504,276 @@ function editRequest($post){
 
   $conn->close();
 }
+
+
+function loadHomeTable1(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+
+function loadHomeTable2(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+
+function loadHomeTable3(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+
+function loadHomeTable4(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+
+function loadHomeTable5(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+
+function loadCategoryTable1(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+
+function loadCategoryTable2(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+
+function loadCategoryTable3(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+
+function loadCategoryTable4(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
 
 ?>
