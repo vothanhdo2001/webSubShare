@@ -1,4 +1,3 @@
-
 // function getLinkDownload() {
 
 // }
@@ -26,25 +25,24 @@
 function deleteShare(shId) {
 
     var xhttp = new XMLHttpRequest();
-    var url = "http://localhost:8888/webSubShare/sever/controller.php?action=deleteShare&shId=" + shId;
+    var url = "http://localhost/webSubShare/server/controller.php?action=deleteShare&shId=" + shId;
     xhttp.open("GET", url, true);
     xhttp.send();
     location.reload();
 }
 
 function editShare(shId) {
-   document.cookie = shId;
+    document.cookie = shId;
 }
 
 function deleteRequest(reId) {
-   var xhttp = new XMLHttpRequest();
-   var url = "http://localhost:8888/webSubShare/sever/controller.php?action=deleteRequest&reId=" + reId;
-   xhttp.open("GET", url, true);
-   xhttp.send();
-   location.reload();
+    var xhttp = new XMLHttpRequest();
+    var url = "http://localhost/webSubShare/server/controller.php?action=deleteRequest&reId=" + reId;
+    xhttp.open("GET", url, true);
+    xhttp.send();
+    location.reload();
 }
 
 function editRequest(reId) {
-   document.cookie = reId;
+    document.cookie = reId;
 }
-

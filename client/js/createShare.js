@@ -13,10 +13,10 @@ onload = function home() {
 
 function createShare() {
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
             document.getElementById("txtStatus").innerHTML = this.responseText;
-    }
+        }
     };
 
     var pName = document.getElementById("pName").value;
@@ -27,9 +27,9 @@ function createShare() {
     var subLink = document.getElementById("subLink").value;
     var pPrivate = document.getElementById("pPrivate").value;
 
-    var url  = "http://localhost:8080/webSubshare/webSubShare/sever/controller.php?action=createShare&pName="+pName+"&pLanguage="+pLanguage+"&category="+category+"&imagesLink="+imagesLink+"&videoLink="+videoLink+"&subLink"+subLink+"&pPrivate="+pPrivate;
+    var url = "http://localhost/webSubshare/webSubShare/server/controller.php?action=createShare&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" + imagesLink + "&videoLink=" + videoLink + "&subLink" + subLink + "&pPrivate=" + pPrivate;
     // alert(url);
-    
+
     //Send Ajax request
     xhttp.open("GET", url, true);
     xhttp.send();
