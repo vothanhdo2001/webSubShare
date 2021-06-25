@@ -33,6 +33,36 @@ function table2() {
 }
 
 function profile() {
+    // Send Request to sever
+    // Send Request to sever
+    // var keyword = document.getElementById("txtKeyword").value;
+    var cuId = 8;
+    // Make Ajax request
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var searchResults = JSON.parse(this.responseText);
+            document.getElementById("nName").innerHTML = "";
+            document.getElementById("nName").innerHTML += searchResults[0].nName;
+
+            document.getElementById("cuId").innerHTML = "";
+            document.getElementById("cuId").innerHTML += searchResults[0].cuId;
+
+            document.getElementById("tRegister").innerHTML = "";
+            document.getElementById("tRegister").innerHTML += searchResults[0].tRegister;
+
+            document.getElementById("sex").innerHTML = "";
+            document.getElementById("sex").innerHTML += searchResults[0].sex;
+
+            document.getElementById("mail").innerHTML = "";
+            document.getElementById("mail").innerHTML += searchResults[0].mail;
+
+            document.getElementById("introduce").innerHTML = "";
+            document.getElementById("introduce").innerHTML += searchResults[0].introduce;
+        }
+    };
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=loadProfile&cuId=" + cuId, true);
+    xhttp.send();
 
 }
 
