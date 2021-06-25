@@ -101,12 +101,11 @@ else if($action == "editRequest"){
   editRequest($post);
 }
 
-
 else if($action == "loadHomeCategory"){
   loadHomeCategory();
 }
 
-function deleteShare($delete_editshId)
+function deleteShare($RequestshId)
 {
     $servername = "localhost";
     $username = "root";
@@ -347,7 +346,7 @@ function createShare($post){
 
     //Close connection to database
     $conn -> close();
-}
+  }
 
 }
 
@@ -491,9 +490,9 @@ function editRequest($post){
   $strsql = "UPDATE request SET pName='$post->pName', pLanguage='$post->pLanguage',
   category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
   price=$post->price,info='$post->info', pPrivate='$post->pPrivate' WHERE reId=$post->reId";
-    //  echo $sql;
-    //  echo $strsql;
-    //  die();
+      // echo $sql;
+      // echo $strsql;
+      // die();
   if ($conn->query($strsql) === TRUE) {
       echo "Record updated successfully";
   } else {

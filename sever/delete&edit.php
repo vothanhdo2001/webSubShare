@@ -25,4 +25,3 @@ class Share extends Request
 }
 
 ?>
-?>

@@ -1,26 +1,3 @@
-// function getLinkDownload() {
-
-// }
-
-// function getLinkProfile() {
-
-// }
-
-// function getLinkShare() {
-
-// }
-
-// function getLinkRequest() {
-
-// }
-
-// function addSub() {
-
-// }
-
-// function sendRate() {
-
-// }
 
 // function getLinkDownload() {
 
