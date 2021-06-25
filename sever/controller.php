@@ -101,15 +101,11 @@ else if($action == "editRequest"){
   editRequest($postreId,$post);
 }
 
-<<<<<<< HEAD
 else if($action == "loadHomeCategory"){
   loadHomeCategory();
 }
 
 function deleteShare($delete_editshId)
-=======
-function deleteShare($RequestshId)
->>>>>>> 93b51e993494bbd4ed47ba204f69467c48535998
 {
     $servername = "localhost";
     $username = "root";
@@ -412,19 +408,11 @@ function LoadTable2(){
 $conn->close();
 }
 
-<<<<<<< HEAD
 function loadHomeCategory(){
-=======
-function editShare($postshId,$post){
-
-  //link test ?action=editShare&shId=72&pName=danghiraten&pLanguage=TiengTrung&category=Phim&imagesLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&videoLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&subLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&pPrivate=CongKhai
-
->>>>>>> 93b51e993494bbd4ed47ba204f69467c48535998
   $servername = "localhost";
   $username = "root";
   $password = "";
   $dbname = "subshare";
-<<<<<<< HEAD
   
   // Create connection
   $conn = new mysqli($servername, $username, $password, $dbname);
@@ -449,61 +437,4 @@ function editShare($postshId,$post){
   $conn->close();
 }
 
-=======
- 
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  $conn -> set_charset("utf8");
- 
-  if($conn ->connect_error){
-      die("Connection failed: " . $conn->connect_error);
-  }
-
-  $sql = "SELECT * FROM share WHERE shId=$postshId";
-  $strsql = "UPDATE share SET pName='$post->pName', pLanguage='$post->pLanguage',
-  category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
-  subLink='$post->subLink', pPrivate='$post->pPrivate' WHERE shId=$postshId";
-  //  echo $sql;
-  //  echo $strsql;
-  //  die();
-  if ($conn->query($strsql) === TRUE) {
-      echo "Record updated successfully";
-  } else {
-      echo "Error: ".$strsql. "<br>" . $conn->error;
-  }
-
-  $conn->close();
-}
-
-function editRequest($postreId,$post){
-
-  //link test ?action=editRequest&reId=41&pName=danghiraten&pLanguage=TiengTrung&category=Phim&imagesLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&videoLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&price=25000&info=nhocnho@gmail.com&pPrivate=CongKhai
-
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "subshare";
- 
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  $conn -> set_charset("utf8");
- 
-  if($conn ->connect_error){
-      die("Connection failed: " . $conn->connect_error);
-  }
-
-  $sql = "SELECT * FROM request WHERE reId=$postreId";
-  $strsql = "UPDATE request SET pName='$post->pName', pLanguage='$post->pLanguage',
-  category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
-  price=$post->price,info='$post->info', pPrivate='$post->pPrivate' WHERE reId=$postreId";
-    // echo $sql;
-    // echo $strsql;
-    // die();
-  if ($conn->query($strsql) === TRUE) {
-      echo "Record updated successfully";
-  } else {
-      echo "Error: ".$strsql. "<br>" . $conn->error;
-  }
-
-  $conn->close();
-}
->>>>>>> 93b51e993494bbd4ed47ba204f69467c48535998
 ?>
