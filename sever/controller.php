@@ -73,8 +73,8 @@ elseif($action == "LoadTable2"){
 }
 else if($action == "editShare"){
 
-  $postshId = $_GET["shId"];
   $post = new Share();
+  $post->Id = $_GET["shId"];
   $post->pName= $_GET["pName"];
   $post->pLanguage = $_GET["pLanguage"];
   $post->category = $_GET["category"];
@@ -83,12 +83,12 @@ else if($action == "editShare"){
   $post->subLink = $_GET["subLink"];
   $post->pPrivate = $_GET["pPrivate"];
 
-  editShare($postshId,$post);
+  editShare($post);
 }
 else if($action == "editRequest"){
 
-  $postreId = $_GET["reId"];
   $post = new Request();
+  $post->reId = $_GET["reId"];
   $post->pName= $_GET["pName"];
   $post->pLanguage = $_GET["pLanguage"];
   $post->category = $_GET["category"];
@@ -98,8 +98,9 @@ else if($action == "editRequest"){
   $post->info = $_GET["info"];
   $post->pPrivate = $_GET["pPrivate"];
 
-  editRequest($postreId,$post);
+  editRequest($post);
 }
+
 
 else if($action == "loadHomeCategory"){
   loadHomeCategory();
