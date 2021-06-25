@@ -16,5 +16,12 @@ class Request
     public $private;
     public $rate;
 }
+class Share extends Request
+{
+    public $shId;
+    public $subLink;
+    public $tShare;
+    public $rate;
+}
 
 ?>

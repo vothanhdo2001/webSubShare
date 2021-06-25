@@ -73,8 +73,8 @@ elseif($action == "LoadTable2"){
 }
 else if($action == "editShare"){
 
-  $postshId = $_GET["shId"];
   $post = new Share();
+  $post->Id = $_GET["shId"];
   $post->pName= $_GET["pName"];
   $post->pLanguage = $_GET["pLanguage"];
   $post->category = $_GET["category"];
@@ -83,12 +83,12 @@ else if($action == "editShare"){
   $post->subLink = $_GET["subLink"];
   $post->pPrivate = $_GET["pPrivate"];
 
-  editShare($postshId,$post);
+  editShare($post);
 }
 else if($action == "editRequest"){
 
-  $postreId = $_GET["reId"];
   $post = new Request();
+  $post->reId = $_GET["reId"];
   $post->pName= $_GET["pName"];
   $post->pLanguage = $_GET["pLanguage"];
   $post->category = $_GET["category"];
@@ -97,15 +97,14 @@ else if($action == "editRequest"){
   $post->price = $_GET["price"];
   $post->info = $_GET["info"];
   $post->pPrivate = $_GET["pPrivate"];
-
-  editRequest($postreId,$post);
+  editRequest($post);
 }
 
 else if($action == "loadHomeCategory"){
   loadHomeCategory();
 }
 
-function deleteShare($delete_editshId)
+function deleteShare($RequestshId)
 {
     $servername = "localhost";
     $username = "root";
@@ -346,7 +345,7 @@ function createShare($post){
 
     //Close connection to database
     $conn -> close();
-}
+  }
 
 }
 
@@ -434,6 +433,67 @@ function loadHomeCategory(){
   } else {
       echo "{result:\"No result found\"}";
   }
+  $conn->close();
+}
+
+
+function editShare($post){
+
+  //link test ?action=editShare&shId=72&pName=danghiraten&pLanguage=TiengTrung&category=Phim&imagesLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&videoLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&subLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&pPrivate=CongKhai
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT * FROM share WHERE shId=$post->shId";
+  $strsql = "UPDATE share SET pName='$post->pName', pLanguage='$post->pLanguage',
+  category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
+  subLink='$post->subLink', pPrivate='$post->pPrivate' WHERE shId=$post->shId";
+  //  echo $sql;
+  //  echo $strsql;
+  //  die();
+  if ($conn->query($strsql) === TRUE) {
+      echo "Record updated successfully";
+  } else {
+      echo "Error: ".$strsql. "<br>" . $conn->error;
+  }
+
+  $conn->close();
+}
+
+function editRequest($post){
+
+  //link test ?action=editRequest&reId=40&pName=danghiraten&pLanguage=TiengTrung&category=Phim&imagesLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&videoLink=https://cdn.tgdd.vn/Products/Images/42/235971/Slider/redmi-note-10-5g-thumbv-780x433-2.jpg&price=25000&info=nhocnho@gmail.com&pPrivate=CongKhai
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "UPDATE request SET pName='$post->pName', pLanguage='$post->pLanguage',
+  category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
+  price=$post->price,info='$post->info', pPrivate='$post->pPrivate' WHERE reId=$post->reId";
+  if ($conn->query($sql) === TRUE) {
+      echo "Record updated successfully";
+  } else {
+      echo "Error: ".$sql. "<br>" . $conn->error;
+  }
+
   $conn->close();
 }
 

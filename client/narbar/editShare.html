@@ -19,33 +19,30 @@
 </head>
 
 <script>
-    //Hà Thị Kiều Phương-18521269
-    function editShare(){
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-          document.getElementById("txtStatus").innerHTML = this.responseText;
-        }
-      };
+    function editShare() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtStatus").innerHTML = this.responseText;
+            }
+        };
 
-      var id = document.getElementById("shId").value;
-      var pName = document.getElementById("pName").value;
-      var pLanguage = document.getElementById("pLanguage").value;
-      var category = document.getElementById("category").value;
-      var imagesLink = document.getElementById("imagesLink").value;
-      var videoLink = document.getElementById("videoLink").value;
-      var pPrivate = document.getElementById("pPrivate").value;
-      var subLink = document.getElementById("subLink").value;
-    
-      var url = "http://localhost:8888/webSubShare/sever/controller.php?action=editShare&shId="+id+
-      "&pName="+pName+"&pLanguage="+pLanguage+"&category="+category+"&imagesLink="
-      +imagesLink+"&videoLink="+videoLink+"&subLink="+subLink +"&pPrivate="+pPrivate;
-      alert(url);
-
-      xhttp.open("GET", url, true);
-      xhttp.send();
+        var id = document.cookie;
+        var pName = document.getElementById("pName").value;
+        var pLanguage = document.getElementById("pLanguage").value;
+        var category = document.getElementById("category").value;
+        var imagesLink = document.getElementById("imagesLink").value;
+        var videoLink = document.getElementById("videoLink").value;
+        var pPrivate = document.getElementById("pPrivate").value;
+        var subLink = document.getElementById("subLink").value;
+        var url = "http://localhost/webSubShare/sever/controller.php?action=editShare&shId=" + id +
+            "&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" +
+            imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
+        alert(url);
+        xhttp.open("GET", url, true);
+        xhttp.send();
     }
-  </script>
+</script>
 
 <body>
     <!-- Responsive navbar-->
@@ -79,10 +76,10 @@
                             <div class=" bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><i class="bi bi-share"></i></div>
                             <br>
                             <!-- <input type = "hidden" name = "action" value = "editShare"> -->
-                            <div class="hidden" class="input-group mb-3">
+                            <!-- <div class="hidden" class="input-group mb-3">
                                 <label class="input-group-text" for="pName">Id</label>
                                 <input  type="text" class="form-control" id="shId" placeholder="shId" aria-label="shId" aria-describedby="shId">
-                            </div>
+                            </div> -->
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="pName">Tên sản phẩm</label>
                                 <input type="text" class="form-control" id="pName" placeholder="Tên sản phẩm" aria-label="Tên sản phẩm" aria-describedby="pName">
