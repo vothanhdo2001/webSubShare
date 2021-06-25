@@ -18,35 +18,35 @@
     <script src="../js/createRequest.js"></script>
 </head>
 <script>
-    function editRequest(){
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-          document.getElementById("txtStatus").innerHTML = this.responseText;
-        }
-      };
+    function editRequest() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtStatus").innerHTML = this.responseText;
+            }
+        };
 
-      var id = document.cookie;
-      var pName = document.getElementById("pName").value;
-      var pLanguage = document.getElementById("pLanguage").value;
-      var category = document.getElementById("category").value;
-      var imagesLink = document.getElementById("imagesLink").value;
-      var videoLink = document.getElementById("videoLink").value;
-      var pPrivate = document.getElementById("pPrivate").value;
-      var price = document.getElementById("price").value;
-      var info = document.getElementById("info").value;
-    
-      var url = "http://localhost:8888/webSubShare/sever/controller.php?action=editRequest&reId="+id+
-      "&pName="+pName+"&pLanguage="+pLanguage+"&category="+category+"&imagesLink="
-      +imagesLink+"&videoLink="+videoLink+"&price="+price + +"&info=" + info + "&pPrivate="+pPrivate;
-      alert(url);
+        var reId = document.cookie;
+        var pName = document.getElementById("pName").value;
+        var pLanguage = document.getElementById("pLanguage").value;
+        var category = document.getElementById("category").value;
+        var imagesLink = document.getElementById("imagesLink").value;
+        var videoLink = document.getElementById("videoLink").value;
+        var pPrivate = document.getElementById("pPrivate").value;
+        var price = document.getElementById("price").value;
+        var info = document.getElementById("info").value;
 
-      xhttp.open("GET", url, true);
-      xhttp.send();
-      
+        var url = "http://localhost/webSubShare/server/controller.php?action=editRequest&reId=" + reId +
+            "&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" +
+            imagesLink + "&videoLink=" + videoLink + "&price=" + price + "&info=" + info + "&pPrivate=" + pPrivate;
+        alert(url);
+
+        xhttp.open("GET", url, true);
+        xhttp.send();
+
     }
-
 </script>
+
 <body>
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
@@ -78,7 +78,7 @@
                     <div class="card bg-light border-0 h-100">
                         <div class="card-body text-center p-4 p-lg-0 pt-0 pt-lg-0">
                             <div class="bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><i class="bi bi-clock-history"></i></div>
-                           
+
                             <!-- <div class="hidden" class="input-group mb-3">
                                 <label class="input-group-text" for="pName">Id</label>
                                 <input  type="text" class="form-control" id="reId" placeholder="reId" aria-label="reId" aria-describedby="reId">
@@ -130,7 +130,7 @@
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="info">Thông tin liên hệ</label>
-                                <input type="text" class="form-control"  id="info" placeholder="Thông tin liên hệ" aria-label="Thông tin liên hệ" aria-describedby="info">
+                                <input type="text" class="form-control" id="info" placeholder="Thông tin liên hệ" aria-label="Thông tin liên hệ" aria-describedby="info">
                             </div>
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="pPrivate">Chia sẻ</label>

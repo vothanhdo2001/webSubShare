@@ -19,32 +19,30 @@
 </head>
 
 <script>
-    function editShare(){
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-          document.getElementById("txtStatus").innerHTML = this.responseText;
-        }
-      };
+    function editShare() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtStatus").innerHTML = this.responseText;
+            }
+        };
 
-      var id = document.cookie;
-      var pName = document.getElementById("pName").value;
-      var pLanguage = document.getElementById("pLanguage").value;
-      var category = document.getElementById("category").value;
-      var imagesLink = document.getElementById("imagesLink").value;
-      var videoLink = document.getElementById("videoLink").value;
-      var pPrivate = document.getElementById("pPrivate").value;
-      var subLink = document.getElementById("subLink").value;
-    
-      var url = "http://localhost:8888/webSubShare/sever/controller.php?action=editShare&shId="+id+
-      "&pName="+pName+"&pLanguage="+pLanguage+"&category="+category+"&imagesLink="
-      +imagesLink+"&videoLink="+videoLink+"&subLink="+subLink +"&pPrivate="+pPrivate;
-      alert(url);
-
-      xhttp.open("GET", url, true);
-      xhttp.send();
+        var id = document.cookie;
+        var pName = document.getElementById("pName").value;
+        var pLanguage = document.getElementById("pLanguage").value;
+        var category = document.getElementById("category").value;
+        var imagesLink = document.getElementById("imagesLink").value;
+        var videoLink = document.getElementById("videoLink").value;
+        var pPrivate = document.getElementById("pPrivate").value;
+        var subLink = document.getElementById("subLink").value;
+        var url = "http://localhost/webSubShare/sever/controller.php?action=editShare&shId=" + id +
+            "&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" +
+            imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
+        alert(url);
+        xhttp.open("GET", url, true);
+        xhttp.send();
     }
-  </script>
+</script>
 
 <body>
     <!-- Responsive navbar-->

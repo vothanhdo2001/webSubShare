@@ -97,7 +97,6 @@ else if($action == "editRequest"){
   $post->price = $_GET["price"];
   $post->info = $_GET["info"];
   $post->pPrivate = $_GET["pPrivate"];
-
   editRequest($post);
 }
 
@@ -489,17 +488,13 @@ function editRequest($post){
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT * FROM request WHERE reId=$post->reId";
-  $strsql = "UPDATE request SET pName='$post->pName', pLanguage='$post->pLanguage',
+  $sql = "UPDATE request SET pName='$post->pName', pLanguage='$post->pLanguage',
   category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
   price=$post->price,info='$post->info', pPrivate='$post->pPrivate' WHERE reId=$post->reId";
-      // echo $sql;
-      // echo $strsql;
-      // die();
-  if ($conn->query($strsql) === TRUE) {
+  if ($conn->query($sql) === TRUE) {
       echo "Record updated successfully";
   } else {
-      echo "Error: ".$strsql. "<br>" . $conn->error;
+      echo "Error: ".$sql. "<br>" . $conn->error;
   }
 
   $conn->close();
