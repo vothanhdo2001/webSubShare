@@ -27,7 +27,7 @@
             }
         };
 
-        var id = document.cookie;
+        var shId = document.cookie;
         var pName = document.getElementById("pName").value;
         var pLanguage = document.getElementById("pLanguage").value;
         var category = document.getElementById("category").value;
@@ -35,12 +35,13 @@
         var videoLink = document.getElementById("videoLink").value;
         var pPrivate = document.getElementById("pPrivate").value;
         var subLink = document.getElementById("subLink").value;
-        var url = "http://localhost/webSubShare/sever/controller.php?action=editShare&shId=" + id +
+        var url = "http://localhost/webSubShare/sever/controller.php?action=editShare&shId=" + shId +
             "&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" +
             imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
         alert(url);
         xhttp.open("GET", url, true);
         xhttp.send();
+        window.location = '../narbar/profile.html';
     }
 </script>
 
