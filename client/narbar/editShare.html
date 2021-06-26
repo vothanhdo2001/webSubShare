@@ -38,10 +38,10 @@
         var url = "/webSubShare/sever/controller.php?action=editShare&shId=" + shId +
             "&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" +
             imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
-        alert(url);
         xhttp.open("GET", url, true);
         xhttp.send();
-        window.location = '../narbar/profile.html';
+        alert("Cập nhập thành công !");
+        window.location = '/webSubShare/narbar/profile.html';
     }
 </script>
 
