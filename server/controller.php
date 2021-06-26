@@ -219,7 +219,7 @@ function searchTable1($keyword){
         die("Connection failed: " . $conn->connect_error);
     }
     $sql = "SELECT share.pName as pName, customer.nName as nName, share.pLanguage as pLanguage, share.tShare as tShare 
-    FROM share, customer WHERE pName LIKE '%$keyword%' LIMIT 100;";
+    FROM share INNER JOIN customer ON share.cuId = customer.cuId WHERE share.pName LIKE '%$keyword%' LIMIT 100;";
     // echo $sql;
     // die();
     
@@ -252,7 +252,8 @@ function searchTable2($keyword){
     if($conn ->connect_error){
         die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT request.pName as pName, customer.nName as nName, request.pLanguage as pLanguage, request.tRequest as tRequest, request.price as price FROM request, customer WHERE pName LIKE '%$keyword%' LIMIT 100;";
+    $sql = "SELECT request.pName as pName, customer.nName as nName, request.pLanguage as pLanguage, request.tRequest as tRequest, request.price as price 
+    FROM request INNER JOIN customer ON request.cuId = customer.cuId WHERE request.pName LIKE '%$keyword%' LIMIT 100;";
     // echo $sql;
     // die();
     
@@ -286,7 +287,7 @@ function cSearchTable1($category,$time,$planguage){
       die("Connection failed: " . $conn->connect_error);
   }
   $sql = "SELECT share.pName as pName, customer.nName as nName, share.pLanguage as pLanguage, share.tShare as tShare 
-  FROM share, customer WHERE share.category = '$category' AND YEAR(share.tShare) = $time AND share.pLanguage = '$planguage';";
+  FROM share INNER JOIN customer ON share.cuId = customer.cuId WHERE share.category = '$category' AND YEAR(share.tShare) = $time AND share.pLanguage = '$planguage';";
   $result = $conn->query($sql);
   // var_dump ($result);
   // die();
@@ -316,8 +317,8 @@ function cSearchTable2($category,$time,$planguage){
   if($conn ->connect_error){
       die("Connection failed: " . $conn->connect_error);
   }
-  $sql = "SELECT request.pName as pName, customer.nName as nName, request.pLanguage as pLanguage, request.tRequest as tRequest, request.price as price FROM request, customer 
-  WHERE request.category = '$category' AND YEAR(request.tRequest) = $time AND request.pLanguage = '$planguage';";
+  $sql = "SELECT request.pName as pName, customer.nName as nName, request.pLanguage as pLanguage, request.tRequest as tRequest, request.price as price 
+  FROM request INNER JOIN customer ON request.cuId = customer.cuId WHERE request.category = '$category' AND YEAR(request.tRequest) = $time AND request.pLanguage = '$planguage';";
   $result = $conn->query($sql);
   // var_dump ($result);
   // die();
