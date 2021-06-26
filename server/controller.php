@@ -73,7 +73,7 @@ elseif($action == "LoadTable2"){
 else if($action == "editShare"){
 
   $post = new Share();
-  $post->Id = $_GET["shId"];
+  $post->shId = $_GET["shId"];
   $post->pName= $_GET["pName"];
   $post->pLanguage = $_GET["pLanguage"];
   $post->category = $_GET["category"];
@@ -468,17 +468,16 @@ function editShare($post){
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT * FROM share WHERE shId=$post->shId";
-  $strsql = "UPDATE share SET pName='$post->pName', pLanguage='$post->pLanguage',
+  $sql = "UPDATE share SET pName='$post->pName', pLanguage='$post->pLanguage',
   category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
   subLink='$post->subLink', pPrivate='$post->pPrivate' WHERE shId=$post->shId";
   //  echo $sql;
   //  echo $strsql;
   //  die();
-  if ($conn->query($strsql) === TRUE) {
+  if ($conn->query($sql) === TRUE) {
       echo "Record updated successfully";
   } else {
-      echo "Error: ".$strsql. "<br>" . $conn->error;
+      echo "Error: ".$sql. "<br>" . $conn->error;
   }
 
   $conn->close();
