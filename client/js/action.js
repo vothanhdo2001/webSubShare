@@ -22,10 +22,6 @@ function deleteShare(shId) {
     location.reload();
 }
 
-function editShare(shId) {
-    document.cookie = shId;
-}
-
 function editShare() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -42,13 +38,13 @@ function editShare() {
     var videoLink = document.getElementById("videoLink").value;
     var pPrivate = document.getElementById("pPrivate").value;
     var subLink = document.getElementById("subLink").value;
-    var url = "/webSubShare/sever/controller.php?action=editShare&shId=" + shId +
+    var url = "/webSubShare/server/controller.php?action=editShare&shId=" + shId +
         "&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" +
         imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
     xhttp.open("GET", url, true);
     xhttp.send();
     alert("Cập nhập thành công !");
-    window.location = '/webSubShare/narbar/profile.html';
+    window.location = "/webSubShare/client/narbar/profile.html";
 }
 
 function deleteRequest(reId) {
@@ -59,7 +55,7 @@ function deleteRequest(reId) {
     location.reload();
 }
 
-function editRequest(reId) {
+function getCookie(reId) {
     document.cookie = reId;
 }
 

@@ -14,7 +14,6 @@ function table1() {
     xhttp.send();
 }
 
-
 function table2() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
