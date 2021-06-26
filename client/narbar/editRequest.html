@@ -39,10 +39,10 @@
         var url = "http://localhost/webSubShare/server/controller.php?action=editRequest&reId=" + reId +
             "&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" +
             imagesLink + "&videoLink=" + videoLink + "&price=" + price + "&info=" + info + "&pPrivate=" + pPrivate;
-        alert(url);
-
         xhttp.open("GET", url, true);
         xhttp.send();
+        alert("Cập nhập thành công !");
+        window.location = "/webSubShare/client/narbar/profile.html";
 
     }
 </script>

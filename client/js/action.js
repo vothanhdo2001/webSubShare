@@ -1,26 +1,17 @@
-// function getLinkDownload() {
+function getLinkProfile() {
 
-// }
+}
 
-// function getLinkProfile() {
+function getLinkShare() {
 
-// }
+}
 
-// function getLinkShare() {
+function getLinkRequest() {
 
-// }
+}
 
-// function getLinkRequest() {
 
-// }
 
-// function addSub() {
-
-// }
-
-// function sendRate() {
-
-// }
 
 function deleteShare(shId) {
 

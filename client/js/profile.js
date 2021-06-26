@@ -30,6 +30,7 @@ function table2() {
     };
     xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=LoadTable2", true);
     xhttp.send();
+
 }
 
 function profile() {

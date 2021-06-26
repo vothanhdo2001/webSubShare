@@ -15,7 +15,7 @@
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/addStyles.css" rel="stylesheet" />
     <script src="../client/js/action.js"></script>
-    <script src="../js/category.js"></script>
+    <script src="../js/postRequest.js"></script>
 </head>
 
 <body>
@@ -102,7 +102,7 @@
 
                 <div class="col-lg-6 col-xl-6 mb-5">
                     <div class="imageLink">
-                        <img src="/client/images/Ngo_Long.jpg" alt="Ngộ Long" class="img-thumbnail">
+                        <img src="/webSubShare/client/images/Ngo_Long.jpg" alt="Ngộ Long" class="img-thumbnail">
                     </div>
                 </div>
                 <br>
@@ -127,6 +127,7 @@
                                     <option value="Riêng tư">Riêng tư</option>
                                 </select>
                             </div>
+                            <button onclick="addSub()" type="button" class="btn btn-primary">Thêm subtitle</button>
                         </div>
                     </div>
                 </div>
@@ -152,7 +153,7 @@
                                             <td class="getLink" onclick="getLinkProfile()">kimvinh</td>
                                             <td>10/06/2021</td>
                                             <td>
-                                                <button onclick="deleteAdmin()" type="button" class="btn btn-success">Truy cập</button></td>
+                                                <button onclick="getLinkShare()" type="button" class="btn btn-success">Truy cập</button></td>
                                         </tr>
                                     </div>
                                 </tbody>
