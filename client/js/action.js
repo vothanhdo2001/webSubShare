@@ -26,6 +26,31 @@ function editShare(shId) {
     document.cookie = shId;
 }
 
+function editShare() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("txtStatus").innerHTML = this.responseText;
+        }
+    };
+
+    var shId = document.cookie;
+    var pName = document.getElementById("pName").value;
+    var pLanguage = document.getElementById("pLanguage").value;
+    var category = document.getElementById("category").value;
+    var imagesLink = document.getElementById("imagesLink").value;
+    var videoLink = document.getElementById("videoLink").value;
+    var pPrivate = document.getElementById("pPrivate").value;
+    var subLink = document.getElementById("subLink").value;
+    var url = "/webSubShare/sever/controller.php?action=editShare&shId=" + shId +
+        "&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" +
+        imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
+    xhttp.open("GET", url, true);
+    xhttp.send();
+    alert("Cập nhập thành công !");
+    window.location = '/webSubShare/narbar/profile.html';
+}
+
 function deleteRequest(reId) {
     var xhttp = new XMLHttpRequest();
     var url = "/webSubShare/server/controller.php?action=deleteRequest&reId=" + reId;
@@ -36,6 +61,33 @@ function deleteRequest(reId) {
 
 function editRequest(reId) {
     document.cookie = reId;
+}
+
+function editRequest() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("txtStatus").innerHTML = this.responseText;
+        }
+    };
+
+    var reId = document.cookie;
+    var pName = document.getElementById("pName").value;
+    var pLanguage = document.getElementById("pLanguage").value;
+    var category = document.getElementById("category").value;
+    var imagesLink = document.getElementById("imagesLink").value;
+    var videoLink = document.getElementById("videoLink").value;
+    var pPrivate = document.getElementById("pPrivate").value;
+    var price = document.getElementById("price").value;
+    var info = document.getElementById("info").value;
+
+    var url = "/webSubShare/server/controller.php?action=editRequest&reId=" + reId +
+        "&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" +
+        imagesLink + "&videoLink=" + videoLink + "&price=" + price + "&info=" + info + "&pPrivate=" + pPrivate;
+    xhttp.open("GET", url, true);
+    xhttp.send();
+    alert("Cập nhập thành công !");
+    window.location = "/webSubShare/client/narbar/profile.html";
 }
 
 function previous() {
