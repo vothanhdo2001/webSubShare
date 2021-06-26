@@ -2,16 +2,15 @@ function table1() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var searchResult = JSON.parse(this.responseText);
+            var searchResults = JSON.parse(this.responseText);
             document.getElementById("table_1").innerHTML = "";
-            for (let iResult = 0; iResult < 9; iResult++) {
+            for (var iResult = 0; iResult < 10; iResult++) {
                 var text = "<tr><td id='getLink' class='getLink' scope='row' onclick='getLinkShare()'>" + searchResults[iResult].pName + "</td><td id='getLinkProfile' class='getLink' onclick='getLinkProfile()'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
                 document.getElementById("table_1").innerHTML += text;
             }
         }
     };
-
-    xhttp.open("GET", "/webSubShare/server/controller.php?action=loadHomeTable1", true);
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=loadShare", true);
     xhttp.send();
 }
 
@@ -80,7 +79,6 @@ function table5() {
             }
         }
     };
-
     xhttp.open("GET", "/webSubShare/server/controller.php?action=loadHomeTable5", true);
     xhttp.send();
 }

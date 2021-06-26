@@ -371,16 +371,16 @@ function createShare($post){
     $username = "root";
     $password = "";
     $dbname = "subshare";
-
     //Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     $conn -> set_charset("utf8");
-
     //Check connection
     if($conn ->connect_error){
         die("Connection failed: " . $conn->connect_error);
-    $sql = "INSERT INTO share(cuId, pName, pLanguage, category, imagesLink, videoLink, subLink, pPrivate)
-        VALUES (2,'$post->pName','$post->pLanguage','$post->category','$post->imagesLink','$post->videoLink','$post->subLink','$post->pPrivate')";
+    $sql = "INSERT INTO share(cuId, pName, pLanguage, category, imagesLink, videoLink, subLink, pPrivate) VALUES (2,'$post->pName','$post->pLanguage','$post->category','$post->imagesLink','$post->videoLink','$post->subLink','$post->pPrivate')";
+    echo $sql;
+    echo "d";
+    die();
     //Response result to client / user
     if($conn->query($sql) === true){
         echo "New record created successfully";
@@ -526,7 +526,7 @@ function loadHomeTable1(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+  $sql = "SELECT * FROM customer, share WHERE  customer.cuId = share.cuId;";
 
   $result = $conn->query($sql);
   
