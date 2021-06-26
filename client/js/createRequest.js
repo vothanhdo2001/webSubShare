@@ -64,4 +64,5 @@ function createRequest() {
     //Send Ajax request
     xhttp.open("GET", url, true);
     xhttp.send();
+    alert(url);
 }

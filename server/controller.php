@@ -61,7 +61,6 @@ else if ($action == "createShare"){
     $post->videoLink = $_GET["videoLink"];
     $post->subLink = $_GET["subLink"];
     $post->pPrivate = $_GET["pPrivate"];
-
     createShare($post);
 }
 
@@ -380,12 +379,8 @@ function createShare($post){
     //Check connection
     if($conn ->connect_error){
         die("Connection failed: " . $conn->connect_error);
-
     $sql = "INSERT INTO share(cuId, pName, pLanguage, category, imagesLink, videoLink, subLink, pPrivate)
         VALUES (2,'$post->pName','$post->pLanguage','$post->category','$post->imagesLink','$post->videoLink','$post->subLink','$post->pPrivate')";
-    // echo $sql;
-    // die();
-
     //Response result to client / user
     if($conn->query($sql) === true){
         echo "New record created successfully";

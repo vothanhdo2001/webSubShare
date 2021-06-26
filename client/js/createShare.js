@@ -56,10 +56,9 @@ function createShare() {
     var subLink = document.getElementById("subLink").value;
     var pPrivate = document.getElementById("pPrivate").value;
 
-    var url = "/webSubShare/server/controller.php?action=createShare&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" + imagesLink + "&videoLink=" + videoLink + "&subLink" + subLink + "&pPrivate=" + pPrivate;
-    // alert(url);
-
+    var url = "/webSubShare/server/controller.php?action=createShare&pName=" + pName + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" + imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
     //Send Ajax request
     xhttp.open("GET", url, true);
     xhttp.send();
+    alert(url);
 }
