@@ -16,7 +16,7 @@ function getLinkRequest() {
 function deleteShare(shId) {
 
     var xhttp = new XMLHttpRequest();
-    var url = "http://localhost/webSubShare/server/controller.php?action=deleteShare&shId=" + shId;
+    var url = "/webSubShare/server/controller.php?action=deleteShare&shId=" + shId;
     xhttp.open("GET", url, true);
     xhttp.send();
     location.reload();
@@ -28,7 +28,7 @@ function editShare(shId) {
 
 function deleteRequest(reId) {
     var xhttp = new XMLHttpRequest();
-    var url = "http://localhost/webSubShare/server/controller.php?action=deleteRequest&reId=" + reId;
+    var url = "/webSubShare/server/controller.php?action=deleteRequest&reId=" + reId;
     xhttp.open("GET", url, true);
     xhttp.send();
     location.reload();
@@ -36,4 +36,12 @@ function deleteRequest(reId) {
 
 function editRequest(reId) {
     document.cookie = reId;
+}
+
+function previous() {
+    window.location = "http://www.vietjack.com";
+}
+
+function next() {
+    window.location = "http://www.vietjack.com";
 }

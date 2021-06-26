@@ -11,7 +11,7 @@ function table1() {
             }
         }
     };
-    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=LoadTable1", true);
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=LoadTable1", true);
     xhttp.send();
     return 0;
 }
@@ -28,7 +28,7 @@ function table2() {
             }
         }
     };
-    xhttp.open("GET", "http://localhost/webSubShare/server/controller.php?action=LoadTable2", true);
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=LoadTable2", true);
     xhttp.send();
 
 }
