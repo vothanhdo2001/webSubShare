@@ -526,8 +526,7 @@ function loadHomeTable1(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, share WHERE  customer.cuId = share.cuId;";
-
+  $sql = "SELECT share.pName as pName, customer.nName as nName, share.tShare as tShare, share.pLanguage as pLanguage,  FROM customer, share WHERE  customer.cuId = share.cuId;";
   $result = $conn->query($sql);
   
   if ($result->num_rows > 0) {
@@ -556,7 +555,8 @@ function loadHomeTable2(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+  $sql = "SELECT request.pName as pName, customer.nName as nName, request.pLanguage as pLanguage, request.tRequest as tRequest, request.price as price FROM request, customer 
+  WHERE customer.cuId = request.cuId";
 
   $result = $conn->query($sql);
   
@@ -586,7 +586,7 @@ function loadHomeTable3(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+  $sql = " ";
 
   $result = $conn->query($sql);
   
@@ -616,7 +616,7 @@ function loadHomeTable4(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+  $sql = "SELECT TOP 5 share.pName as pName, customer.nName as nName, share.rate FROM share, customer WHERE customer.cuId = share.cuId ORDER BY rate DESC";
 
   $result = $conn->query($sql);
   
@@ -646,7 +646,7 @@ function loadHomeTable5(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+  $sql = " ";
 
   $result = $conn->query($sql);
   
@@ -676,8 +676,8 @@ function loadCategoryTable1(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
-
+  $sql = "SELECT share.pName as pName, customer.nName as nName, share.tShare as tShare, share.pLanguage as pLanguage FROM share, customer WHERE share.category ='Phim'; ";
+  
   $result = $conn->query($sql);
   
   if ($result->num_rows > 0) {
@@ -706,7 +706,7 @@ function loadCategoryTable2(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+  $sql = "SELECT share.pName as pName, customer.nName as nName, share.tShare as tShare, share.pLanguage as pLanguage FROM share, customer WHERE share.category ='Clip ngắn'; ";
 
   $result = $conn->query($sql);
   
@@ -736,7 +736,7 @@ function loadCategoryTable3(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+  $$sql = "SELECT share.pName as pName, customer.nName as nName, share.tShare as tShare, share.pLanguage as pLanguage FROM share, customer WHERE share.category ='Game show'; ";
 
   $result = $conn->query($sql);
   
@@ -766,7 +766,7 @@ function loadCategoryTable4(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT * FROM customer, request, share LIMIT 100;";
+  $sql = "SELECT share.pName as pName, customer.nName as nName, share.tShare as tShare, share.pLanguage as pLanguage FROM share, customer WHERE share.category ='Khác'; ";
 
   $result = $conn->query($sql);
   
