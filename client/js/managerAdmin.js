@@ -11,6 +11,6 @@ function table1() {
 }
 
 //TODO:Do
-onload = function home() {
+function home() {
     table1();
 }

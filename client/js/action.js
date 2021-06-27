@@ -96,12 +96,19 @@ function editRequest() {
     window.location = "/webSubShare/client/narbar/profile.html";
 }
 
+function account() {
+    if (getCookie("cuId") == null || getCookie("cuId") < 0) {
+        document.getElementById("status").innerHTML += '<a class="nav-link" href="/webSubShare/client/account/login.html"><b>Đăng nhập / Đăng ký<b></b></a>';
+    } else {
+        document.getElementById("status").innerHTML += '<a class="nav-link" href="/webSubShare/client/narbar/profile.html"><b><i class="bi bi-person-circle"></i>&nbsp;' + getCookie("nName") + '</b></a>';
+    }
+}
 
 
 function previous() {
-    window.location = "http://www.vietjack.com";
+
 }
 
 function next() {
-    window.location = "http://www.vietjack.com";
+
 }

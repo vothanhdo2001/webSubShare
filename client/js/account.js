@@ -16,11 +16,13 @@ function login() {
             var searchResults = JSON.parse(this.responseText);
             document.getElementById("notification").innerHTML = "";
             var iResult = searchResults[0].cuId;
+            var nResult = searchResults[0].nName;
             if (iResult <= 0) {
                 var text = '<div class="card bg-danger border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-0 pt-lg-0 "> <p><b>Thông tin đăng nhập không chính xác !!!</b></p> </div> </div>';
                 document.getElementById("notification").innerHTML += text;
             } else {
-                setCookie("username", iResult, 10)
+                setCookie("cuId", iResult, 10);
+                setCookie("nName", nResult, 10);
                 window.location = "/webSubShare/client/narbar/profile.html";
             }
 

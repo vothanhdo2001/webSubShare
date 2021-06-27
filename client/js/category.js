@@ -65,7 +65,8 @@ function table4() {
     xhttp.open("GET", "/webSubShare/server/controller.php?action=loadCategoryTable4", true);
     xhttp.send();
 }
-onload = function home() {
+
+function home() {
     table1();
     table2();
     table3();

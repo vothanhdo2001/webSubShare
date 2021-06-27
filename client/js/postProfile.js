@@ -10,7 +10,7 @@ function table2() {
 
 }
 
-onload = function home() {
+function home() {
     profile();
     table1();
     table2();

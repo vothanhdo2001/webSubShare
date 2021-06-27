@@ -14,11 +14,11 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/addStyles.css" rel="stylesheet" />
-    <script src="../client/js/action.js"></script>
+    <script src="../js/action.js"></script>
     <script src="../js/category.js"></script>
 </head>
 
-<body>
+<body onload="account(), home()">
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container px-lg-5">
@@ -31,7 +31,7 @@
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="../narbar/category.html"><b>Danh mục</b></a></li>
                     <li class="nav-item"><a class="nav-link" href="../narbar/createShares.html"><b>Chia sẻ</b></a></li>
                     <li class="nav-item"><a class="nav-link" href="../narbar/createRequest.html"><b>Yêu cầu</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/profile.html"><b>Cá nhân</b></a></li>
+                    <li id="status" class="nav-item"></li>
                 </ul>
             </div>
         </div>
@@ -77,7 +77,7 @@
                                         <a onclick="next()" class="page-link" href="#">&raquo;</a>
                                     </li>
                                 </ul>
-                            </nav>                            
+                            </nav>
                             <h2 class="fs-4 fw-bold">Phim</h2>
                         </div>
                     </div>

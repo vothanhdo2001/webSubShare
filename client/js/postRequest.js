@@ -6,7 +6,7 @@ function getInformation() {
 
 }
 
-onload = function load() {
+function home() {
     getInformation();
     table1();
 }

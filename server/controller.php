@@ -528,7 +528,7 @@ function loadHomeTable1(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT share.pName as pName, customer.nName as nName, share.tShare as tShare, share.pLanguage as pLanguage,  FROM customer, share WHERE  customer.cuId = share.cuId;";
+  $sql = "SELECT *  FROM customer, share WHERE  customer.cuId = share.cuId ORDER BY shId DESC;";
   $result = $conn->query($sql);
   
   if ($result->num_rows > 0) {
@@ -557,8 +557,7 @@ function loadHomeTable2(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT request.pName as pName, customer.nName as nName, request.pLanguage as pLanguage, request.tRequest as tRequest, request.price as price FROM request, customer 
-  WHERE customer.cuId = request.cuId";
+  $sql = "SELECT *  FROM customer, request WHERE  customer.cuId = request.cuId ORDER BY reId DESC;";
 
   $result = $conn->query($sql);
   
@@ -939,7 +938,7 @@ function login($post){
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT cuId FROM `customer` WHERE mail = '$post->mail' and pass = '$post->pass';";
+  $sql = "SELECT cuId, nName FROM `customer` WHERE mail = '$post->mail' and pass = '$post->pass';";
   $result = $conn->query($sql);
   // echo $sql;
   // die();

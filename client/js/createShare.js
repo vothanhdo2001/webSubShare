@@ -34,7 +34,8 @@ function table2() {
     xhttp.open("GET", "/webSubShare/server/controller.php?action=loadShare", true);
     xhttp.send();
 }
-onload = function home() {
+
+function home() {
     //Get data from sever
     table1(); //Reder data on table1
     table2(); //Reder data on table1

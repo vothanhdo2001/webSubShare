@@ -51,7 +51,7 @@ function profile() {
     // Send Request to sever
     // Send Request to sever
     // var keyword = document.getElementById("txtKeyword").value;
-    var cuId = 8;
+    var cuId = getCookie("cuId");
     // Make Ajax request
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -93,7 +93,14 @@ function editPost(id, select) {
 
 }
 
-onload = function home() {
+function logOut() {
+    setCookie("cuId", -1, 0);
+    setCookie("nName", -1, 0);
+    window.location = "/webSubShare/client/account/login.html";
+}
+
+
+function home() {
     profile();
     table1();
     table2();

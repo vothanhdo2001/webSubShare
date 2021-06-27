@@ -1,4 +1,4 @@
-onload = function load() {
+function home() {
     getInformation();
 }
 
