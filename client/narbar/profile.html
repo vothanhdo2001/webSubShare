@@ -19,12 +19,12 @@
 </head>
 
 <script>
-    function setCookie(aname,avalue,aday){
-    const a = new Date();
-    a.setTime(a.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires" +a.toUTCString();
-    document.cookie = aname + "=" + avalue +  ";" + expires + ";path=/";
-}
+    function setCookie(aname, avalue, aday) {
+        const a = new Date();
+        a.setTime(a.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires" + a.toUTCString();
+        document.cookie = aname + "=" + avalue + ";" + expires + ";path=/";
+    }
 </script>
 
 <body onload="LoadTable()">

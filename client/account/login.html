@@ -55,14 +55,15 @@
 
                     <div class="card bg-light border-1 h-100 ">
                         <div class="card-body p-5 p-lg-3 pt-0 pt-lg-3 ">
-                            <label for="basic-url " class="form-label ">Email</label>
-                            <div class="input-group mb-3 ">
+
+                            <div class="card-body p-5 p-lg-3 pt-0 pt-lg-3 ">
+                                <label for="basic-url " class="form-label ">Email</label>
                                 <input id="mail" type="text " class="form-control " placeholder="Email " aria-label="Email " aria-describedby="mail">
                             </div>
 
-                            <label for="basic-url " class="form-label ">Mật khẩu</label>
-                            <div class="input-group mb-3 ">
-                                <input id="pass" type="text " class="form-control " placeholder="Mật khẩu " aria-label="Mật khẩu " aria-describedby="pass">
+                            <div class="card-body p-5 p-lg-3 pt-0 pt-lg-3">
+                                <label for="exampleInputPassword1">Mật khẩu</label>
+                                <input type="password" class="form-control" id="pass" placeholder="Password">
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
@@ -75,6 +76,11 @@
             <div class="row text-center ">
                 <div class="col mb-5 ">
                     <button onclick="login()" type="button" class="btn btn-success ">Đăng nhập</button>
+                </div>
+            </div>
+            <div class="row gx-xl-2 justify-content-center text-center text-white ">
+                <div class="col-lg-6 col-xl-6 mb-5 " id="notification">
+
                 </div>
             </div>
         </div>

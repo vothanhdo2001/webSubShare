@@ -10,7 +10,7 @@ function table1() {
 
 }
 
-
+//TODO:Do
 onload = function home() {
     table1();
 }

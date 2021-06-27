@@ -1,3 +1,17 @@
+//Hàm tạo cookie
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+//Hàm lấy cookie từ usename
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 function getLinkProfile() {
 
 }
@@ -30,7 +44,7 @@ function editShare() {
         }
     };
 
-    var shId = document.cookie;
+    var shId = getCookie("id");
     var pName = document.getElementById("pName").value;
     var pLanguage = document.getElementById("pLanguage").value;
     var category = document.getElementById("category").value;
@@ -55,10 +69,6 @@ function deleteRequest(reId) {
     location.reload();
 }
 
-function getCookie(reId) {
-    document.cookie = reId;
-}
-
 function editRequest() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -67,7 +77,7 @@ function editRequest() {
         }
     };
 
-    var reId = document.cookie;
+    var reId = getCookie("id");
     var pName = document.getElementById("pName").value;
     var pLanguage = document.getElementById("pLanguage").value;
     var category = document.getElementById("category").value;
@@ -85,6 +95,8 @@ function editRequest() {
     alert("Cập nhập thành công !");
     window.location = "/webSubShare/client/narbar/profile.html";
 }
+
+
 
 function previous() {
     window.location = "http://www.vietjack.com";

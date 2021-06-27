@@ -152,6 +152,13 @@ elseif($action == "loadProfile"){
   $cuId = $_GET["cuId"];
   loadProfile($cuId);
 }
+else if ($action == "login"){
+
+  $post = new Request();
+  $post->mail= $_GET["mail"];
+  $post->pass = $_GET["pass"];
+  login($post);
+}
 
 function deleteShare($RequestshId)
 {
@@ -376,11 +383,10 @@ function createShare($post){
     $conn -> set_charset("utf8");
     //Check connection
     if($conn ->connect_error){
-        die("Connection failed: " . $conn->connect_error);
+        die("Connection failed: " . $conn->connect_error);}
     $sql = "INSERT INTO share(cuId, pName, pLanguage, category, imagesLink, videoLink, subLink, pPrivate) VALUES (2,'$post->pName','$post->pLanguage','$post->category','$post->imagesLink','$post->videoLink','$post->subLink','$post->pPrivate')";
-    echo $sql;
-    echo "d";
-    die();
+    // echo $sql;
+    // die();
     //Response result to client / user
     if($conn->query($sql) === true){
         echo "New record created successfully";
@@ -391,10 +397,6 @@ function createShare($post){
     //Close connection to database
     $conn -> close();
   }
-
-}
-
-
 function LoadTable1(){
   $servername = "localhost";
   $username = "root";
@@ -467,7 +469,6 @@ function editShare($post){
   if($conn ->connect_error){
       die("Connection failed: " . $conn->connect_error);
   }
-
   $sql = "UPDATE share SET pName='$post->pName', pLanguage='$post->pLanguage',
   category='$post->category',imagesLink='$post->imagesLink',videoLink='$post->videoLink',
   subLink='$post->subLink', pPrivate='$post->pPrivate' WHERE shId=$post->shId";
@@ -919,6 +920,42 @@ function loadProfile($cuId){
    echo "{result: \"no data\"}";
  }      
   $conn->close();
+}
+
+function login($post){
+  //Get data from database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+
+  //Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+
+  //Check connection
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT cuId FROM `customer` WHERE mail = '$post->mail' and pass = '$post->pass';";
+  $result = $conn->query($sql);
+  // echo $sql;
+  // die();
+
+  //Response result to client / user
+  if ($result->num_rows > 0) {
+    // Convert $result to json format
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    // var_dump($data);
+    //  die();
+    echo json_encode($data);
+  } else {
+    echo '[{"cuId":"-1"}]';
+  }   
+
+  //Close connection to database
+  $conn -> close();
 }
 
 ?>
