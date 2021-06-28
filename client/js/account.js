@@ -17,13 +17,20 @@ function login() {
             document.getElementById("notification").innerHTML = "";
             var iResult = searchResults[0].cuId;
             var nResult = searchResults[0].nName;
+            var rResult = searchResults[0].cuRank;
             if (iResult <= 0) {
-                var text = '<div class="card bg-danger border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-0 pt-lg-0 "> <p><b>Thông tin đăng nhập không chính xác !!!</b></p> </div> </div>';
+                var text = '<div class="card bg-danger border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Thông tin đăng nhập không chính xác !!!</b></p> </div> </div>';
+                document.getElementById("notification").innerHTML += text;
+            } else if (searchResults[0].cuStatus == "disnable") {
+                var text = '<div class="card bg-warning border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Tài khoảng của bạn đã bị khoá vui lòng liên hệ quản trị viên để được hỗ trợ !!!</b></p> </div> </div>';
                 document.getElementById("notification").innerHTML += text;
             } else {
                 setCookie("cuId", iResult, 10);
                 setCookie("nName", nResult, 10);
-                window.location = "/webSubShare/client/narbar/profile.html";
+                setCookie("cuRank", rResult, 10);
+                var text = '<div class="card bg-success border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Đăng nhập thành công</b></p> </div> </div>';
+                document.getElementById("notification").innerHTML += text;
+                setTimeout(function() { window.location = "/webSubShare/client/narbar/profile.html"; }, 1000);
             }
 
         }

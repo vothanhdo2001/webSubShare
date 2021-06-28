@@ -18,20 +18,15 @@
     <script src="../js/category.js"></script>
 </head>
 
-<body onload="account()">
+<body onload="viewNarbar(), account()">
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container px-lg-5">
             <a class="navbar-brand" href="../home.html"><b>SUBSHARE</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="../home.html"><b>Trang chủ</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/search.html"><b>Tìm kiếm</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/category.html"><b>Danh mục</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/createShares.html"><b>Chia sẻ</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/createRequest.html"><b>Yêu cầu</b></a></li>
-                    <li id="status" class="nav-item"></li>
+                <ul id="viewNarbar" class="navbar-nav ms-auto mb-2 mb-lg-0">
+
                 </ul>
             </div>
         </div>
@@ -45,7 +40,7 @@
             <!-- Page Features-->
             <div class="row gx-xl-3 justify-content-center">
                 <div class="col-lg-6 col-xl-6 mb-2 ">
-                    <h2 class="m-0 text-center">Quản lý bài đăng</h2>
+                    <h2 class="m-0 text-center">Quản lý yêu cầu</h2>
                     <br>
                     <p class=" text-center ">Chào mừng bạn đến với cộng đồng chia sẻ subtitle Việt Nam.</p>
                     <br>
@@ -111,39 +106,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row gx-xl-3">
-                <div class="col-lg-6 col-xl-6 mb-5">
-                    <div class="card bg-light border-0 h-100">
-                        <div class="card-body text-center p-4 p-lg-0 pt-0 pt-lg-0">
-                            <div class=" bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><i class="bi bi-share"></i></div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Tên</th>
-                                        <th scope="col">Thời gian</th>
-                                        <th scope="col">Ngôn ngữ</th>
-                                        <th scope="col">Xoá</th>
-                                        <th scope="col">Cập nhật</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <div id="table_1">
-                                        <tr>
-                                            <td class="getLink" onclick="getLinkProfile()">kimvinh</td>
-                                            <td>08/05/2021</td>
-                                            <td>Tiếng anh</td>
-                                            <td><button onclick="deleteShare()" class="btn btn-danger">Xoá</button></td>
-                                            <td><button onclick="editShare()" class="btn btn-success"><a class="m-0 text-center text-white" href="http://localhost/dealcongnghe/client/editpost.html">Cập nhật</a></button></td>
-
-                                        </tr>
-                                    </div>
-
-                                </tbody>
-                            </table>
-                            <h2 class="fs-4 fw-bold">Chia sẻ</h2>
-                        </div>
-                    </div>
-                </div>
+            <div class="row gx-xl-3  justify-content-center">
                 <div class="col-lg-6 col-xl-6 mb-5">
                     <div class="card bg-light border-0 h-100">
                         <div class="card-body text-center p-4 p-lg-0 pt-0 pt-lg-0">
@@ -159,7 +122,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <div id="table_2">
+                                    <div id="table_1">
                                         <tr>
                                             <td scope="row" ass="getLink" onclick="getLinkProfile()">kimvinh</td>
                                             <td>08/05/2021</td>

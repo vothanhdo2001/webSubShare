@@ -158,6 +158,8 @@ else if ($action == "login"){
   $post->mail= $_GET["mail"];
   $post->pass = $_GET["pass"];
   login($post);
+}else if($action == "loadUser"){
+  loadUser();
 }
 
 function deleteShare($RequestshId)
@@ -938,7 +940,7 @@ function login($post){
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT cuId, nName FROM `customer` WHERE mail = '$post->mail' and pass = '$post->pass';";
+  $sql = "SELECT cuId, nName, cuRank, cuStatus FROM `customer` WHERE mail = '$post->mail' and pass = '$post->pass';";
   $result = $conn->query($sql);
   // echo $sql;
   // die();
@@ -957,5 +959,32 @@ function login($post){
   //Close connection to database
   $conn -> close();
 }
+function loadUser(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT cuId, nName, mail, cuStatus FROM customer";
+  $result = $conn->query($sql);
+  //  echo $sql;
+  // die();
 
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+ } else {
+   echo "{result: \"no data\"}";
+ }
+$conn->close();
+}
 ?>

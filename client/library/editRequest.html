@@ -17,20 +17,15 @@
     <script src="../js/action.js"></script>
 </head>
 
-<body onload="account()">
+<body onload="viewNarbar(), account()">
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container px-lg-5">
             <a class="navbar-brand" href="../home.html"><b>SUBSHARE</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="../home.html"><b>Trang chủ</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/search.html"><b>Tìm kiếm</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/category.html"><b>Danh mục</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/createShares.html"><b>Chia sẻ</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/createRequest.html"><b>Yêu cầu</b></a></li>
-                    <li id="status" class="nav-item"></li>
+                <ul id="viewNarbar" class="navbar-nav ms-auto mb-2 mb-lg-0">
+
                 </ul>
             </div>
         </div>
@@ -42,22 +37,21 @@
     <section class="pt-5">
         <div class="container px-xl-0">
             <!-- Page Features-->
+
             <div class="row gx-xl-3">
                 <div class="col-lg-12 col-xl-12 mb-5">
                     <div class="card bg-light border-0 h-100">
                         <div class="card-body text-center p-4 p-lg-0 pt-0 pt-lg-0">
-                            <div class=" bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><i class="bi bi-share"></i></div>
-                            <br>
-                            <!-- <input type = "hidden" name = "action" value = "editShare"> -->
+                            <div class="bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><i class="bi bi-clock-history"></i></div>
+
                             <!-- <div class="hidden" class="input-group mb-3">
                                 <label class="input-group-text" for="pName">Id</label>
-                                <input  type="text" class="form-control" id="shId" placeholder="shId" aria-label="shId" aria-describedby="shId">
+                                <input  type="text" class="form-control" id="reId" placeholder="reId" aria-label="reId" aria-describedby="reId">
                             </div> -->
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="pName">Tên sản phẩm</label>
                                 <input type="text" class="form-control" id="pName" placeholder="Tên sản phẩm" aria-label="Tên sản phẩm" aria-describedby="pName">
                             </div>
-
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="pLanguage">Ngôn ngữ</label>
                                 <select class="form-select" id="pLanguage">
@@ -71,8 +65,6 @@
                                     <option value="Tiếng Ấn">Tiếng Ấn</option>
                                 </select>
                             </div>
-
-
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="category">Thể loại</label>
                                 <select class="form-select" id="category">
@@ -96,11 +88,15 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <label class="input-group-text" for="subLink">Link sub</label>
-                                <input type="text" class="form-control" id="subLink" placeholder="Link sub" aria-label="Link sub" aria-describedby="subLink">
+                                <label class="input-group-text" for="price">Giá đề nghị</label>
+                                <input type="text" class="form-control" id="price" placeholder="Giá đề nghị" aria-label="Giá đề nghị" aria-describedby="price">
                             </div>
 
 
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="info">Thông tin liên hệ</label>
+                                <input type="text" class="form-control" id="info" placeholder="Thông tin liên hệ" aria-label="Thông tin liên hệ" aria-describedby="info">
+                            </div>
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="pPrivate">Chia sẻ</label>
                                 <select class="form-select" id="pPrivate">
@@ -109,8 +105,7 @@
                                     <option value="Riêng tư">Riêng tư</option>
                                 </select>
                             </div>
-                            <button class="btn btn-success" onclick="editShare()">Cập nhật</button>
-                            <p id="txtStatus"></p>
+                            <button class="btn btn-success" onclick="editRequest()">Cập nhật</button>
                         </div>
                     </div>
                 </div>
@@ -157,7 +152,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="../js/scripts.js"></script>
+    <!-- <script src="../js/scripts.js"></script> -->
 </body>
 
 </html>

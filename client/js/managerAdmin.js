@@ -10,7 +10,6 @@ function table1() {
 
 }
 
-//TODO:Do
 function home() {
     table1();
 }

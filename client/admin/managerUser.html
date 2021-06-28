@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Admin manager</title>
+    <title>Trang chủ</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="../assets/translator.png" />
     <!-- Bootstrap icons-->
@@ -15,23 +15,18 @@
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/addStyles.css" rel="stylesheet" />
     <script src="../js/action.js"></script>
-    <script src="../js/managerAdmin.js"></script>
+    <script src="../js/managerUser.js"></script>
 </head>
 
-<body onload="account(), home()">
+<body onload="viewNarbar(), account(), home()">
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container px-lg-5">
             <a class="navbar-brand" href="../home.html"><b>SUBSHARE</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="../home.html"><b>Trang chủ</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/search.html"><b>Tìm kiếm</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/category.html"><b>Danh mục</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/createShares.html"><b>Chia sẻ</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../narbar/createRequest.html"><b>Yêu cầu</b></a></li>
-                    <li id="status" class="nav-item"></li>
+                <ul id="viewNarbar" class="navbar-nav ms-auto mb-2 mb-lg-0">
+
                 </ul>
             </div>
         </div>
@@ -44,30 +39,31 @@
         <div class="container px-xl-0">
             <!-- Page Features-->
             <div class="row gx-xl-3 justify-content-center">
-                <div class="col-lg-6 col-xl-6 mb-2 ">
-                    <h2 class="m-0 text-center">Quản trị viên</h2>
+                <div class="col-lg-10 col-xl-10 mb-2 ">
+                    <h2 class="m-0 text-center">Quản lý thành viên</h2>
                     <br>
-                    <p class=" text-center ">Chào mừng bạn đến với cộng đồng chia sẻ subtitle Việt Nam.</p>
-
+                    <p class=" text-center ">Chào mừng bạn đến với trang quản lý thành viên tại đây bạn có thể thay đổi trạng thái, xoá bất kì thành viên nào.</p>
+                    <br>
                 </div>
             </div>
+
             <div class="row gx-xl-3 mb-5 text-center justify-content-center ">
-                <div class="col-lg-6 col-xl-6 mb-5 ">
-                    <div class="card bg-light border-1 h-100 ">
-                        <div class=" bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><b>Thêm quản trị viên</b></div>
-                        <div class="card-body p-5 p-lg-3 pt-0 pt-lg-3 ">
-                            <label for="basic-url " class="form-label ">Nhập ID người dùng thêm làm quản trị viên</label>
-                            <div class="input-group mb-3 ">
-                                <input id="cuId" type="text " class="form-control " placeholder="Nhập ID người dùng " aria-label="Nhập ID người dùng " aria-describedby="cuId">
+                <div class="col-lg-5 col-xl-5 mb-5 ">
+                    <div class="card border-left-info shadow h-100 py-0">
+                        <div class=" bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><b>Tìm kiếm bằng tên</b></div>
+                        <div class="card-body p-5 p-lg-3 pt-4 pt-lg-4 ">
+                            <div class="input-group mb-4  ">
+                                <input id="cuId" type="text " class="form-control bg-light " placeholder="Nhập tên người dùng" aria-label="Nhập tên người dùng" aria-describedby="cuId">
                             </div>
-                            <button onclick="addAdmin()" type="button" class="btn btn-success ">Thêm làm quản trị viên</button>
+                            <button onclick="" type="button" class="btn btn-success ">Tìm kiếm</button>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="row gx-xl-3 text-center justify-content-center ">
-                <div class="col-lg-6 col-xl-6 mb-5">
-                    <div class="card bg-light border-0 h-100">
+                <div class="col-lg-8 col-xl-8 mb-5">
+                    <div class="card border-left-info shadow h-100 py-0">
                         <div class="card-body text-center p-4 p-lg-0 pt-0 pt-lg-0">
                             <div class=" bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><b>Quản lý quản trị viên</b></div>
                             <table class="table">
@@ -77,26 +73,25 @@
                                         <th scope="col">Nick name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Xoá</th>
+                                        <th scope="col">Chỉnh sửa</th>
+                                        <th scope="col">Chặn</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <div id="table_1">
-                                        <tr>
-                                            <td>1</td>
-                                            <td class="getLink" onclick="getLinkProfile()">kimvinh</td>
-                                            <td>abc@gmail.com</td>
-                                            <td><button onclick="deleteAdmin()" class="btn btn-danger">Xoá</button></td>
-                                        </tr>
-                                    </div>
+                                <tbody id="table_1">
+                                    <tr>
+                                        <td>1</td>
+                                        <td class="getLink" onclick="getLinkProfile()">kimvinh</td>
+                                        <td>abc@gmail.com</td>
+                                        <td><button onclick="deleteMember()" class="btn btn-danger">Xoá</button></td>
+                                        <td><button onclick="editMember()" class="btn btn-success">Sửa</button></td>
+                                        <td id="lock">
+
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row gx-xl-3 text-center justify-content-center ">
-                <div class="col-lg-3 col-xl-3 mb-5">
-                    <a href="managerPost.html"><button type="button" class="btn btn-primary">Đi đến quản lý bài viết</button></a>
                 </div>
             </div>
         </div>

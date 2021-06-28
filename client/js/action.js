@@ -100,9 +100,45 @@ function account() {
     if (getCookie("cuId") == null || getCookie("cuId") < 0) {
         document.getElementById("status").innerHTML += '<a class="nav-link" href="/webSubShare/client/account/login.html"><b>Đăng nhập / Đăng ký<b></b></a>';
     } else {
-        document.getElementById("status").innerHTML += '<a class="nav-link" href="/webSubShare/client/narbar/profile.html"><b><i class="bi bi-person-circle"></i>&nbsp;' + getCookie("nName") + '</b></a>';
+        var urlWeb = window.location.pathname;
+        if (urlWeb == "/webSubShare/client/narbar/profile.html")
+            document.getElementById("status").innerHTML += '<a class="nav-link active" href="/webSubShare/client/narbar/profile.html"><b><i class="bi bi-person-circle"></i>&nbsp;' + getCookie("nName") + '</b></a>';
+        else
+            document.getElementById("status").innerHTML += '<a class="nav-link" href="/webSubShare/client/narbar/profile.html"><b><i class="bi bi-person-circle"></i>&nbsp;' + getCookie("nName") + '</b></a>';
+    }
+
+    if (getCookie("cuId") != null && getCookie("cuId") >= 0) {
+        if (getCookie("cuRank") == "admin") {
+            var urlWeb = window.location.pathname;
+            if (urlWeb == "/webSubShare/client/admin/manager.html")
+                document.getElementById("admin").innerHTML += '<a class="nav-link active" href="/webSubShare/client/admin/manager.html"><b>Admin<b></b></a>'
+            else
+                document.getElementById("admin").innerHTML += '<a class="nav-link" href="/webSubShare/client/admin/manager.html"><b>Admin<b></b></a>'
+        }
     }
 }
+
+function viewNarbar() {
+    var urlWeb = window.location.pathname;
+
+    if (urlWeb == "/webSubShare/client/home.html") {
+        document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link active" aria-current="page" href="home.html"><b>Trang chủ</b></a></li> <li class="nav-item"><a class="nav-link" href="../client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="../client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="../client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="../client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
+    } else if (urlWeb == "/webSubShare/client/narbar/search.html") {
+        document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link " aria-current="page" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item "><a class="nav-link active" href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
+    } else if (urlWeb == "/webSubShare/client/narbar/category.html") {
+        document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link " aria-current="page" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item "><a class="nav-link " href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link active" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
+    } else if (urlWeb == "/webSubShare/client/narbar/createShares.html") {
+        document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link " aria-current="page" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item "><a class="nav-link " href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link active" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
+    } else if (urlWeb == "/webSubShare/client/narbar/createRequest.html") {
+        document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link " aria-current="page" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item "><a class="nav-link " href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link active" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
+    } else if (urlWeb == "/webSubShare/client/admin/manager.html") {
+        document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link " aria-current="page" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item "><a class="nav-link " href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
+    } else if (urlWeb == "/webSubShare/client/narbar/profile.html") {
+        document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link " aria-current="page" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item "><a class="nav-link " href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
+    } else
+        document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
+}
+
 
 
 function previous() {
