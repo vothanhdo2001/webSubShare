@@ -144,7 +144,17 @@ function viewNarbar() {
         document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
 }
 
+function checkAdmin() {
+    var urlWeb = window.location.pathname;
 
+    if (urlWeb == "/webSubShare/client/admin/manager.html" || urlWeb == "/webSubShare/client/admin/managerShare.html" || urlWeb == "/webSubShare/client/admin/managerRequest.html" || urlWeb == "/webSubShare/client/admin/managerUser.html" || urlWeb == "/webSubShare/client/admin/editRequestAdmin.html" || urlWeb == "/webSubShare/client/admin/editShareAdmin.html" || urlWeb == "/webSubShare/client/admin/editUser.html") {
+        if (getCookie("cuRank") == null || getCookie("cuRank") != "admin") {
+            alert("Bạn không có quyền truy cập trang này !!!!");
+            window.location = "/webSubShare/client/home.html";
+        }
+
+    }
+}
 
 function previous() {
 
