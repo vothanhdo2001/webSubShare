@@ -12,16 +12,19 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-function getLinkProfile() {
-
+function getLinkProfile(cuID) {
+    setCookie("pId", cuID, 1);
+    window.location = "/webSubShare/client/post/postProfile.html";
 }
 
-function getLinkShare() {
-
+function getLinkShare(shId) {
+    setCookie("shId", shId, 1);
+    window.location = "/webSubShare/client/post/postShare.html";
 }
 
-function getLinkRequest() {
-
+function getLinkRequest(reId) {
+    setCookie("reId", reId, 1);
+    window.location = "/webSubShare/client/post/postRequest.html";
 }
 
 
@@ -58,6 +61,7 @@ function editShare() {
     xhttp.open("GET", url, true);
     xhttp.send();
     alert("Cập nhập thành công !");
+    setCookie("id", id, 0);
     window.location = "/webSubShare/client/narbar/profile.html";
 }
 
@@ -93,6 +97,7 @@ function editRequest() {
     xhttp.open("GET", url, true);
     xhttp.send();
     alert("Cập nhập thành công !");
+    setCookie("id", id, 0);
     window.location = "/webSubShare/client/narbar/profile.html";
 }
 

@@ -16,6 +16,7 @@ a {
 
 .getLink:hover {
     background-color: beige;
+    font-weight: bold;
 }
 
 td.profile {
