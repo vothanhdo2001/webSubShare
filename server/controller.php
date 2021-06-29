@@ -531,7 +531,7 @@ function loadHomeTable1(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT *  FROM customer, share WHERE  customer.cuId = share.cuId ORDER BY shId DESC;";
+  $sql = "SELECT CU.cuId, SH.shId, CU.nName, SH.pName, SH.tShare, SH.planguage  FROM customer as CU, share as SH WHERE  CU.cuId = SH.cuId ORDER BY SH.shId DESC;";
   $result = $conn->query($sql);
   
   if ($result->num_rows > 0) {
@@ -560,7 +560,7 @@ function loadHomeTable2(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT *  FROM customer, request WHERE  customer.cuId = request.cuId ORDER BY reId DESC;";
+  $sql = "SELECT CU.cuId, RE.reId, CU.nName, RE.pName, RE.tRequest, RE.price, RE.planguage  FROM customer as CU, request as RE WHERE  CU.cuId = RE.cuId ORDER BY RE.reId DESC;";
 
   $result = $conn->query($sql);
   
