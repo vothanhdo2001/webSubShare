@@ -117,6 +117,7 @@ else if($action == "loadHomeTable4"){
 
 else if($action == "loadHomeTable5"){
   loadHomeTable5();
+
 }
 
 else if($action == "loadCategoryTable1"){
@@ -589,8 +590,9 @@ function loadHomeTable3(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = " ";
-
+  $sql = "SELECT CU.cuId, CU.nName, SUM(SH.rate) as sumRate FROM customer as CU, share as SH WHERE CU.cuId = SH.cuId GROUP BY CU.cuId ORDER BY SH.rate DESC LIMIT 5;";
+  // echo($sql);
+  // die();
   $result = $conn->query($sql);
   
   if ($result->num_rows > 0) {
@@ -619,7 +621,7 @@ function loadHomeTable4(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT TOP 5 share.pName as pName, customer.nName as nName, share.rate FROM share, customer WHERE customer.cuId = share.cuId ORDER BY rate DESC";
+  $sql = "SELECT CU1.cuId, SH1.shId, CU1.nName, SH1.pName, SH1.rate FROM share as SH1, customer as CU1 WHERE CU1.cuId = SH1.cuId AND SH1.rate >= (SELECT SH.rate FROM share as SH ORDER BY SH.rate DESC LIMIT 1 OFFSET 4) ORDER BY SH1.rate DESC;";
 
   $result = $conn->query($sql);
   
@@ -649,8 +651,7 @@ function loadHomeTable5(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = " ";
-
+  $sql = "SELECT CU.cuId, CU.nName , COUNT(SH.shId) as postShare FROM share as SH, customer as CU WHERE SH.cuId = CU.cuId GROUP BY CU.cuId ORDER BY postShare DESC LIMIT 5;";
   $result = $conn->query($sql);
   
   if ($result->num_rows > 0) {
@@ -663,6 +664,7 @@ function loadHomeTable5(){
   }
   $conn->close();
 }
+
 
 
 function loadCategoryTable1(){

@@ -33,61 +33,60 @@ function table2() {
     xhttp.send();
 }
 
-// function table3() {
-//     var xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             var searchResult = JSON.parse(this.responseText);
-//             document.getElementById("table_3").innerHTML = "";
-//             for (let iResult = 0; iResult < 5; iResult++) {
-//                 var text = "<tr><td id='getLinkProfile' class='getLink' scope='row' onclick='getLinkProfile()'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].rate + "</td></tr>";
-//                 document.getElementById("table_3").innerHTML += text;
-//             }
-//         }
-//     };
+function table3() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var searchResults = JSON.parse(this.responseText);
+            document.getElementById("table_3").innerHTML = "";
+            for (let iResult = 0; iResult < 5; iResult++) {
+                var text = "<tr><td class='getLink' scope='row' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].sumRate + "</td></tr>";
+                document.getElementById("table_3").innerHTML += text;
+            }
+        }
+    };
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=loadHomeTable3", true);
+    xhttp.send();
 
-//     xhttp.open("GET", "/webSubShare/server/controller.php?action=loadHomeTable3", true);
-//     xhttp.send();
+}
 
-// }
+function table4() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var searchResults = JSON.parse(this.responseText);
+            document.getElementById("table_4").innerHTML = "";
+            for (let iResult = 0; iResult < 5; iResult++) {
+                var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].rate + "</td></tr>";
+                document.getElementById("table_4").innerHTML += text;
+            }
+        }
+    };
 
-// function table4() {
-//     var xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             var searchResult = JSON.parse(this.responseText);
-//             document.getElementById("table_4").innerHTML = "";
-//             for (let iResult = 0; iResult < 5; iResult++) {
-//                 var text = "<tr><td id='getLinkRequest' class='getLink' scope='row' onclick='getLinkRequest()'>" + searchResults[iResult].pName + "</td><td id='getLinkProfile' class='getLink' onclick='getLinkProfile()'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].rate + "</td></tr>";
-//                 document.getElementById("table_4").innerHTML += text;
-//             }
-//         }
-//     };
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=loadHomeTable4", true);
+    xhttp.send();
+}
 
-//     xhttp.open("GET", "/webSubShare/server/controller.php?action=loadHomeTable4", true);
-//     xhttp.send();
-// }
-
-// function table5() {
-//     var xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             var searchResult = JSON.parse(this.responseText);
-//             document.getElementById("table_5").innerHTML = "";
-//             for (let iResult = 0; iResult < 5; iResult++) {
-//                 var text = "<tr><td id='getLinkProfile' class='getLink' onclick='getLinkProfile()'>" + searchResults[iResult].rate + "</td></tr>";
-//                 document.getElementById("table_5").innerHTML += text;
-//             }
-//         }
-//     };
-//     xhttp.open("GET", "/webSubShare/server/controller.php?action=loadHomeTable5", true);
-//     xhttp.send();
-// }
+function table5() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var searchResults = JSON.parse(this.responseText);
+            document.getElementById("table_5").innerHTML = "";
+            for (let iResult = 0; iResult < 5; iResult++) {
+                var text = "<tr><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].postShare + "</td></tr>";
+                document.getElementById("table_5").innerHTML += text;
+            }
+        }
+    };
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=loadHomeTable5", true);
+    xhttp.send();
+}
 
 function home() {
     table1();
     table2();
-    // table3();
-    // table4();
-    // table5();
+    table3();
+    table4();
+    table5();
 }
