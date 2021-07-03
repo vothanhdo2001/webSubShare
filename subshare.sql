@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 03, 2021 at 11:25 PM
+-- Generation Time: Jul 03, 2021 at 11:33 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -31,12 +31,20 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
   `coId` int(11) NOT NULL AUTO_INCREMENT,
   `cuId` int(11) NOT NULL,
-  `shId` int(11) NOT NULL,
-  `content` varchar(400) COLLATE utf8_unicode_ci NOT NULL,
+  `shId` int(11) DEFAULT NULL,
+  `reId` int(11) DEFAULT NULL,
+  `content` varchar(400) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`coId`),
   KEY `cuId` (`cuId`),
   KEY `comment_ibfk_1` (`shId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`coId`, `cuId`, `shId`, `reId`, `content`) VALUES
+(1, 2, NULL, NULL, 'còn cái nịt');
 
 -- --------------------------------------------------------
 
