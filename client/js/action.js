@@ -142,6 +142,7 @@ function viewNarbar() {
         document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link " aria-current="page" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item "><a class="nav-link " href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
     } else
         document.getElementById("viewNarbar").innerHTML += '<li class="nav-item"><a class="nav-link" href="/webSubShare/client/home.html"><b>Trang chủ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/search.html"><b>Tìm kiếm</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/category.html"><b>Danh mục</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createShares.html"><b>Chia sẻ</b></a></li> <li class="nav-item"><a class="nav-link" href="/webSubShare/client/narbar/createRequest.html"><b>Yêu cầu</b></a></li> <li id="admin" class="nav-item"></li> <li id="status" class="nav-item"></li>';
+
 }
 
 function checkAdmin() {
@@ -156,10 +157,53 @@ function checkAdmin() {
     }
 }
 
+var table_1 = 1;
+var table_2 = 1;
+var table_3 = 1;
+var table_4 = 1;
+
+
+
 function previous() {
+    if (indexTable == 1) {
+        table_1--;
+        if (table_1 == 0)
+            alert("Đã là trang đầu tiên !!!");
+
+    } else if (indexTable == 2) {
+        table_2--;
+        if (table_1 == 0)
+            alert("Đã là trang đầu tiên !!!");
+
+    } else if (indexTable == 3) {
+        table_3--;
+        if (table_1 == 0)
+            alert("Đã là trang đầu tiên !!!");
+
+    } else if (indexTable == 4) {
+        table_4--;
+        if (table_1 == 0)
+            alert("Đã là trang đầu tiên !!!");
+
+    }
 
 }
 
-function next() {
+function next(indexTable) {
+    if (indexTable == 1) {
+        table_1++;
+
+
+    } else if (indexTable == 2) {
+        table_2++;
+
+    } else if (indexTable == 3) {
+        table_3++;
+
+    } else if (indexTable == 4) {
+        table_4++;
+
+    }
+
 
 }

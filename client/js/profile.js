@@ -14,35 +14,39 @@ function getCookie(name) {
 
 
 function table1() {
+    var cuId = getCookie("cuId");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
             document.getElementById("table_1").innerHTML = "";
-            for (var iResult in searchResults) {
-                var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].shId + "</td><td id='getLink' class='getLink' scope='row' onclick='getLinkShare()'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteShare(" + searchResults[iResult].shId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].shId + ", 1)' class='btn btn-success'>Sửa</button></td></tr>";
+            document.getElementById("noData_1").innerHTML = "";
+            for (var iResult = 0; iResult < 10; iResult++) {
+                var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].shId + "</td><td  class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteShare(" + searchResults[iResult].shId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].shId + ", 1)' class='btn btn-success'>Sửa</button></td></tr>";
                 document.getElementById("table_1").innerHTML += text;
             }
         }
     };
-    xhttp.open("GET", "/webSubShare/server/controller.php?action=LoadTable1", true);
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=LoadTable1&cuId=" + cuId, true);
     xhttp.send();
     return 0;
 }
 
 function table2() {
+    var cuId = getCookie("cuId");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
             document.getElementById("table_2").innerHTML = "";
-            for (var iResult in searchResults) {
-                var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].reId + "<td id='getLink' class='getLink' scope='row' onclick='getLinkShare()'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteRequest(" + searchResults[iResult].reId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</button></td><td><button onclick='editPost(" + searchResults[iResult].reId + ", 2)' class='btn btn-success'>Sửa</button></td></tr>";
+            document.getElementById("noData_2").innerHTML = "";
+            for (var iResult = 0; iResult < 10; iResult++) {
+                var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].reId + "<td  class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteRequest(" + searchResults[iResult].reId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</button></td><td><button onclick='editPost(" + searchResults[iResult].reId + ", 2)' class='btn btn-success'>Sửa</button></td></tr>";
                 document.getElementById("table_2").innerHTML += text;
             }
         }
     };
-    xhttp.open("GET", "/webSubShare/server/controller.php?action=LoadTable2", true);
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=LoadTable2&cuId=" + cuId, true);
     xhttp.send();
 
 }
