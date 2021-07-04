@@ -259,6 +259,18 @@ else if ($action == "LoadTable1Request"){
   $reId = $_GET["reId"];
   LoadTable1Request($reId);
 }
+
+else if ($action == "loadPostShare"){
+  $shId = $_GET["shId"];
+  loadPostShare($shId);
+}
+
+else if ($action == "sendRate"){
+  $shId = $_GET["shId"];
+  $rate = $_GET["rate"];
+  sendRate($shId,$rate);
+}
+
 function deleteShare($RequestshId)
 {
     $servername = "localhost";
@@ -1606,4 +1618,70 @@ function LoadTable1Request($reId){
  }
 $conn->close();
 }
+
+function loadPostShare($shId){
+  //Get data from database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+
+  //Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+
+  //Check connection
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT SH.shId , SH.pName, SH.tShare, SH.pLanguage, SH.category, SH.videoLink, SH.imagesLink, SH.cuId, CU.cuId, CU.nName, SH.subLink, SH.rate FROM share as SH, customer as CU WHERE SH.cuId = CU.cuId and shID = $shId";
+  $result = $conn->query($sql);
+  //echo $sql;
+  //die();
+
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+  } else {
+   echo "{result: \"no data\"}";
+  }      
+  $conn->close();
+}
+
+function sendRate($shId,$rate){
+  //Get data from database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  //Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+
+  //Check connection
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "UPDATE share SET rate = rate + $rate WHERE shID = $shId;";
+  $result = $conn->query($sql);
+  //echo $sql;
+  //die();
+
+  if ($result->num_rows > 0) {
+  // Convert $result to json format
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+  // var_dump($data);
+  //  die();
+    echo json_encode($data);
+  } else {
+    echo "{result: \"no data\"}";
+    }      
+   $conn->close();
+}
+
 ?>
