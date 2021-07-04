@@ -189,6 +189,34 @@ elseif($action == "LoadTableRequest"){
   $reId = $_GET["reId"];
   LoadTableRequest($reId);
 }
+else if($action == "loadadmin")
+{
+  $cuId = $_GET["cuId"];
+  loadadmin($cuId);
+}
+else if($action == "deleteAdmin")
+{
+  $cuId = $_GET["cuId"];
+  deleteAdmin($cuId);
+}
+else if($action == "addAdmin")
+{
+  $cuId = $_GET["cuId"];
+  addAdmin($cuId);
+}
+else if($action == "countShare")
+{
+  countShare();
+}
+else if($action == "countRequest")
+{
+  countRequest();
+}
+else if($action == "countUser")
+{
+  countUser();
+}
+
 function deleteShare($RequestshId)
 {
     $servername = "localhost";
@@ -1173,4 +1201,184 @@ function LoadTableRequest($reId){
  }
 $conn->close();
 }
+
+function loadadmin($cuId)
+{
+
+  //test: action=loadadmin
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT cuId, nName, mail FROM customer WHERE cuRank = 'admin'";
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      //  var_dump($data);
+      //  die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+function deleteAdmin($cuId)
+{
+
+  //link action=deleteAdmin&cuId=3
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "subshare";
+    
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn -> set_charset("utf8");
+    
+    if($conn ->connect_error){
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "UPDATE customer SET cuRank = 'user' WHERE cuId = $cuId" ;
+
+    if ($conn->query($sql) == TRUE) {
+        echo "Deleted admin successfully";
+        // echo($sql);
+        // die();
+    } 
+    else {
+        echo "Error deleting record:". $conn->error;
+    }
+    $conn->close();
+
+}
+
+function addAdmin($cuId)
+{
+  // action=addAdmin&cuId=3
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "subshare";
+    
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn -> set_charset("utf8");
+    
+    if($conn ->connect_error){
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "UPDATE customer SET cuRank = 'admin' WHERE cuId = $cuId" ;
+    // echo($sql);
+    // die();
+
+    if ($conn->query($sql) == TRUE) {
+        echo "Add admin successfully";
+
+    } 
+    else {
+        echo "Error deleting record:". $conn->error;
+    }
+    $conn->close();
+}
+
+function countShare()
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT COUNT(shId) AS countShare FROM share;";
+  $result = $conn->query($sql);
+  // echo($sql);
+   //die();
+
+   if ($result->num_rows > 0) {
+    // Convert $result to json format
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    // var_dump($data);
+    //  die();
+    echo json_encode($data);}
+    else {
+      echo "fail". $conn->error;
+    }
+  $conn->close();
+}
+
+function countRequest()
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT COUNT(reId) AS countRequest FROM request;";
+  $result = $conn->query($sql);
+  // echo($sql);
+   //die();
+
+   if ($result->num_rows > 0) {
+    // Convert $result to json format
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    // var_dump($data);
+    //  die();
+    echo json_encode($data);}
+    else {
+      echo "fail". $conn->error;
+    }
+  $conn->close();
+}
+
+function countUser()
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT COUNT(cuId) AS countUser FROM customer;";
+  $result = $conn->query($sql);
+  // echo($sql);
+   //die();
+
+   if ($result->num_rows > 0) {
+    // Convert $result to json format
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    // var_dump($data);
+    //  die();
+    echo json_encode($data);}
+    else {
+      echo "fail". $conn->error;
+    }
+  $conn->close();
+}
+
+
 ?>
