@@ -36,10 +36,8 @@ function sendRate() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var searchResults = JSON.parse(this.responseText);
-            
+            var searchResults = JSON.parse(this.responseText);  
         }
-
     };
    
     var rate = document.getElementById("getRate").value;
@@ -47,5 +45,4 @@ function sendRate() {
     xhttp.open("GET", "/webSubShare/server/controller.php?action=sendRate&shId=" + shId + "&rate=" + rate,  true);
     xhttp.send();
     location.reload();
-
 }
