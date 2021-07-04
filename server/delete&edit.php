@@ -24,4 +24,17 @@ class Share extends Request
     public $rate;
 }
 
+class Customer
+{
+    public $cuId;
+    public $nName;
+    public $pass;
+    public $sex;
+    public $mail;
+    public $tRegister;
+    public $introduce;
+    public $cuRank;
+    public $cuStatus;
+}
+
 ?>

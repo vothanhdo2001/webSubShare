@@ -53,9 +53,9 @@
                         <div class=" bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><b>Tìm kiếm bằng tên</b></div>
                         <div class="card-body p-5 p-lg-3 pt-4 pt-lg-4 ">
                             <div class="input-group mb-4  ">
-                                <input id="cuId" type="text " class="form-control bg-light " placeholder="Nhập tên người dùng" aria-label="Nhập tên người dùng" aria-describedby="cuId">
+                                <input id="nName" type="text " class="form-control bg-light " placeholder="Nhập tên người dùng" aria-label="Nhập tên người dùng" aria-describedby="cuId">
                             </div>
-                            <button onclick="" type="button" class="btn btn-success ">Tìm kiếm</button>
+                            <button onclick="searchUser()" type="button" class="btn btn-success ">Tìm kiếm</button>
                         </div>
                     </div>
                 </div>
@@ -80,10 +80,10 @@
                                 <tbody id="table_1">
                                     <tr>
                                         <td>1</td>
-                                        <td class="getLink" onclick="getLinkProfile()">kimvinh</td>
+                                        <td class="getLink" onclick="getLinkProfile(nName)">kimvinh</td>
                                         <td>abc@gmail.com</td>
-                                        <td><button onclick="deleteMember()" class="btn btn-danger">Xoá</button></td>
-                                        <td><button onclick="editMember()" class="btn btn-success">Sửa</button></td>
+                                        <td><button onclick="deleteUser()" class="btn btn-danger">Xoá</button></td>
+                                        <td><button onclick="editUser()" class="btn btn-success">Sửa</button></td>
                                         <td id="lock">
 
                                         </td>
