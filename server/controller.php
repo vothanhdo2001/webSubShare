@@ -189,6 +189,10 @@ elseif($action == "LoadTableRequest"){
   $reId = $_GET["reId"];
   LoadTableRequest($reId);
 }
+else if ($action == "LoadTable1Request"){
+  $reId = $_GET["reId"];
+  LoadTable1Request($reId);
+}
 function deleteShare($RequestshId)
 {
     $servername = "localhost";
@@ -1158,6 +1162,34 @@ function LoadTableRequest($reId){
       die("Connection failed: " . $conn->connect_error);
   }
   $sql = "SELECT reId, pName, tRequest, pLanguage, category, videolink, price, customer.nName, info, imagesLink FROM request INNER JOIN customer ON request.cuId = customer.cuId  WHERE reId = $reId";
+  $result = $conn->query($sql);
+ //   echo $sql;
+ //  die();
+
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+ } else {
+   echo "{result: \"no data\"}";
+ }
+$conn->close();
+}
+function LoadTable1Request($reId){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT cu.nName, sh.tShare, sh.shId, cu.cuId FROM customer as cu, share as sh WHERE cu.cuId=sh.cuId and sh.reId= $reId";
   $result = $conn->query($sql);
  //   echo $sql;
  //  die();
