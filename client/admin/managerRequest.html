@@ -15,6 +15,7 @@
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/addStyles.css" rel="stylesheet" />
     <script src="../js/action.js"></script>
+    <script src="../js/managerRequest.js"></script>
 </head>
 
 <body onload="checkAdmin(), viewNarbar(), account()">
@@ -106,7 +107,7 @@
                 </div>
             </div>
             <div class="row gx-xl-3  justify-content-center">
-                <div class="col-lg-6 col-xl-6 mb-5">
+                <div class="col-lg-8 col-xl-8 mb-5">
                     <div class="card bg-light border-0 h-100">
                         <div class="card-body text-center p-4 p-lg-0 pt-0 pt-lg-0">
                             <div class="bg-info bg-gradient text-white rounded-3 mb-0 mt-n4"><i class="bi bi-clock-history"></i></div>
@@ -114,23 +115,24 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Tên</th>
-                                        <th scope="col">Thời gian</th>
-                                        <th scope="col">Ngôn ngữ</th>
-                                        <th scope="col">Xoá</th>
-                                        <th scope="col">Cập nhật</th>
+                                        <th scope="col">Tác giả</th>
+                                        <th scope="col">Thời gian
+                                            </>
+                                            <th scope="col">Ngôn ngữ</th>
+                                            <th scope="col">Xoá</th>
+                                            <th scope="col">Cập nhật</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <div id="table_1">
-                                        <tr>
-                                            <td scope="row" ass="getLink" onclick="getLinkProfile()">kimvinh</td>
-                                            <td>08/05/2021</td>
-                                            <td>Tiếng anh</td>
-                                            <td><button onclick="deleteRequest()" class="btn btn-danger">Xoá</button></td>
-                                            <td><button onclick="editRequest()" class="btn btn-success"><a class="m-0 text-center text-white" href="http://localhost/dealcongnghe/client/editpost.html">Cập nhật</a></button></td>
+                                <tbody id="table_1">
+                                    <tr>
 
-                                        </tr>
-                                    </div>
+                                        <td class="getLink" scope="row" onclick="getLinkShare(12)">Vô tình nhặt được tổng tài</td>
+                                        <td class="getLink" onclick="getLinkProfile()">kimvinh</td>
+                                        <td>2021-06-11 17:36:40</td>
+                                        <td>Tiếng Trung</td>
+                                        <td><button onclick="deleteShare(12)" class="btn btn-danger"><a class="m-0 text-center text-white">Xoá</a></button></td>
+                                        <td><button onclick="editPost(12, 2)" class="btn btn-success">Sửa</button></td>
+                                    </tr>
 
                                 </tbody>
                             </table>

@@ -25,3 +25,23 @@ function home() {
     xhttp.send();
     return 0;
 }
+
+function searchUser() {
+    //TODO: tìm kiếm người dùng thông qua tên
+}
+
+function deleteUser(cuId) {
+    //TODO: Xoá một người dùng khỏi hệ thống
+}
+
+function editUser(cuId) {
+    //TODO: Chỉnh sửa thông tin cá nhân của người dùng
+}
+
+function unlockMember(cuId) {
+    //TODO: bỏ chặn truy cập từ người dùng
+}
+
+function blockMember(cuId) {
+    //TODO: chặn truy cập từ người dùng
+}

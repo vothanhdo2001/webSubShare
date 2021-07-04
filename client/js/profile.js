@@ -86,16 +86,7 @@ function profile() {
 }
 
 
-function editPost(id, select) {
-    if (select == 1) {
-        setCookie("id", id, 10)
-        window.location = "../library/editShare.html";
-    } else if (select == 2) {
-        setCookie("id", id, 10)
-        window.location = "../library/editRequest.html";
-    }
 
-}
 
 function logOut() {
     setCookie("cuId", -1, 0);

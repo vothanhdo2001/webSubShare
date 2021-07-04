@@ -204,6 +204,20 @@ function next(indexTable) {
         table_4++;
 
     }
+}
 
+function editPost(id, select) {
+    if (select == 1) {
+        setCookie("id", id, 10)
+        window.location = "../library/editShare.html";
+    } else if (select == 2) {
+        setCookie("id", id, 10)
+        window.location = "../library/editRequest.html";
+    }
+
+}
+
+function editUser() {
+    //TODO: chỉnh sửa thông tin cá nhân
 
 }

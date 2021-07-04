@@ -95,21 +95,23 @@
                                 <tbody>
                                     <div id="table_1">
                                         <tr>
-                                            <td class="getLink" scope="row" onclick="getLinkShare()">Ngộ Long</td>
-                                            <td class="getLink" onclick="getLinkProfile()">kimvinh</td>
+                                            <td class="getLink" scope="row" onclick="getLinkShare(2)">Ngộ Long</td>
+                                            <td class="getLink" onclick="getLinkProfile(2)">kimvinh</td>
                                             <td>08/05/2021</td>
                                             <td>Tiếng anh</td>
                                         </tr>
                                     </div>
                                 </tbody>
                             </table>
+                            <p id="noData_2">Chưa có dữ liệu</p>
                             <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">Trước</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Sau</a></li>
+                                <ul class="pagination text-center justify-content-center ">
+                                    <li class="page-item">
+                                        <a onclick="previous()" class="page-link" href="#" tabindex="-1">&laquo;</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a onclick="next()" class="page-link" href="#">&raquo;</a>
+                                    </li>
                                 </ul>
                             </nav>
                             <h2 class="fs-4 fw-bold">Chia sẻ gần đây</h2>
@@ -133,8 +135,8 @@
                                 <tbody>
                                     <div id="table_2">
                                         <tr>
-                                            <td class="getLink" scope="row" onclick="getLinkRequest()">Ngộ Long</td>
-                                            <td class="getLink" onclick="getLinkProfile()">kimvinh</td>
+                                            <td class="getLink" scope="row" onclick="getLinkRequest(2)">Ngộ Long</td>
+                                            <td class="getLink" onclick="getLinkProfile(2)">kimvinh</td>
                                             <td>08/05/2021</td>
                                             <td>Tiếng anh</td>
                                             <td>100000</td>
@@ -143,13 +145,15 @@
 
                                 </tbody>
                             </table>
+                            <p id="noData_2">Chưa có dữ liệu</p>
                             <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">Trước</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Sau</a></li>
+                                <ul class="pagination text-center justify-content-center ">
+                                    <li class="page-item">
+                                        <a onclick="previous()" class="page-link" href="#" tabindex="-1">&laquo;</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a onclick="next()" class="page-link" href="#">&raquo;</a>
+                                    </li>
                                 </ul>
                             </nav>
                             <h2 class="fs-4 fw-bold">Yêu cầu đang đợi</h2>

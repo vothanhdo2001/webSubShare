@@ -6,6 +6,7 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 function register() {
+    //TODO: viếT theo phương thức post
 
 }
 
