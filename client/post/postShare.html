@@ -45,37 +45,37 @@
                                 <tr>
                                     <td>
                                         <b>Tên: </b>
-                                        <span class="pName">Ngộ long</span>
+                                        <span id="pName"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <b>Ngày đăng: </b>
-                                        <span class="tShare">11/02/2020</span>
+                                        <span id="tShare"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <b>Ngôn ngữ: </b>
-                                        <span class="planguage">Tiếng Việt</span>
+                                        <span id="pLanguage"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <b>Thể loại: </b>
-                                        <span class="category">Phim</span>
+                                        <span id="category"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <b>Video gốc: </b>
-                                        <span class="videoLink">abc.com</span>
+                                        <span id="videoLink"></span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="getLink" onclick="getLinkProfile(6)">
+                                    <td>
                                         <b>Tác giả: </b>
-                                        <span class="nName">Con Cò</span>
+                                        <span class="getLink" onclick="getLinkProfile(6)" id="nName"></span>
                                     </td>
                                 </tr>
                             </table>
@@ -84,15 +84,15 @@
                 </div>
 
                 <div class="col-lg-6 col-xl-6 mb-5">
-                    <div class="imageLink">
-                        <img src="/webSubShare/client/images/Ngo_Long.jpg" alt="Ngộ Long" class="img-thumbnail">
+                    <div id="imageLink">
+                        <img src="" alt="" class="img-thumbnail">
                     </div>
                 </div>
             </div>
             <div class="row gx-xl-3 justify-content-center">
                 <hr>
                 <div class="col-lg-6 col-xl-6 mb-5 text-center">
-                    <button onclick="getLinkDownload()" type="button" class="btn btn-success"><b>Tải xuống subtitle</b></button>
+                    <span id="subLink"><a href=""><button type="button" class="btn btn-success"><b>Tải xuống subtitle</b></button></a></span>
                 </div>
             </div>
             <div class="row gx-xl-3">
@@ -101,7 +101,7 @@
                     <iframe width="600" height="400" src="https://www.youtube.com/embed/iOmUAUHGkYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="col-lg-6 col-xl-6 mb-5 text-center ">
-                    <h2 class="fs-4 fw-bold">Điểm đánh giá: <span id="rate">5&nbsp;</span><i class="bi bi-star-fill text-warning"></i></h2>
+                    <h2 class="fs-4 fw-bold">Điểm đánh giá: <span id="rate">&nbsp;</span><i class="bi bi-star-fill text-warning"></i></h2>
                     <h2 class="fs-4 fw-bold">Đánh giá:&nbsp;
                         <span>
                             <select id="getRate">
