@@ -78,6 +78,7 @@ elseif($action == "LoadTable2"){
   $cuId = $_GET["cuId"];
   LoadTable2($cuId);
 }
+
 else if($action == "editShare"){
 
   $post = new Share();
@@ -178,6 +179,7 @@ elseif($action == "loadProfile"){
   $cuId = $_GET["cuId"];
   loadProfile($cuId);
 }
+
 else if ($action == "login"){
 
   $post = new Request();
@@ -520,7 +522,7 @@ function LoadTable1($cuId){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+ $conn->close();
 }
 function LoadTable2($cuId){
   $servername = "localhost";
@@ -548,7 +550,7 @@ function LoadTable2($cuId){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+ $conn->close();
 }
 
 function editShare($post){
@@ -905,7 +907,7 @@ function loadShare(){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+  $conn->close();
 }
 function loadRequest(){
   $servername = "localhost";
@@ -934,7 +936,7 @@ function loadRequest(){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+  $conn->close();
 }
 function loadShareMe($cuId){
   $servername = "localhost";
@@ -991,7 +993,7 @@ function loadRequestMe($cuId){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+  $conn->close();
 }
 function loadProfile($cuId){
   $servername = "localhost";
@@ -1084,7 +1086,7 @@ function loadUser(){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+  $conn->close();
 }
 function searchTable1Share($keyword){
   //Get data from database
@@ -1238,7 +1240,7 @@ function LoadTableRequest($reId){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+ $conn->close();
 }
 
 function loadadmin($cuId)
@@ -1543,6 +1545,7 @@ function blockUser($post){
 
   $conn->close();
 }
+
 function createRegister($post)
 {
   $servername = "localhost";

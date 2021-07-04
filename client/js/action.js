@@ -12,8 +12,8 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-function getLinkProfile(cuID) {
-    setCookie("pId", cuID, 1);
+function getLinkProfile(cuId) {
+    setCookie("pId", cuId, 1);
     window.location = "/webSubShare/client/post/postProfile.html";
 }
 
