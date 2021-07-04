@@ -71,9 +71,14 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
+<<<<<<< HEAD
+function editMember(cuId) {
+    //TODO: Chỉnh sửa thông tin cá nhân của người dùng
+=======
 function editUser(cuId) {
     setCookie("pId", cuId, 1);
     window.location = "/webSubShare/client/library/editUser.html";
+>>>>>>> ea2bc131e3a06ed6e5d7ea7bba5b53c81588c235
 }
 
 function unblockUser(cuId) {

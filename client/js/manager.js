@@ -1,3 +1,4 @@
+//TODO: Tuong
 function addAdmin() {
 
     var cuId = document.getElementById("cuId").value;
