@@ -244,6 +244,17 @@ else if ($action == "deleteUser")
   $cuId = $_GET["cuId"];
   deleteUser($cuId);
 }
+else if($action == "register")
+{
+  $post = new Customer();
+  $post->nName= $_GET["nName"];
+  //$post->cuId= $_GET["cuId"];
+  $post->pass = $_GET["pass"];
+  $post->mail = $_GET["mail"];
+  $post->sex = $_GET["sex"];
+  $post->introduce = $_GET["introduce"];
+  createRegister($post);
+}
 
 function deleteShare($RequestshId)
 {
@@ -1532,5 +1543,35 @@ function blockUser($post){
 
   $conn->close();
 }
+function createRegister($post)
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  //Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  //Check connection
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);}
+  $sql = "INSERT INTO customer(nName, sex, mail, pass, introduce) VALUES ('$post->nName','$post->sex','$post->mail','$post->pass','$post->introduce')";
+  //$result = $conn->query($sql);
+  // echo $sql;
+  // die();
+  //Response result to client / user
+  if($conn->query($sql) == true){
+     // echo "Add register successfully";
+      echo '[{"cuId":"1"}]';
+     // echo($sql);
+     // die();
+  } else {
+     // echo "Error: " . $sql . "<br>" . $conn->error;
+      echo '[{"cuId":"-1"}]';
+  }
 
+  //Close connection to database
+  $conn -> close();
+
+}
 ?>
