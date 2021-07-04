@@ -187,6 +187,57 @@ else if ($action == "login"){
 }else if($action == "loadUser"){
   loadUser();
 }
+else if($action == "searchTable1Share"){
+  $keyword = $_GET["keyword"];
+  searchTable1Share($keyword);
+}
+else if($action == "cSearchTable1Share"){
+  $category = $_GET["category"];
+  $time = $_GET["time"];
+  $planguage = $_GET["planguage"];
+  cSearchTable1Share($category,$time,$planguage);
+}
+else if($action == "searchTable1Request"){
+  $keyword = $_GET["keyword"];
+  searchTable1Request($keyword);
+}
+else if($action == "cSearchTable1Request"){
+  $category = $_GET["category"];
+  $time = $_GET["time"];
+  $planguage = $_GET["planguage"];
+  cSearchTable1Request($category,$time,$planguage);
+}
+elseif($action == "LoadTableRequest"){
+  $reId = $_GET["reId"];
+  LoadTableRequest($reId);
+}
+else if($action == "loadadmin")
+{
+  $cuId = $_GET["cuId"];
+  loadadmin($cuId);
+}
+else if($action == "deleteAdmin")
+{
+  $cuId = $_GET["cuId"];
+  deleteAdmin($cuId);
+}
+else if($action == "addAdmin")
+{
+  $cuId = $_GET["cuId"];
+  addAdmin($cuId);
+}
+else if($action == "countShare")
+{
+  countShare();
+}
+else if($action == "countRequest")
+{
+  countRequest();
+}
+else if($action == "countUser")
+{
+  countUser();
+}
 
 else if ($action == "deleteUser")
 {
@@ -1024,8 +1075,7 @@ function loadUser(){
  }
 $conn->close();
 }
-
-function searchUser($keyword){
+function searchTable1Share($keyword){
   //Get data from database
   $servername = "localhost";
   $username = "root";
@@ -1039,116 +1089,449 @@ function searchUser($keyword){
   if($conn ->connect_error){
       die("Connection failed: " . $conn->connect_error);
   }
-  $sql = "SELECT cuId, nName, mail FROM customer WHERE nName LIKE '%$keyword%' LIMIT 100";
-
+  $sql = "SELECT share.pName as pName, customer.nName as nName, share.pLanguage as pLanguage, share.tShare as tShare, customer.cuId, share.shId 
+  FROM share INNER JOIN customer ON share.cuId = customer.cuId WHERE share.pName LIKE '%$keyword%' LIMIT 100;";
   // echo $sql;
   // die();
-    
+  
   $result = $conn->query($sql);
   // var_dump ($result);
   // die();
   if ($result->num_rows > 0) {
-    // Convert $result to json format
-    $data = $result->fetch_all(MYSQLI_ASSOC);
-    // var_dump($data);
-    // die();
-    echo json_encode($data);
+      // Convert $result to json format
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
     } else {
       echo "{result: \"No result found\"}";
     }
-    $conn->close();
+  $conn->close();
+}
+function cSearchTable1Share($category,$time,$planguage){
+  //Get data from database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  //Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+
+  //Check connection
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
   }
-
-  function deleteUser($cuId)
-  {
-      $servername = "localhost";
-      $username = "root";
-      $password = "";
-      $dbname = "subshare";
-      
-      $conn = new mysqli($servername, $username, $password, $dbname);
-      $conn -> set_charset("utf8");
-      
-      if($conn ->connect_error){
-          die("Connection failed: " . $conn->connect_error);
-      }
-  
-      $sql = "DELETE FROM comment WHERE cuId = $cuId";
-      $result = $conn->query($sql);
-
-      $sql = "DELETE FROM share WHERE cuId = $cuId";
-      $result = $conn->query($sql);
-
-      $sql = "DELETE FROM request WHERE cuId = $cuId";
-      $result = $conn->query($sql);
-
-      $sql = "DELETE FROM customer WHERE cuId = $cuId";
-      $result = $conn->query($sql);
-
-      // echo $sql;
+  $sql = "SELECT share.pName as pName, customer.nName as nName, share.pLanguage as pLanguage, share.tShare as tShare, customer.cuId, share.shId 
+  FROM share INNER JOIN customer ON share.cuId = customer.cuId WHERE share.category = '$category' AND YEAR(share.tShare) = $time AND share.pLanguage = '$planguage';";
+  $result = $conn->query($sql);
+  // var_dump ($result);
+  // die();
+  if ($result->num_rows > 0) {
+      // Convert $result to json format
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
       // die();
-          
-      if ($conn->query($sql) === TRUE) {
-          echo "Record deleted successfully";
-      } 
-      else {
-          echo "Error deleting record:". $conn->error;
-      }
-      $conn->close();
-  }
+      echo json_encode($data);
+    } else {
+      echo "{result: \"No result found\"}";
+    }
+  $conn->close();
+}
+function searchTable1Request($keyword){
+  //Get data from database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  //Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
 
-  function unblockUser($post){
+  //Check connection
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT request.pName as pName, customer.nName as nName, request.pLanguage as pLanguage, request.tRequest as tRequest, request.price as price,  customer.cuId, request.reId
+  FROM request INNER JOIN customer ON request.cuId = customer.cuId WHERE request.pName LIKE '%$keyword%' LIMIT 100;";
+  // echo $sql;
+  // die();
   
+  $result = $conn->query($sql);
+  // var_dump ($result);
+  // die();
+  if ($result->num_rows > 0) {
+      // Convert $result to json format
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+    } else {
+      echo "{result: \"No result found\"}";
+    }
+  $conn->close();
+}
+function cSearchTable1Request($category,$time,$planguage){
+  //Get data from database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  //Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+
+  //Check connection
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT request.pName as pName, customer.nName as nName, request.pLanguage as pLanguage, request.tRequest as tRequest, request.price as price,  customer.cuId, request.reId
+  FROM request INNER JOIN customer ON request.cuId = customer.cuId WHERE request.category = '$category' AND YEAR(request.tRequest) = $time AND request.pLanguage = '$planguage';";
+  $result = $conn->query($sql);
+  // var_dump ($result);
+  // die();
+  if ($result->num_rows > 0) {
+      // Convert $result to json format
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      // var_dump($data);
+      // die();
+      echo json_encode($data);
+    } else {
+      echo "{result: \"No result found\"}";
+    }
+  $conn->close();
+}
+function LoadTableRequest($reId){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT reId, pName, tRequest, pLanguage, category, videolink, price, customer.nName, info, imagesLink FROM request INNER JOIN customer ON request.cuId = customer.cuId  WHERE reId = $reId";
+  $result = $conn->query($sql);
+ //   echo $sql;
+ //  die();
+
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+ } else {
+   echo "{result: \"no data\"}";
+ }
+$conn->close();
+}
+
+function loadadmin($cuId)
+{
+
+  //test: action=loadadmin
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT cuId, nName, mail FROM customer WHERE cuRank = 'admin'";
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+      $data = $result->fetch_all(MYSQLI_ASSOC);
+      //  var_dump($data);
+      //  die();
+      echo json_encode($data);
+  } else {
+      echo "{result:\"No result found\"}";
+  }
+  $conn->close();
+}
+
+function deleteAdmin($cuId)
+{
+
+  //link action=deleteAdmin&cuId=3
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "subshare";
-   
+    
     $conn = new mysqli($servername, $username, $password, $dbname);
     $conn -> set_charset("utf8");
-   
+    
     if($conn ->connect_error){
         die("Connection failed: " . $conn->connect_error);
     }
-    
-    $sql = "UPDATE customer SET cuStatus = 'enable'  WHERE cuId = $post->cuId";
-    //  echo $sql;
-    //  echo $strsql;
-    //  die();
-    if ($conn->query($sql) === TRUE) {
-      echo "Record updated successfully";
-    } else {
-      echo "Error: ".$sql. "<br>" . $conn->error;
+    $sql = "UPDATE customer SET cuRank = 'user' WHERE cuId = $cuId" ;
+
+    if ($conn->query($sql) == TRUE) {
+        echo "Deleted admin successfully";
+        // echo($sql);
+        // die();
+    } 
+    else {
+        echo "Error deleting record:". $conn->error;
     }
+    $conn->close();
 
-  $conn->close();
-  }
+}
 
-
-  function blockUser($post){
-  
+function addAdmin($cuId)
+{
+  // action=addAdmin&cuId=3
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "subshare";
-   
+    
     $conn = new mysqli($servername, $username, $password, $dbname);
     $conn -> set_charset("utf8");
-   
+    
     if($conn ->connect_error){
         die("Connection failed: " . $conn->connect_error);
     }
-    
-    $sql = "UPDATE customer SET cuStatus = 'disable'  WHERE cuId = $post->cuId";
-    //  echo $sql;
-    //  echo $strsql;
+    $sql = "UPDATE customer SET cuRank = 'admin' WHERE cuId = $cuId" ;
+    // echo($sql);
+    // die();
+
+    if ($conn->query($sql) == TRUE) {
+        echo "Add admin successfully";
+
+    } 
+    else {
+        echo "Error deleting record:". $conn->error;
+    }
+    $conn->close();
+}
+
+function countShare()
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT COUNT(shId) AS countShare FROM share;";
+  $result = $conn->query($sql);
+  // echo($sql);
+   //die();
+
+   if ($result->num_rows > 0) {
+    // Convert $result to json format
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    // var_dump($data);
     //  die();
-    if ($conn->query($sql) === TRUE) {
-      echo "Record updated successfully";
-    } else {
-      echo "Error: ".$sql. "<br>" . $conn->error;
+    echo json_encode($data);}
+    else {
+      echo "fail". $conn->error;
+    }
+  $conn->close();
+}
+
+function countRequest()
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT COUNT(reId) AS countRequest FROM request;";
+  $result = $conn->query($sql);
+  // echo($sql);
+   //die();
+
+   if ($result->num_rows > 0) {
+    // Convert $result to json format
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    // var_dump($data);
+    //  die();
+    echo json_encode($data);}
+    else {
+      echo "fail". $conn->error;
+    }
+  $conn->close();
+}
+
+function countUser()
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+  
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT COUNT(cuId) AS countUser FROM customer;";
+  $result = $conn->query($sql);
+  // echo($sql);
+   //die();
+
+   if ($result->num_rows > 0) {
+    // Convert $result to json format
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    // var_dump($data);
+    //  die();
+    echo json_encode($data);}
+    else {
+      echo "fail". $conn->error;
+    }
+  $conn->close();
+}
+
+function searchUser($keyword){
+  //Get data from database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+  //Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+
+  //Check connection
+  if($conn ->connect_error){
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT cuId, nName, mail FROM customer WHERE nName LIKE '%$keyword%' LIMIT 100";
+
+  // echo $sql;
+  // die();
+
+  $result = $conn->query($sql);
+  // var_dump ($result);
+  // die();
+  if ($result->num_rows > 0) {
+  // Convert $result to json format
+  $data = $result->fetch_all(MYSQLI_ASSOC);
+  // var_dump($data);
+  // die();
+  echo json_encode($data);
+  } else {
+    echo "{result: \"No result found\"}";
+  }
+  $conn->close();
+}
+
+function deleteUser($cuId)
+{
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "subshare";
+    
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn -> set_charset("utf8");
+    
+    if($conn ->connect_error){
+        die("Connection failed: " . $conn->connect_error);
     }
 
-  $conn->close();
+    $sql = "DELETE FROM comment WHERE cuId = $cuId";
+    $result = $conn->query($sql);
+
+    $sql = "DELETE FROM share WHERE cuId = $cuId";
+    $result = $conn->query($sql);
+
+    $sql = "DELETE FROM request WHERE cuId = $cuId";
+    $result = $conn->query($sql);
+
+    $sql = "DELETE FROM customer WHERE cuId = $cuId";
+    $result = $conn->query($sql);
+
+    // echo $sql;
+    // die();
+        
+    if ($conn->query($sql) === TRUE) {
+        echo "Record deleted successfully";
+    } 
+    else {
+        echo "Error deleting record:". $conn->error;
+    }
+    $conn->close();
+}
+
+function unblockUser($post){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
   }
+  
+  $sql = "UPDATE customer SET cuStatus = 'enable'  WHERE cuId = $post->cuId";
+  //  echo $sql;
+  //  echo $strsql;
+  //  die();
+  if ($conn->query($sql) === TRUE) {
+    echo "Record updated successfully";
+  } else {
+    echo "Error: ".$sql. "<br>" . $conn->error;
+  }
+
+$conn->close();
+}
+
+
+function blockUser($post){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "UPDATE customer SET cuStatus = 'disable'  WHERE cuId = $post->cuId";
+  //  echo $sql;
+  //  echo $strsql;
+  //  die();
+  if ($conn->query($sql) === TRUE) {
+    echo "Record updated successfully";
+  } else {
+    echo "Error: ".$sql. "<br>" . $conn->error;
+  }
+
+$conn->close();
+}
+
 ?>

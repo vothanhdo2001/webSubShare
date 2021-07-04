@@ -18,7 +18,7 @@
     <script src="../js/manager.js"></script>
 </head>
 
-<body onload="checkAdmin(), viewNarbar(), account()">
+<body onload="viewNarbar(), account(), home()" > 
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container px-lg-5">
@@ -55,7 +55,10 @@
                             <div class="bg-info bg-info text-white rounded-3 mb-2 mt-n4"><i class="bi bi-brush"></i></div>
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 <b>Chia sẻ</b></div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">1000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <span id = "countShare">
+                            </span>
+                            </div>
                             <br>
                             <a href="/webSubShare/client/admin/managerShare.html"><button type="button" class="btn btn-info text-white">Đi tới quản lý</button></a>
                         </div>
@@ -70,7 +73,10 @@
 
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 <b>Yêu cầu</b></div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2000</div>
+                            <div  class="h5 mb-0 font-weight-bold text-gray-800">
+                                <span id = "countRequest">
+                                </span>
+                            </div>
                             <br>
                             <a href="/webSubShare/client/admin/managerRequest.html"><button type="button" class="btn btn-danger ">Đi tới quản lý</button></a>
 
@@ -86,7 +92,10 @@
 
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 <b>Thành viên</b></div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">180</div>
+                            <div  class="h5 mb-0 font-weight-bold text-gray-800">
+                                <span id="countUser">
+                                </span>
+                            </div>
                             <br>
                             <a href="/webSubShare/client/admin/managerUser.html"><button type="button" class="btn btn-warning text-white">Đi tới quản lý</button></a>
 
@@ -131,15 +140,7 @@
                                         <th scope="col">Xoá</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <div id="table_1">
-                                        <tr>
-                                            <td>1</td>
-                                            <td class="getLink" onclick="getLinkProfile(2)">kimvinh</td>
-                                            <td>abc@gmail.com</td>
-                                            <td><button onclick="deleteAdmin(2)" class="btn btn-danger">Xoá</button></td>
-                                        </tr>
-                                    </div>
+                                <tbody id = "table_1">
                                 </tbody>
                             </table>
                         </div>
@@ -190,7 +191,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="../js/scripts.js"></script>
+    <!-- <script src="../js/scripts.js"></script> -->
 </body>
 
 </html>
