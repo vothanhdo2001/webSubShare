@@ -255,7 +255,10 @@ else if($action == "register")
   $post->introduce = $_GET["introduce"];
   createRegister($post);
 }
-
+else if ($action == "LoadTable1Request"){
+  $reId = $_GET["reId"];
+  LoadTable1Request($reId);
+}
 function deleteShare($RequestshId)
 {
     $servername = "localhost";
@@ -1574,5 +1577,33 @@ function createRegister($post)
   //Close connection to database
   $conn -> close();
 
+}
+function LoadTable1Request($reId){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT cu.nName, sh.tShare, sh.shId, cu.cuId FROM customer as cu, share as sh WHERE cu.cuId=sh.cuId and sh.reId= $reId";
+  $result = $conn->query($sql);
+ //   echo $sql;
+ //  die();
+
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+ } else {
+   echo "{result: \"no data\"}";
+ }
+$conn->close();
 }
 ?>
