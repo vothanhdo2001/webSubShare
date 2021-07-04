@@ -27,7 +27,6 @@ function home() {
 }
 
 function searchUser() {
-    //TODO: tìm kiếm người dùng thông qua tên
     // Send Request to sever
     var keyword = document.getElementById("nName").value;
     // Make Ajax request
@@ -50,7 +49,6 @@ function searchUser() {
 }
 
 function deleteUser(cuId) {
-    //TODO: Xoá một người dùng khỏi hệ thống
     var xhttp = new XMLHttpRequest();
     var url = "/webSubShare/server/controller.php?action=deleteUser&cuId=" + cuId;
     xhttp.open("GET", url, true);
@@ -74,13 +72,11 @@ function getCookie(name) {
 }
 
 function editUser(cuId) {
-    //TODO: Chỉnh sửa thông tin cá nhân của người dùng
     setCookie("pId", cuId, 1);
     window.location = "/webSubShare/client/library/editUser.html";
 }
 
 function unblockUser(cuId) {
-    //TODO: bỏ chặn truy cập từ người dùng
     // Send Request to sever
     // Make Ajax request
     var xhttp = new XMLHttpRequest();
@@ -91,7 +87,6 @@ function unblockUser(cuId) {
 }
 
 function blockUser(cuId) {
-    //TODO: chặn truy cập từ người dùng
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "/webSubShare/server/controller.php?action=blockUser&cuId=" + cuId, true);
     xhttp.send();
