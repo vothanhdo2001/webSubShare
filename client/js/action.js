@@ -12,8 +12,9 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-function getLinkProfile(cuId) {
-    setCookie("pId", cuId, 1);
+
+function getLinkProfile(cuID) {
+    setCookie("pId", cuID, 1);
     window.location = "/webSubShare/client/post/postProfile.html";
 }
 
@@ -218,6 +219,7 @@ function editPost(id, select) {
 }
 
 function editUser() {
-    //TODO: chỉnh sửa thông tin cá nhân
 
+    var text = '<label for="basic-url">Your vanity URL</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"> </div>';
+    document.getElementById("editOne").innerHTML += text;
 }
