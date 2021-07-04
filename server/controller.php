@@ -1443,8 +1443,7 @@ function searchUser($keyword){
   $conn->close();
 }
 
-function deleteUser($cuId)
-{
+function deleteUser($cuId){
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -1504,7 +1503,7 @@ function unblockUser($post){
     echo "Error: ".$sql. "<br>" . $conn->error;
   }
 
-$conn->close();
+  $conn->close();
 }
 
 
@@ -1531,7 +1530,7 @@ function blockUser($post){
     echo "Error: ".$sql. "<br>" . $conn->error;
   }
 
-$conn->close();
+  $conn->close();
 }
 
 ?>
