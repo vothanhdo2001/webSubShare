@@ -15,7 +15,7 @@ function home() {
             var searchResults = JSON.parse(this.responseText);
             document.getElementById("table_1").innerHTML = "";
             for (var iResult in searchResults) {
-                var text = '<tr> <td>' + searchResults[iResult].cuId + '</td> <td class="getLink" onclick="getLinkProfile('+ searchResults[iResult].cuId +')">'+ searchResults[iResult].nName +'</td> <td>' + searchResults[iResult].mail + '</td> <td><button onclick="deleteUser(' + +searchResults[iResult].cuId + ')" class="btn btn-danger">Xoá</button></td> <td><button onclick="editUser(' + searchResults[iResult].cuId + ')" class="btn btn-success">Sửa</button></td>';
+                var text = '<tr> <td>' + searchResults[iResult].cuId + '</td> <td class="getLink" onclick="getLinkProfile(' + searchResults[iResult].cuId + ')">' + searchResults[iResult].nName + '</td> <td>' + searchResults[iResult].mail + '</td> <td><button onclick="deleteUser(' + +searchResults[iResult].cuId + ')" class="btn btn-danger">Xoá</button></td> <td><button onclick="editUser(' + searchResults[iResult].cuId + ')" class="btn btn-success">Sửa</button></td>';
                 text += controlButton(searchResults[iResult].cuStatus, searchResults[iResult].cuId)
                 document.getElementById("table_1").innerHTML += text;
             }
@@ -37,7 +37,7 @@ function searchUser() {
             document.getElementById("table_1").innerHTML = "";
             // document.getElementById("noData_1").innerHTML = "";
             for (let iResult = 0; iResult < 10; iResult++) {
-                var text = "<tr><td>"+ searchResults[iResult].cuId + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].mail + "</td> <td><button onclick='deleteUser("+ searchResults[iResult].cuId +")' class='btn btn-danger'>Xoá</button></td> <td><button onclick='editUser("+ searchResults[iResult].cuId +")' class='btn btn-success'>Sửa</button></td><td><button onclick='blockUser("+ searchResults[iResult].cuId +")' class='btn btn-warning text-white'>Chặn</button></td></tr>";
+                var text = "<tr><td>" + searchResults[iResult].cuId + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].mail + "</td> <td><button onclick='deleteUser(" + searchResults[iResult].cuId + ")' class='btn btn-danger'>Xoá</button></td> <td><button onclick='editUser(" + searchResults[iResult].cuId + ")' class='btn btn-success'>Sửa</button></td><td><button onclick='blockUser(" + searchResults[iResult].cuId + ")' class='btn btn-warning text-white'>Chặn</button></td></tr>";
                 document.getElementById("table_1").innerHTML += text;
             }
         }
@@ -71,14 +71,9 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-<<<<<<< HEAD
-function editMember(cuId) {
-    //TODO: Chỉnh sửa thông tin cá nhân của người dùng
-=======
 function editUser(cuId) {
     setCookie("pId", cuId, 1);
     window.location = "/webSubShare/client/library/editUser.html";
->>>>>>> ea2bc131e3a06ed6e5d7ea7bba5b53c81588c235
 }
 
 function unblockUser(cuId) {
