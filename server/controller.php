@@ -78,6 +78,7 @@ elseif($action == "LoadTable2"){
   $cuId = $_GET["cuId"];
   LoadTable2($cuId);
 }
+
 else if($action == "editShare"){
 
   $post = new Share();
@@ -178,6 +179,7 @@ elseif($action == "loadProfile"){
   $cuId = $_GET["cuId"];
   loadProfile($cuId);
 }
+
 else if ($action == "login"){
 
   $post = new Request();
@@ -269,6 +271,21 @@ else if ($action == "sendRate"){
   $shId = $_GET["shId"];
   $rate = $_GET["rate"];
   sendRate($shId,$rate);
+}
+
+elseif($action == "postTable1"){
+  $cuId = $_GET["cuId"];
+  postTable1($cuId);
+}
+
+elseif($action == "postTable2"){
+  $cuId = $_GET["cuId"];
+  postTable2($cuId);
+}
+
+elseif($action == "postProfile"){
+  $cuId = $_GET["cuId"];
+  postProfile($cuId);
 }
 
 function deleteShare($RequestshId)
@@ -535,7 +552,7 @@ function LoadTable1($cuId){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+ $conn->close();
 }
 function LoadTable2($cuId){
   $servername = "localhost";
@@ -563,7 +580,7 @@ function LoadTable2($cuId){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+ $conn->close();
 }
 
 function editShare($post){
@@ -920,7 +937,7 @@ function loadShare(){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+  $conn->close();
 }
 function loadRequest(){
   $servername = "localhost";
@@ -949,7 +966,7 @@ function loadRequest(){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+  $conn->close();
 }
 function loadShareMe($cuId){
   $servername = "localhost";
@@ -1006,7 +1023,7 @@ function loadRequestMe($cuId){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+  $conn->close();
 }
 function loadProfile($cuId){
   $servername = "localhost";
@@ -1099,7 +1116,7 @@ function loadUser(){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+  $conn->close();
 }
 function searchTable1Share($keyword){
   //Get data from database
@@ -1253,7 +1270,7 @@ function LoadTableRequest($reId){
  } else {
    echo "{result: \"no data\"}";
  }
-$conn->close();
+ $conn->close();
 }
 
 function loadadmin($cuId)
@@ -1469,8 +1486,7 @@ function searchUser($keyword){
   $conn->close();
 }
 
-function deleteUser($cuId)
-{
+function deleteUser($cuId){
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -1530,7 +1546,7 @@ function unblockUser($post){
     echo "Error: ".$sql. "<br>" . $conn->error;
   }
 
-$conn->close();
+  $conn->close();
 }
 
 
@@ -1557,8 +1573,9 @@ function blockUser($post){
     echo "Error: ".$sql. "<br>" . $conn->error;
   }
 
-$conn->close();
+  $conn->close();
 }
+
 function createRegister($post)
 {
   $servername = "localhost";
@@ -1683,5 +1700,93 @@ function sendRate($shId,$rate){
     }      
    $conn->close();
 }
+
+function postProfile($cuId){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT cuId, nName, tRegister, sex, mail, introduce FROM customer WHERE cuId = $cuId";
+  $result = $conn->query($sql);
+ //   echo $sql;
+ //  die();
+
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+ } else {
+   echo "{result: \"no data\"}";
+ }
+$conn->close();
+}
+
+function postTable1($cuId){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
+ 
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
+ 
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT SH.cuId, SH.shId , CU.cuId, SH.pName, CU.nName, SH.tShare, SH.pLanguage FROM share as SH, customer as CU WHERE SH.cuId = CU.cuId and CU.cuId = $cuId";
+  $result = $conn->query($sql);
+ //   echo $sql;
+ //  die();
+
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+  } else {
+   echo "{result: \"no data\"}";
+  }
+  $conn->close();
+  }
+
+  function postTable2($cuId){
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "subshare";
+   
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn -> set_charset("utf8");
+   
+    if($conn ->connect_error){
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT RE.reId, RE.cuId, CU.cuId, RE.pName, CU.nName, RE.tRequest, RE.pLanguage, RE.price FROM request as RE, customer as CU WHERE RE.cuId = CU.cuId and CU.cuId = $cuId";
+    $result = $conn->query($sql);
+   //   echo $sql;
+   //  die();
+  
+    if ($result->num_rows > 0) {
+     // Convert $result to json format
+     $data = $result->fetch_all(MYSQLI_ASSOC);
+     // var_dump($data);
+     //  die();
+     echo json_encode($data);
+    } else {
+     echo "{result: \"no data\"}";
+    }
+    $conn->close();
+    }
+
 
 ?>
