@@ -15,6 +15,7 @@ function deleteAdmin(cuId) {
     var url = "/webSubShare/server/controller.php?action=deleteAdmin&cuId=" + cuId;
     xhttp.open("GET", url, true);
     xhttp.send();
+    setCookie("cuRank", "user", 10);
     location.reload();
 }
 
@@ -31,21 +32,20 @@ function table1() {
             }
         }
     };
-    xhttp.open("GET", "/webSubShare/server/controller.php?action=loadadmin&cuId=", true);
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=loadadmin", true);
     xhttp.send();
     return 0;
 }
 
 function home() {
-   table1();
+    table1();
     countShare();
     countRequest();
     countUser();
 }
 
 
-function countShare()
-{
+function countShare() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -53,14 +53,13 @@ function countShare()
             document.getElementById("countShare").innerHTML = searchResults[0].countShare;
         }
     };
-    xhttp.open("GET", "/webSubShare/server/controller.php?action=countShare" , true);
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=countShare", true);
 
     xhttp.send();
     return 0;
 }
 
-function countRequest()
-{
+function countRequest() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -68,13 +67,12 @@ function countRequest()
             document.getElementById("countRequest").innerHTML = searchResults[0].countRequest;
         }
     };
-    xhttp.open("GET", "/webSubShare/server/controller.php?action=countRequest" , true);
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=countRequest", true);
     xhttp.send();
     return 0;
 }
 
-function countUser()
-{
+function countUser() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -82,7 +80,7 @@ function countUser()
             document.getElementById("countUser").innerHTML = searchResults[0].countUser;
         }
     };
-    xhttp.open("GET", "/webSubShare/server/controller.php?action=countUser" , true);
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=countUser", true);
     xhttp.send();
     return 0;
 }

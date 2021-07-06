@@ -8,6 +8,7 @@ function addSub() {
         }
     };
     var cuId = getCookie("cuId");
+    var reId = getCookie("reId");
     var pName = a[0].pName;
     var pLanguage = a[0].pLanguage;
     var category = a[0].category;
@@ -15,12 +16,16 @@ function addSub() {
     var videoLink = a[0].videolink;
     var subLink = document.getElementById("subLink").value;
     var pPrivate = document.getElementById("pPrivate").value;
+    if (subLink == null || subLink == "" || subLink == "  " || subLink == " ")
+        alert("subtitle link không được để trống!!");
 
-    var url = "/webSubShare/server/controller.php?action=createShare&pName=" + pName + "&cuId=" + cuId + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" + imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
-    //Send Ajax request 
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    location.reload();
+    else {
+        var url = "/webSubShare/server/controller.php?action=createShareFromRe&pName=" + pName + "&cuId=" + cuId + "&reId=" + reId + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" + imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
+        //Send Ajax request 
+        xhttp.open("GET", url, true);
+        xhttp.send();
+        location.reload();
+    }
 }
 
 function getInformation() {
@@ -68,4 +73,53 @@ function table1() {
 function home() {
     getInformation();
     table1();
+    getComment();
+}
+
+var searchResults;
+var iResult = 0;
+
+function getComment() {
+    var reId = getCookie("reId");
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            searchResults = JSON.parse(this.responseText);
+            document.getElementById("contentComment").innerHTML = "";
+            for (iResult; iResult < 10; iResult++) {
+                var text = '<div class="d-flex flex-row comment-row"> <div class="p-2"><img src="/webSubShare/client/images/Profile.png" alt="user" width="50" class="rounded-circle"></div> <div class="comment-text active w-100"> <h6 class="font-medium">' + searchResults[iResult].nName + '</h6> <span class="m-b-15 d-block">' + searchResults[iResult].content + '</span> ';
+                if (getCookie("cuRank") == "admin")
+                    text += '</div> <button type="button" class="btn btn-danger btn-sm" onclick="deleteComment(' + searchResults[iResult].coId + ')">Xoá</button>';
+                text += '</div></div> <hr>';
+                document.getElementById("contentComment").innerHTML += text;
+            }
+        }
+    };
+    xhttp.open("GET", "/webSubShare/server/controller.php?action=loadCommentRequest&id=" + reId, true);
+    xhttp.send();
+}
+
+function sendCommentRequest() {
+    var cuId = getCookie("cuId");
+    var reId = getCookie("reId");
+    var content = document.getElementById("writeComment").value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+        }
+    };
+    var url = "/webSubShare/server/controller.php?action=sendCommentRequest&reId=" + reId + "&cuId=" + cuId + "&content=" + content;
+    xhttp.open("GET", url, true);
+    xhttp.send();
+    location.reload();
+
+}
+
+function loadMore() {
+    var end = iResult + 10;
+    for (iResult; iResult < end; iResult++) {
+        var text = '<div class="d-flex flex-row comment-row"> <div class="p-2"><img src="/webSubShare/client/images/Profile.png" alt="user" width="50" class="rounded-circle"></div> <div class="comment-text active w-100"> <h6 class="font-medium">' + searchResults[iResult].nName + '</h6> <span class="m-b-15 d-block">' + searchResults[iResult].content + '</span> </div> </div> <hr>';
+        document.getElementById("contentComment").innerHTML += text;
+    }
 }

@@ -71,10 +71,7 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-function editUser(cuId) {
-    setCookie("pId", cuId, 1);
-    window.location = "/webSubShare/client/library/editUser.html";
-}
+
 
 function unblockUser(cuId) {
     // Send Request to sever

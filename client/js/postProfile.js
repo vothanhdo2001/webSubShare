@@ -11,7 +11,7 @@ function getCookie(name) {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
-//TODO: lấy pId từ cookie cho cuId = pId sau đó load những thông tin liên quan ở trạng thái chỉ xem như mẫu
+
 function profile() {
     // Send Request to sever
     // Send Request to sever
@@ -55,7 +55,7 @@ function table1() {
             // document.getElementById("noData_1").innerHTML = "";
             document.getElementById("table_1").innerHTML = "";
             for (var iResult = 0; iResult < 10; iResult++) {
-                var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare("+ searchResults[iResult].shId +")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>"+ searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
+                var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
                 document.getElementById("table_1").innerHTML += text;
             }
         }
@@ -75,7 +75,7 @@ function table2() {
             document.getElementById("table_2").innerHTML = "";
             // document.getElementById("noData_1").innerHTML = "";
             for (var iResult = 0; iResult < 10; iResult++) {
-                var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest("+ searchResults[iResult].reId +")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>"+ searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
+                var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
                 document.getElementById("table_2").innerHTML += text;
             }
         }

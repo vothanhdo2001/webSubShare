@@ -9,20 +9,19 @@ function register() {
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState == 4 && this.status == 200) {
 
-        var searchResults = JSON.parse(this.responseText);
-        var iResult = searchResults[0].cuId;
-        if (iResult <= 0) {
-            var text = '<div class="card bg-danger border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Tài khoản đã tồn tại !!!</b></p> </div> </div>';
-            document.getElementById("notification").innerHTML += text;
+            var searchResults = JSON.parse(this.responseText);
+            var iResult = searchResults[0].cuId;
+            if (iResult <= 0) {
+                var text = '<div class="card bg-danger border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Tài khoản đã tồn tại !!!</b></p> </div> </div>';
+                document.getElementById("notification").innerHTML += text;
+            } else {
+                var text = '<div class="card bg-success border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Đăng ký thành công</b></p> </div> </div>';
+                document.getElementById("notification").innerHTML += text;
+                setTimeout(function() { window.location = "/webSubShare/client/account/login.html"; }, 1000);
+            }
         }
-        else{
-            var text = '<div class="card bg-success border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Đăng ký thành công</b></p> </div> </div>';
-            document.getElementById("notification").innerHTML += text;
-            setTimeout(function() { window.location = "/webSubShare/client/account/login.html";}, 1000);
-        }
-    }
     }
     var nName = document.getElementById("nName").value;
     var sex = document.getElementById("sex").value;
@@ -30,15 +29,13 @@ function register() {
     var pass = document.getElementById("pass").value;
     var introduce = document.getElementById("introduce").value;
     var cpass = document.getElementById("cpass").value;
-    
-    if(pass == cpass)
-    {
+
+    if (pass == cpass) {
         var url = "/webSubShare/server/controller.php?action=register&nName=" + nName + "&sex=" + sex + "&mail=" + mail + "&pass=" + pass + "&introduce=" + introduce;
         xhttp.open("GET", url, true);
-        
+
         xhttp.send();
-    }
-    else {
+    } else {
         alert("Đăng ký thất bại");
         // var text = '<div class="card bg-danger border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Thông tin đăng nhập không chính xác !!!</b></p> </div> </div>';
         // document.getElementById("notification").innerHTML += text;
@@ -58,7 +55,7 @@ function login() {
             if (iResult <= 0) {
                 var text = '<div class="card bg-danger border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Thông tin đăng nhập không chính xác !!!</b></p> </div> </div>';
                 document.getElementById("notification").innerHTML += text;
-            } else if (searchResults[0].cuStatus == "disnable") {
+            } else if (searchResults[0].cuStatus == "disable") {
                 var text = '<div class="card bg-warning border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Tài khoảng của bạn đã bị khoá vui lòng liên hệ quản trị viên để được hỗ trợ !!!</b></p> </div> </div>';
                 document.getElementById("notification").innerHTML += text;
             } else {

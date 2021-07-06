@@ -15,10 +15,11 @@
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/addStyles.css" rel="stylesheet" />
     <script src="../js/action.js"></script>
+    <script src="../js/editUser.js"></script>
     <!-- <script src="../js/editUser.js"></script> -->
 </head>
 
-<body onload="checkAdmin(), viewNarbar(), account()">
+<body onload="checkAdmin(), viewNarbar(), account(), editUser()">
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container px-lg-5">
@@ -55,37 +56,28 @@
                                 <tbody>
                                     <tr>
                                         <th class="profile">Nick name:</th>
-                                        <td class="profile" id="nName">nhocnho123</td>
-                                        <td><button type="button" class="btn btn-success" onclick="editUser(1)"><i class="bi bi-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="profile">ID:</th>
-                                        <td class="profile" id="cuId">DT0123</td>
-                                        <td><button type="button" class="btn btn-success" onclick="editUser(2)"><i class="bi bi-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="profile">Ngày tham gia:</th>
-                                        <td class="profile" id="tRegister">12/05/2021</td>
-                                        <td><button type="button" class="btn btn-success" onclick="editUser(3)"><i class="bi bi-pencil"></i></button></td>
+                                        <td class="profile" id="nName"></td>
+                                        <td><button type="button" class="btn btn-success" onclick="edit(1)"><i class="bi bi-pencil"></i></button></td>
                                     </tr>
                                     <tr>
                                         <th class="profile">Giới tính:</th>
-                                        <td class="profile" id="sex">Nữ</td>
-                                        <td><button type="button" class="btn btn-success" onclick="editUser(4)"><i class="bi bi-pencil"></i></button></td>
+                                        <td class="profile" id="sex"></td>
+                                        <td><button type="button" class="btn btn-success" onclick="edit(2)"><i class="bi bi-pencil"></i></button></td>
                                     </tr>
                                     <tr>
                                         <th class="profile">Email:</th>
-                                        <td class="profile" id="mail">nhocnho123@gmail.com</td>
-                                        <td><button type="button" class="btn btn-success" onclick="editUser(5)"><i class="bi bi-pencil"></i></button></td>
+                                        <td class="profile" id="mail" </td>
+                                            <td><button type="button" class="btn btn-success" onclick="edit(3)"><i class="bi bi-pencil"></i></button></td>
                                     </tr>
+
                                     <tr>
                                         <th class="profile">Giới thiệu:</th>
-                                        <td class="profile" id="introduce">Nhạt, nghèo, xấu, ngốc là những thứ tôi không có. Tôi chỉ có một trái tim thiện lành.</td>
-                                        <td><button type="button" class="btn btn-success" onclick="editUser(6)"><i class="bi bi-pencil"></i></button></td>
+                                        <td class="profile" id="introduce"></td>
+                                        <td><button type="button" class="btn btn-success" onclick="edit(4)"><i class="bi bi-pencil"></i></button></td>
                                     </tr>
                                 </tbody>
                             </table>
-
+                            <button type="button" class="btn btn-danger" onclick="returnPre()">Quay về</button>
                         </div>
                     </div>
                 </div>
@@ -99,7 +91,13 @@
                     </div>
                 </div>
             </div>
+            <div class="row gx-xl-2 justify-content-center text-center text-white ">
+                <div class="col-lg-6 col-xl-6 mb-5 ">
+                    <span id="notification">
 
+                    </span>
+                </div>
+            </div>
         </div>
     </section>
 

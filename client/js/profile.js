@@ -100,10 +100,3 @@ function home() {
     table1();
     table2();
 }
-
-function editProfile() {
-    var id = getCookie("cuId");
-    setCookie("id", id, 1);
-    window.location = "/webSubShare/client/library/editUser.html";
-
-}

@@ -44,7 +44,7 @@ function editShare() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtStatus").innerHTML = this.responseText;
+            // document.getElementById("txtStatus").innerHTML = this.responseText;
         }
     };
 
@@ -62,8 +62,9 @@ function editShare() {
     xhttp.open("GET", url, true);
     xhttp.send();
     alert("Cập nhập thành công !");
-    setCookie("id", id, 0);
-    window.location = "/webSubShare/client/narbar/profile.html";
+    setCookie("id", 0, 0);
+    var urlWeb = getCookie("urlWeb");
+    window.location = urlWeb;
 }
 
 function deleteRequest(reId) {
@@ -78,7 +79,7 @@ function editRequest() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtStatus").innerHTML = this.responseText;
+            // document.getElementById("txtStatus").innerHTML = this.responseText;
         }
     };
 
@@ -98,8 +99,9 @@ function editRequest() {
     xhttp.open("GET", url, true);
     xhttp.send();
     alert("Cập nhập thành công !");
-    setCookie("id", id, 0);
-    window.location = "/webSubShare/client/narbar/profile.html";
+    setCookie("id", 0, 0);
+    var urlWeb = getCookie("urlWeb");
+    window.location = urlWeb;
 }
 
 function account() {
@@ -208,6 +210,8 @@ function next(indexTable) {
 }
 
 function editPost(id, select) {
+    var urlWeb = window.location;
+    setCookie("urlWeb", urlWeb, 1);
     if (select == 1) {
         setCookie("id", id, 10)
         window.location = "../library/editShare.html";
@@ -218,8 +222,29 @@ function editPost(id, select) {
 
 }
 
-function editUser() {
+function editUser(cuId) {
+    setCookie("pId", cuId, 1);
+    var urlWeb = window.location.pathname;
+    setCookie("urlWeb", urlWeb, 1);
+    window.location = "/webSubShare/client/library/editUser.html";
+}
 
-    var text = '<label for="basic-url">Your vanity URL</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"> </div>';
-    document.getElementById("editOne").innerHTML += text;
+function editProfile() {
+    setCookie("pId", getCookie("cuId"), 1);
+    var urlWeb = window.location.pathname;
+    setCookie("urlWeb", urlWeb, 1);
+    window.location = "/webSubShare/client/library/editUser.html";
+}
+
+function deleteComment(coId) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+        }
+    };
+    var url = "/webSubShare/server/controller.php?action=deleteComment&coId=" + coId;
+    xhttp.open("GET", url, true);
+    xhttp.send();
+    location.reload();
 }

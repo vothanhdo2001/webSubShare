@@ -18,7 +18,7 @@
     <script src="../js/manager.js"></script>
 </head>
 
-<body onload="viewNarbar(), account(), home()" > 
+<body onload="checkAdmin(), viewNarbar(), account(), home()">
     <!-- Responsive navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container px-lg-5">
@@ -56,7 +56,7 @@
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 <b>Chia sẻ</b></div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <span id = "countShare">
+                                <span id="countShare">
                             </span>
                             </div>
                             <br>
@@ -73,8 +73,8 @@
 
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 <b>Yêu cầu</b></div>
-                            <div  class="h5 mb-0 font-weight-bold text-gray-800">
-                                <span id = "countRequest">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <span id="countRequest">
                                 </span>
                             </div>
                             <br>
@@ -92,7 +92,7 @@
 
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 <b>Thành viên</b></div>
-                            <div  class="h5 mb-0 font-weight-bold text-gray-800">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <span id="countUser">
                                 </span>
                             </div>
@@ -140,7 +140,7 @@
                                         <th scope="col">Xoá</th>
                                     </tr>
                                 </thead>
-                                <tbody id = "table_1">
+                                <tbody id="table_1">
                                 </tbody>
                             </table>
                         </div>

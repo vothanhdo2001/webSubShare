@@ -158,10 +158,34 @@
             <hr>
         </div>
 
-        <div class="row gx-xl-3 ">
-            <div class="col-lg-6 col-xl-6 mb-5 text-center ">
-                <!-- comment -->
+        <div class="row d-flex justify-content-center mt-100 mb-100">
+            <div class="col-lg-10 col-xl-10 mb-5">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Trao đổi</h4>
+                    </div>
+                    <div class="bg-light p-2">
+                        <div class="d-flex flex-row align-items-start">
+                            <img class="rounded-circle" src="/webSubShare/client/images/Profile.png" width="40">
+                            <textarea class="form-control ml-1 shadow-none textarea" id="writeComment" placeholder="Viết cái gì đó..."></textarea>
+                        </div>
+                        <div class="mt-2 text-right text-center">
+                            <button class="btn btn-primary btn-sm shadow-none" type="button" onclick="sendCommentRequest()">Thêm trao đổi</button>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="comment-widgets">
+                        <!-- Comment Row -->
+                        <span id="contentComment">
+                            <h6 class="text-center">Chưa có trao đổi nào.</h6>
+                            
+                        </span>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="loadMore();">Xem thêm</button>
+                </div>
             </div>
+
         </div>
         </div>
         </div>

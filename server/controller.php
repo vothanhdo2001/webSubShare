@@ -70,6 +70,20 @@ else if ($action == "createShare"){
     $post->pPrivate = $_GET["pPrivate"];
     createShare($post);
 }
+else if ($action == "createShareFromRe"){
+
+  $post = new Share();
+  $post->pName= $_GET["pName"];
+  $post->cuId= $_GET["cuId"];
+  $post->reId= $_GET["reId"];
+  $post->pLanguage = $_GET["pLanguage"];
+  $post->category = $_GET["category"];
+  $post->imagesLink = $_GET["imagesLink"];
+  $post->videoLink = $_GET["videoLink"];
+  $post->subLink = $_GET["subLink"];
+  $post->pPrivate = $_GET["pPrivate"];
+  createShareFromRe($post);
+}
 elseif($action == "LoadTable1"){
   $cuId = $_GET["cuId"];
   LoadTable1($cuId);
@@ -215,8 +229,7 @@ elseif($action == "LoadTableRequest"){
 }
 else if($action == "loadadmin")
 {
-  $cuId = $_GET["cuId"];
-  loadadmin($cuId);
+  loadadmin();
 }
 else if($action == "deleteAdmin")
 {
@@ -266,6 +279,31 @@ else if ($action == "loadPostShare"){
   $shId = $_GET["shId"];
   loadPostShare($shId);
 }
+else if ($action == "loadCommentShare"){
+  $id = $_GET["id"];
+  loadCommentShare($id);
+}
+else if ($action == "loadCommentRequest"){
+  $id = $_GET["id"];
+  loadCommentRequest($id);
+}
+else if ($action == "sendCommentShare"){
+  $shId = $_GET["shId"];
+  $cuId = $_GET["cuId"];
+  $content = $_GET["content"];
+  sendCommentShare($shId, $cuId, $content);
+}
+else if ($action == "sendCommentRequest"){
+  $reId = $_GET["reId"];
+  $cuId = $_GET["cuId"];
+  $content = $_GET["content"];
+  sendCommentRequest($reId, $cuId, $content);
+}
+else if ($action == "deleteComment"){
+  $coId = $_GET["coId"];
+  deleteComment($coId);
+}
+
 
 else if ($action == "sendRate"){
   $shId = $_GET["shId"];
@@ -287,7 +325,13 @@ elseif($action == "postProfile"){
   $cuId = $_GET["cuId"];
   postProfile($cuId);
 }
-
+else if($action == "editUser")
+{
+  $cuId= $_GET["cuId"];
+  $content = $_GET["content"];
+  $edit = $_GET["edit"];
+  editUser($cuId, $content, $edit);
+}
 function deleteShare($RequestshId)
 {
     $servername = "localhost";
@@ -501,7 +545,7 @@ function createRequest($post){
     $conn -> close();
 }
 
-function createShare($post){
+function createShareFromRe($post){
     //Get data from database
     $servername = "localhost";
     $username = "root";
@@ -513,7 +557,32 @@ function createShare($post){
     //Check connection
     if($conn ->connect_error){
         die("Connection failed: " . $conn->connect_error);}
-    $sql = "INSERT INTO share(cuId, pName, pLanguage, category, imagesLink, videoLink, subLink, pPrivate) VALUES ($post->cuId,'$post->pName','$post->pLanguage','$post->category','$post->imagesLink','$post->videoLink','$post->subLink','$post->pPrivate')";
+    $sql = "INSERT INTO share(cuId, reId, pName, pLanguage, category, imagesLink, videoLink, subLink, pPrivate) VALUES ($post->cuId, $post->reId,'$post->pName','$post->pLanguage','$post->category','$post->imagesLink','$post->videoLink','$post->subLink','$post->pPrivate')";
+    // echo $sql;
+    // die();
+    //Response result to client / user
+    if($conn->query($sql) === true){
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    //Close connection to database
+    $conn -> close();
+  }
+  function createShare($post){
+    //Get data from database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "subshare";
+    //Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn -> set_charset("utf8");
+    //Check connection
+    if($conn ->connect_error){
+        die("Connection failed: " . $conn->connect_error);}
+    $sql = "INSERT INTO share(cuId, pName, pLanguage, category, imagesLink, videoLink, subLink, pPrivate) VALUES ($post->cuId, '$post->pName','$post->pLanguage','$post->category','$post->imagesLink','$post->videoLink','$post->subLink','$post->pPrivate')";
     // echo $sql;
     // die();
     //Response result to client / user
@@ -1273,7 +1342,7 @@ function LoadTableRequest($reId){
  $conn->close();
 }
 
-function loadadmin($cuId)
+function loadadmin()
 {
 
   //test: action=loadadmin
@@ -1787,6 +1856,169 @@ function postTable1($cuId){
     }
     $conn->close();
     }
+  
+    
+      function editUser($cuId, $content, $edit){
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "subshare";
+       
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        $conn -> set_charset("utf8");
+       
+        if($conn ->connect_error){
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $sql = "UPDATE customer SET $edit = '$content' WHERE cuId = $cuId";
+        $result = $conn->query($sql);
+       //   echo $sql;
+       //  die();
+      
+        if ($result->num_rows > 0) {
+         // Convert $result to json format
+         $data = $result->fetch_all(MYSQLI_ASSOC);
+         // var_dump($data);
+         //  die();
+         echo json_encode($data);
+        } else {
+         echo "{result: \"no data\"}";
+        }
+        $conn->close();
+        }
+  
+  function loadCommentShare($id){
+  //Get data from database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "subshare";
 
+  //Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn -> set_charset("utf8");
 
+  //Check connection
+  if($conn ->connect_error){
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT CU.cuId, CU.nName, CO.coId, CO.content FROM comment as CO, customer as CU WHERE CO.shId = $id AND CO.cuId = CU.cuId ORDER BY CO.coId DESC";
+  $result = $conn->query($sql);
+  // echo $sql;
+  // die();
+
+  if ($result->num_rows > 0) {
+   // Convert $result to json format
+   $data = $result->fetch_all(MYSQLI_ASSOC);
+   // var_dump($data);
+   //  die();
+   echo json_encode($data);
+  } else {
+   echo "{result: \"no data\"}";
+  }      
+  $conn->close();
+  }
+  function sendCommentShare($shId, $cuId, $content){
+    //Get data from database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "subshare";
+  
+    //Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn -> set_charset("utf8");
+  
+    //Check connection
+    if($conn ->connect_error){
+        die("Connection failed: " . $conn->connect_error);
+    }
+  
+    $sql = "INSERT INTO comment(cuId, shId, content) VALUES ($cuId, $shId, '$content')";
+    $result = $conn->query($sql);
+    // echo $sql;
+    // die();
+  
+    $conn->close();
+    }
+    function loadCommentRequest($id){
+      //Get data from database
+      $servername = "localhost";
+      $username = "root";
+      $password = "";
+      $dbname = "subshare";
+    
+      //Create connection
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      $conn -> set_charset("utf8");
+    
+      //Check connection
+      if($conn ->connect_error){
+          die("Connection failed: " . $conn->connect_error);
+      }
+    
+      $sql = "SELECT CU.cuId, CU.nName, CO.coId, CO.content FROM comment as CO, customer as CU WHERE CO.reId = $id AND CO.cuId = CU.cuId ORDER BY CO.coId DESC";
+      $result = $conn->query($sql);
+      // echo $sql;
+      // die();
+    
+      if ($result->num_rows > 0) {
+       // Convert $result to json format
+       $data = $result->fetch_all(MYSQLI_ASSOC);
+       // var_dump($data);
+       //  die();
+       echo json_encode($data);
+      } else {
+       echo "{result: \"no data\"}";
+      }      
+      $conn->close();
+      }
+      function sendCommentRequest($reId, $cuId, $content){
+        //Get data from database
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "subshare";
+      
+        //Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        $conn -> set_charset("utf8");
+      
+        //Check connection
+        if($conn ->connect_error){
+            die("Connection failed: " . $conn->connect_error);
+        }
+      
+        $sql = "INSERT INTO comment(cuId, reId, content) VALUES ($cuId, $reId, '$content')";
+        $result = $conn->query($sql);
+        // echo $sql;
+        // die();
+      
+        $conn->close();
+        }
+
+        function deleteComment($coId){
+          //Get data from database
+          $servername = "localhost";
+          $username = "root";
+          $password = "";
+          $dbname = "subshare";
+        
+          //Create connection
+          $conn = new mysqli($servername, $username, $password, $dbname);
+          $conn -> set_charset("utf8");
+        
+          //Check connection
+          if($conn ->connect_error){
+              die("Connection failed: " . $conn->connect_error);
+          }
+        
+          $sql = "DELETE FROM comment WHERE coId = $coId";
+          $result = $conn->query($sql);
+          // echo $sql;
+          // die();
+        
+          $conn->close();
+          }
 ?>
