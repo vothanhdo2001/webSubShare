@@ -71,4 +71,5 @@ function createRequest() {
     //Send Ajax request
     xhttp.open("GET", url, true);
     xhttp.send();
+    alert("Tạo yêu cầu thành công.");
 }

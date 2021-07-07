@@ -41,7 +41,7 @@ function getInformation() {
             document.getElementById("category").innerHTML = searchResults[0].category;
             document.getElementById("videoLink").innerHTML = searchResults[0].videolink;
             document.getElementById("price").innerHTML = searchResults[0].price;
-            document.getElementById("nName").innerHTML = searchResults[0].nName;
+            document.getElementById("nName").innerHTML = '<p class="getLink" onclick="getLinkProfile(' + searchResults[0].cuId + ')">' + searchResults[0].nName + '</p>';
             document.getElementById("info").innerHTML = searchResults[0].info;
             document.getElementById("imageLink").innerHTML = "<img src='" + searchResults[0].imagesLink + "' alt='" + searchResults[0].pName + "' class='img-thumbnail'>";
         }

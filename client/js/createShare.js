@@ -63,4 +63,5 @@ function createShare() {
     //Send Ajax request 
     xhttp.open("GET", url, true);
     xhttp.send();
+    alert("Tạo chia sẻ thành công.");
 }

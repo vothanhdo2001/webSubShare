@@ -27,6 +27,13 @@ th.profile {
     text-align: left;
 }
 
-.pagination {
+
+/* .pagination {
     padding: 10px 330px;
+} */
+
+th,
+tr,
+td {
+    font-size: 0.9em !important;
 }
