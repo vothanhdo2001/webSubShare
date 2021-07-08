@@ -26,7 +26,7 @@ function table1() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
             document.getElementById("table_1").innerHTML = "";
-            for (var iResult = 0; iResult < 10; iResult++) {
+            for (var iResult in searchResults) {
                 var text = "<tr><td>" + searchResults[iResult].cuId + "</td><td>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].mail + "<td><button onclick='deleteAdmin(" + searchResults[iResult].cuId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td></tr>";
                 document.getElementById("table_1").innerHTML += text;
             }

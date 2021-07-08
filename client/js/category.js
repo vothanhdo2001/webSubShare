@@ -1,8 +1,11 @@
+var table1, table2, table3, table4;
+
 function table1() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table1 = this.responseText;
             document.getElementById("table_1").innerHTML = "";
             document.getElementById("noData_1").innerHTML = "";
             for (let iResult = 0; iResult < 10; iResult++) {
@@ -21,6 +24,7 @@ function table2() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table2 = this.responseText;
             document.getElementById("table_2").innerHTML = "";
             document.getElementById("noData_2").innerHTML = "";
             for (let iResult = 0; iResult < 10; iResult++) {
@@ -39,6 +43,7 @@ function table3() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table3 = this.responseText;
             document.getElementById("table_3").innerHTML = "";
             document.getElementById("noData_3").innerHTML = "";
             for (let iResult = 0; iResult < 10; iResult++) {
@@ -57,6 +62,7 @@ function table4() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table4 = this.responseText;
             document.getElementById("table_4").innerHTML = "";
             document.getElementById("noData_4").innerHTML = "";
             for (let iResult = 0; iResult < 10; iResult++) {

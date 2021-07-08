@@ -8,9 +8,10 @@ function table1() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table1 = this.responseText;
             document.getElementById("table_1").innerHTML = "";
             document.getElementById("noData_1").innerHTML = "";
-            for (var iResult in searchResults) {
+            for (var iResult = 0; iResult < 10; iResult++) {
                 var text = "<tr><td  class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td id='getLinkProfile' class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
                 document.getElementById("table_1").innerHTML += text;
             }
@@ -26,6 +27,7 @@ function table2() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table2 = this.responseText;
             document.getElementById("table_2").innerHTML = "";
             document.getElementById("noData_2").innerHTML = "";
             for (var iResult = 0; iResult < 10; iResult++) {

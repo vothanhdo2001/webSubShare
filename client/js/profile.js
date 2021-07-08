@@ -19,6 +19,7 @@ function table1() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table1 = this.responseText;
             document.getElementById("table_1").innerHTML = "";
             document.getElementById("noData_1").innerHTML = "";
             for (var iResult = 0; iResult < 10; iResult++) {
@@ -38,6 +39,7 @@ function table2() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table2 = this.responseText;
             document.getElementById("table_2").innerHTML = "";
             document.getElementById("noData_2").innerHTML = "";
             for (var iResult = 0; iResult < 10; iResult++) {

@@ -13,8 +13,9 @@ function home() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table1 = this.responseText;
             document.getElementById("table_1").innerHTML = "";
-            for (var iResult in searchResults) {
+            for (let iResult = 0; iResult < 10; iResult++) {
                 var text = '<tr> <td>' + searchResults[iResult].cuId + '</td> <td class="getLink" onclick="getLinkProfile(' + searchResults[iResult].cuId + ')">' + searchResults[iResult].nName + '</td> <td>' + searchResults[iResult].mail + '</td> <td><button onclick="deleteUser(' + +searchResults[iResult].cuId + ')" class="btn btn-danger">Xoá</button></td> <td><button onclick="editUser(' + searchResults[iResult].cuId + ')" class="btn btn-success">Sửa</button></td>';
                 text += controlButton(searchResults[iResult].cuStatus, searchResults[iResult].cuId)
                 document.getElementById("table_1").innerHTML += text;
@@ -34,6 +35,7 @@ function searchUser() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table1 = this.responseText;
             document.getElementById("table_1").innerHTML = "";
             // document.getElementById("noData_1").innerHTML = "";
             for (let iResult = 0; iResult < 10; iResult++) {

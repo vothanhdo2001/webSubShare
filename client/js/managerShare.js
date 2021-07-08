@@ -7,6 +7,7 @@ function table1() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table1 = this.responseText;
             document.getElementById("table_1").innerHTML = "";
             //document.getElementById("noData_1").innerHTML = "";
             for (let iResult = 0; iResult < 10; iResult++) {
@@ -27,6 +28,7 @@ function ctable1() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var searchResults = JSON.parse(this.responseText);
+            table1 = this.responseText;
             document.getElementById("table_1").innerHTML = "";
             //document.getElementById("noData_1").innerHTML = "";
             for (let iResult = 0; iResult < 10; iResult++) {

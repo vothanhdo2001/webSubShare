@@ -167,44 +167,256 @@ var table_4 = 1;
 
 
 
-function previous() {
+function previous(indexTable, form) {
     if (indexTable == 1) {
         table_1--;
-        if (table_1 == 0)
+        if (table_1 == 0) {
             alert("Đã là trang đầu tiên !!!");
-
+            table_1++;
+        } else {
+            var searchResults = JSON.parse(table1);
+            var index = (table_1 - 1) * 10;
+            document.getElementById("table_1").innerHTML = null;
+            if (form == 1) {
+                for (var iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 2) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 3) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].shId + "</td><td  class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteShare(" + searchResults[iResult].shId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].shId + ", 1)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 4) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].reId + "<td  class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteRequest(" + searchResults[iResult].reId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</button></td><td><button onclick='editPost(" + searchResults[iResult].reId + ", 2)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_2").innerHTML += text;
+                }
+            } else if (form == 5) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td><td><button onclick='deleteShare(" + searchResults[iResult].shId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].shId + ", 1)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 6) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td><button onclick='deleteRequest(" + searchResults[iResult].reId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].reId + ", 2)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 7) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td>" + searchResults[iResult].cuId + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].mail + "</td> <td><button onclick='deleteUser(" + searchResults[iResult].cuId + ")' class='btn btn-danger'>Xoá</button></td> <td><button onclick='editUser(" + searchResults[iResult].cuId + ")' class='btn btn-success'>Sửa</button></td><td><button onclick='blockUser(" + searchResults[iResult].cuId + ")' class='btn btn-warning text-white'>Chặn</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            }
+        }
     } else if (indexTable == 2) {
         table_2--;
-        if (table_1 == 0)
+        if (table_2 == 0) {
             alert("Đã là trang đầu tiên !!!");
+            table_2++;
+        } else {
+            var searchResults = JSON.parse(table2);
+            var index = (table_2 - 1) * 10;
+            document.getElementById("table_2").innerHTML = null;
+            if (form == 1) {
+                for (var iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
+                    document.getElementById("table_2").innerHTML += text;
+                }
+            } else if (form == 2) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
+                    document.getElementById("table_2").innerHTML += text;
+                }
+            } else if (form == 3) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].shId + "</td><td  class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteShare(" + searchResults[iResult].shId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].shId + ", 1)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 4) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].reId + "<td  class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteRequest(" + searchResults[iResult].reId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</button></td><td><button onclick='editPost(" + searchResults[iResult].reId + ", 2)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_2").innerHTML += text;
+                }
+            }
+        }
+
 
     } else if (indexTable == 3) {
         table_3--;
-        if (table_1 == 0)
+        if (table_3 == 0)
             alert("Đã là trang đầu tiên !!!");
+        else {
+            var searchResults = JSON.parse(table3);
+            var index = (table_3 - 1) * 10;
+            document.getElementById("table_3").innerHTML = null;
+            if (form == 1) {
+                for (var iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
+                    document.getElementById("table_3").innerHTML += text;
+                }
+            } else if (form == 2) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
+                    document.getElementById("table_3").innerHTML += text;
+                }
+            }
+
+        }
+
 
     } else if (indexTable == 4) {
         table_4--;
-        if (table_1 == 0)
+        if (table_4 == 0)
             alert("Đã là trang đầu tiên !!!");
+        else {
+            var searchResults = JSON.parse(table4);
+            var index = (table_4 - 1) * 10;
+            document.getElementById("table_4").innerHTML = null;
+            if (form == 1) {
+                for (var iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
+                    document.getElementById("table_4").innerHTML += text;
+                }
+            } else if (form == 2) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
+                    document.getElementById("table_4").innerHTML += text;
+                }
+            }
+
+        }
+
 
     }
 
 }
 
-function next(indexTable) {
+function next(indexTable, form) {
     if (indexTable == 1) {
         table_1++;
+        var searchResults = JSON.parse(table1);
+        var index = (table_1 - 1) * 10;
+        if (index >= searchResults.length)
+            alert("Đã là cuối danh sách !!!")
+        else {
+            document.getElementById("table_1").innerHTML = null;
+            if (form == 1) {
+                for (var iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 2) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 3) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].shId + "</td><td  class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteShare(" + searchResults[iResult].shId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].shId + ", 1)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 4) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].reId + "<td  class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteRequest(" + searchResults[iResult].reId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</button></td><td><button onclick='editPost(" + searchResults[iResult].reId + ", 2)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_2").innerHTML += text;
+                }
+            } else if (form == 5) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td><td><button onclick='deleteShare(" + searchResults[iResult].shId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].shId + ", 1)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 6) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td><button onclick='deleteRequest(" + searchResults[iResult].reId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].reId + ", 2)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 7) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td>" + searchResults[iResult].cuId + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].mail + "</td> <td><button onclick='deleteUser(" + searchResults[iResult].cuId + ")' class='btn btn-danger'>Xoá</button></td> <td><button onclick='editUser(" + searchResults[iResult].cuId + ")' class='btn btn-success'>Sửa</button></td><td><button onclick='blockUser(" + searchResults[iResult].cuId + ")' class='btn btn-warning text-white'>Chặn</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            }
+        }
 
 
     } else if (indexTable == 2) {
         table_2++;
+        var searchResults = JSON.parse(table2);
+        var index = (table_2 - 1) * 10;
+        if (index >= searchResults.length)
+            alert("Đã là cuối danh sách !!!")
+        else {
+            document.getElementById("table_2").innerHTML = null;
+            if (form == 1) {
+                for (var iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
+                    document.getElementById("table_2").innerHTML += text;
+                }
+            } else if (form == 2) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
+                    document.getElementById("table_2").innerHTML += text;
+                }
+            } else if (form == 3) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].shId + "</td><td  class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteShare(" + searchResults[iResult].shId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</a></button></td><td><button onclick='editPost(" + searchResults[iResult].shId + ", 1)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_1").innerHTML += text;
+                }
+            } else if (form == 4) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='text-center d-none d-xs-none'>" + searchResults[iResult].reId + "<td  class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "<td><button onclick='deleteRequest(" + searchResults[iResult].reId + ")' class='btn btn-danger'><a class='m-0 text-center text-white'>Xoá</button></td><td><button onclick='editPost(" + searchResults[iResult].reId + ", 2)' class='btn btn-success'>Sửa</button></td></tr>";
+                    document.getElementById("table_2").innerHTML += text;
+                }
+            }
+        }
 
     } else if (indexTable == 3) {
         table_3++;
+        var searchResults = JSON.parse(table3);
+        var index = (table_3 - 1) * 10;
+        if (index >= searchResults.length)
+            alert("Đã là cuối danh sách !!!")
+        else {
+            document.getElementById("table_3").innerHTML = null;
+            if (form == 1) {
+                for (var iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
+                    document.getElementById("table_3").innerHTML += text;
+                }
+            } else if (form == 2) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
+                    document.getElementById("table_3").innerHTML += text;
+                }
+            }
+        }
 
     } else if (indexTable == 4) {
         table_4++;
+        var searchResults = JSON.parse(table4);
+        var index = (table_4 - 1) * 10;
+        if (index >= searchResults.length)
+            alert("Đã là cuối danh sách !!!")
+        else {
+            document.getElementById("table_4").innerHTML = null;
+            if (form == 1) {
+                for (var iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tShare + "</td><td>" + searchResults[iResult].pLanguage + "</td></tr>";
+                    document.getElementById("table_4").innerHTML += text;
+                }
+            } else if (form == 2) {
+                for (let iResult = index; iResult < index + 10; iResult++) {
+                    var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].reId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].tRequest + "</td><td>" + searchResults[iResult].pLanguage + "</td><td>" + searchResults[iResult].price + "</td></tr>";
+                    document.getElementById("table_4").innerHTML += text;
+                }
+            }
+        }
 
     }
 }
