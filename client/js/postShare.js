@@ -17,7 +17,7 @@ function getInformation() {
             document.getElementById("pLanguage").innerHTML = searchResults[0].pLanguage;
             document.getElementById("category").innerHTML = searchResults[0].category;
             document.getElementById("videoLink").innerHTML = searchResults[0].videoLink;
-            document.getElementById("nName").innerHTML = '<p class="getLink" onclick="getLinkProfile(' + searchResults[0].cuId + ')">' + searchResults[0].nName + '</p>';
+            document.getElementById("nName").innerHTML = '<span class="getLink" onclick="getLinkProfile(' + searchResults[0].cuId + ')">' + searchResults[0].nName + '</span>';
             document.getElementById("imageLink").innerHTML = "<img src='" + searchResults[0].imagesLink + "' alt='" + searchResults[0].pName + "' class='img-thumbnail'>";
             document.getElementById("subLink").innerHTML = '<a href="' + searchResults[0].subLink + '"><button type="button" class="btn btn-success"><b>Tải xuống subtitle</b></button></a>';
             document.getElementById("rate").innerHTML = '&nbsp' + searchResults[0].rate;

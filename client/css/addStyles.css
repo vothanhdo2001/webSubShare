@@ -1,5 +1,10 @@
 body {
     padding-top: 70px !important;
+    background-image: url("/webSubShare/client/images/background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .getLink {

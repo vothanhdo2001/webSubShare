@@ -46,24 +46,34 @@ function home() {
 }
 
 function createShare() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+    if (getCookie("cuId") == null || getCookie("cuId") < 0) {
+        alert("Đăng nhập để tiếp tục !!!");
+        window.location = "/webSubShare/client/account/login.html";
+    } else {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
 
+            }
+        };
+        var cuId = getCookie("cuId");
+        var pName = document.getElementById("pName").value;
+        var pLanguage = document.getElementById("pLanguage").value;
+        var category = document.getElementById("category").value;
+        var imagesLink = document.getElementById("imagesLink").value;
+        var videoLink = document.getElementById("videoLink").value;
+        var subLink = document.getElementById("subLink").value;
+        var pPrivate = document.getElementById("pPrivate").value;
+
+        if (pName == '' || imagesLink == '' || videoLink == '' || subLink == '')
+            alert("Không được để trống bất kì trường nào !!!");
+        else {
+            var url = "/webSubShare/server/controller.php?action=createShare&pName=" + pName + "&cuId=" + cuId + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" + imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
+            //Send Ajax request 
+            xhttp.open("GET", url, true);
+            xhttp.send();
+            alert("Tạo chia sẻ thành công.");
+            location.reload();
         }
-    };
-    var cuId = getCookie("cuId");
-    var pName = document.getElementById("pName").value;
-    var pLanguage = document.getElementById("pLanguage").value;
-    var category = document.getElementById("category").value;
-    var imagesLink = document.getElementById("imagesLink").value;
-    var videoLink = document.getElementById("videoLink").value;
-    var subLink = document.getElementById("subLink").value;
-    var pPrivate = document.getElementById("pPrivate").value;
-
-    var url = "/webSubShare/server/controller.php?action=createShare&pName=" + pName + "&cuId=" + cuId + "&pLanguage=" + pLanguage + "&category=" + category + "&imagesLink=" + imagesLink + "&videoLink=" + videoLink + "&subLink=" + subLink + "&pPrivate=" + pPrivate;
-    //Send Ajax request 
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    alert("Tạo chia sẻ thành công.");
+    }
 }
