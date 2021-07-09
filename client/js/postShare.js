@@ -75,19 +75,24 @@ function getComment() {
 }
 
 function sendCommentShare() {
-    var cuId = getCookie("cuId");
-    var shId = getCookie("shId");
-    var content = document.getElementById("writeComment").value;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+    if (getCookie("cuId") == null || getCookie("cuId") < 0) {
+        alert("Đăng nhập để tiếp tục !!!");
+        window.location = "/webSubShare/client/account/login.html";
+    } else {
+        var cuId = getCookie("cuId");
+        var shId = getCookie("shId");
+        var content = document.getElementById("writeComment").value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
 
-        }
-    };
-    var url = "/webSubShare/server/controller.php?action=sendCommentShare&shId=" + shId + "&cuId=" + cuId + "&content=" + content;
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    location.reload();
+            }
+        };
+        var url = "/webSubShare/server/controller.php?action=sendCommentShare&shId=" + shId + "&cuId=" + cuId + "&content=" + content;
+        xhttp.open("GET", url, true);
+        xhttp.send();
+        location.reload();
+    }
 
 }
 
