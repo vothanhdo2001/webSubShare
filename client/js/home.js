@@ -75,7 +75,7 @@ function table4() {
             var searchResults = JSON.parse(this.responseText);
             document.getElementById("table_4").innerHTML = "";
             for (let iResult = 0; iResult < 5; iResult++) {
-                var text = "<tr><td class='getLink' scope='row' onclick='getLinkRequest(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].rate + "</td></tr>";
+                var text = "<tr><td class='getLink' scope='row' onclick='getLinkShare(" + searchResults[iResult].shId + ")'>" + searchResults[iResult].pName + "</td><td class='getLink' onclick='getLinkProfile(" + searchResults[iResult].cuId + ")'>" + searchResults[iResult].nName + "</td><td>" + searchResults[iResult].rate + "</td></tr>";
                 document.getElementById("table_4").innerHTML += text;
             }
         }
