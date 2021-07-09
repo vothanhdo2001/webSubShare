@@ -56,7 +56,7 @@ function edit(number) {
 
     } else if (number == 4) {
         var textContent = document.getElementById("introduce").textContent;
-        var text = '<label for="basic-url">Sửa giới thiệu</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="content"  placeholder="' + textContent + '"  aria-describedby="basic-addon3"> </div><button  type="button" class="btn btn-success" onclick="updateEdit(4)">Cập nhập</button>';
+        var text = '<label for="basic-url">Sửa giới thiệu</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="content"  placeholder="' + textContent + '"  aria-describedby="basic-addon3"> </div><button  type="button" class="btn btn-success" onclick="updateEdit(4)">Cập nhật</button>';
         document.getElementById("editOne").innerHTML = text;
     }
 }
