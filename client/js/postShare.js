@@ -1,3 +1,16 @@
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+//Hàm lấy cookie từ usename
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 function home() {
     getInformation();
     getComment();
@@ -21,7 +34,10 @@ function getInformation() {
             document.getElementById("imageLink").innerHTML = "<img src='" + searchResults[0].imagesLink + "' alt='" + searchResults[0].pName + "' class='img-thumbnail'>";
             document.getElementById("subLink").innerHTML = '<a href="' + searchResults[0].subLink + '"><button type="button" class="btn btn-success"><b>Tải xuống subtitle</b></button></a>';
             document.getElementById("rate").innerHTML = '&nbsp' + searchResults[0].rate;
-
+            if (getCookie("cuRank") == "admin") {
+                var shId = getCookie("shId");
+                document.getElementById("control").innerHTML = '<button onclick="deleteShare(' + shId + ')" type="button" class="btn btn-danger"><b>Xoá bài</b></button> <span>&#9876;&#9876;&#9876;</span> <button onclick="editPost(' + shId + ', 1)" type="button" class="btn btn-success"><b>Chỉnh sửa</b></button>';
+            }
         }
     };
     xhttp.open("GET", "/webSubShare/server/controller.php?action=loadPostShare&shId=" + shId, true);

@@ -37,7 +37,11 @@ function deleteShare(shId) {
     var url = "/webSubShare/server/controller.php?action=deleteShare&shId=" + shId;
     xhttp.open("GET", url, true);
     xhttp.send();
-    location.reload();
+    var urlWeb = window.location.pathname;
+    if (urlWeb == "/webSubShare/client/post/postShare.html") {
+        window.location = "/webSubShare/client/home.html";
+    } else
+        location.reload();
 }
 
 function editShare() {
@@ -72,7 +76,11 @@ function deleteRequest(reId) {
     var url = "/webSubShare/server/controller.php?action=deleteRequest&reId=" + reId;
     xhttp.open("GET", url, true);
     xhttp.send();
-    location.reload();
+    var urlWeb = window.location.pathname;
+    if (urlWeb == "/webSubShare/client/post/postRequest.html") {
+        window.location = "/webSubShare/client/home.html";
+    } else
+        location.reload();
 }
 
 function editRequest() {

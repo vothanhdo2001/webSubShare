@@ -1,5 +1,18 @@
 var a;
 
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+//Hàm lấy cookie từ usename
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 function addSub() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -44,6 +57,10 @@ function getInformation() {
             document.getElementById("nName").innerHTML = '<span class="getLink" onclick="getLinkProfile(' + searchResults[0].cuId + ')">' + searchResults[0].nName + '</span>';
             document.getElementById("info").innerHTML = searchResults[0].info;
             document.getElementById("imageLink").innerHTML = "<img src='" + searchResults[0].imagesLink + "' alt='" + searchResults[0].pName + "' class='img-thumbnail'>";
+            var reId = getCookie("reId");
+            if (getCookie("cuRank") == "admin") {
+                document.getElementById("control").innerHTML = '<button onclick="deleteRequest(' + reId + ')" type="button" class="btn btn-danger"><b>Xoá bài</b></button> <span>&#9876;&#9876;&#9876;</span> <button onclick="editPost(' + reId + ', 2)" type="button" class="btn btn-success"><b>Chỉnh sửa</b></button>';
+            }
         }
     };
     var url = "/webSubShare/server/controller.php?action=LoadTableRequest&reId=" + reId;
