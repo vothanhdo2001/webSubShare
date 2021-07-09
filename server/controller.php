@@ -784,7 +784,7 @@ function loadHomeTable3(){
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "SELECT CU.cuId, CU.nName, SUM(SH.rate) as sumRate FROM customer as CU, share as SH WHERE CU.cuId = SH.cuId  AND SH.pPrivate = 'Công khai'  GROUP BY CU.cuId ORDER BY SH.rate DESC LIMIT 5;";
+  $sql = "SELECT CU.cuId, CU.nName, SUM(SH.rate) as sumRate FROM customer as CU, share as SH WHERE CU.cuId = SH.cuId  AND SH.pPrivate = 'Công khai'  GROUP BY CU.cuId ORDER BY sumRate DESC LIMIT 5;";
   // echo($sql);
   // die();
   $result = $conn->query($sql);
