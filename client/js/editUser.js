@@ -41,17 +41,17 @@ function edit(number) {
     document.getElementById("notification").innerHTML = "";
     if (number == 1) {
         var textContent = document.getElementById("nName").textContent;
-        var text = '<label for="basic-url">Sửa nick name</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="content"  placeholder="' + textContent + '" aria-describedby="basic-addon3"> </div><button type="button" class="btn btn-success"  onclick="updateEdit(1)">Cập nhập</button>';
+        var text = '<label for="basic-url">Sửa nick name</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="content"  placeholder="' + textContent + '" aria-describedby="basic-addon3"> </div><button type="button" class="btn btn-success"  onclick="updateEdit(1)">Cập nhật</button>';
         document.getElementById("editOne").innerHTML = text;
 
     } else if (number == 2) {
         var textContent = document.getElementById("sex").textContent;
-        var text = '<label for="basic-url">Sửa giới tính</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="content"  placeholder="' + textContent + '"  aria-describedby="basic-addon3"> </div><button  type="button" class="btn btn-success" onclick="updateEdit(2)">Cập nhập</button>';
+        var text = '<label for="basic-url">Sửa giới tính</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="content"  placeholder="' + textContent + '"  aria-describedby="basic-addon3"> </div><button  type="button" class="btn btn-success" onclick="updateEdit(2)">Cập nhật</button>';
         document.getElementById("editOne").innerHTML = text;
 
     } else if (number == 3) {
         var textContent = document.getElementById("mail").textContent;
-        var text = '<label for="basic-url">Sửa mail</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="content"  placeholder="' + textContent + '"  aria-describedby="basic-addon3"> </div><button  type="button" class="btn btn-success" onclick="updateEdit(3)">Cập nhập</button>';
+        var text = '<label for="basic-url">Sửa mail</label> <div class="input-group mb-3"> <input type="text" class="form-control" id="content"  placeholder="' + textContent + '"  aria-describedby="basic-addon3"> </div><button  type="button" class="btn btn-success" onclick="updateEdit(3)">Cập nhật</button>';
         document.getElementById("editOne").innerHTML = text;
 
     } else if (number == 4) {
@@ -130,7 +130,7 @@ function updateEdit(number) {
 }
 
 function notification() {
-    var text = '<div class="card bg-success border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Cập nhập thành công</b></p> </div> </div>';
+    var text = '<div class="card bg-success border-1 h-100 "> <div class="card-body p-0 p-lg-0 pt-3 pt-lg-3 "> <p><b>Cập nhật thành công</b></p> </div> </div>';
     document.getElementById("notification").innerHTML = text;
     document.getElementById("editOne").innerHTML = "";
 }
