@@ -1535,7 +1535,7 @@ function searchUser($keyword){
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT cuId, nName, mail FROM customer WHERE nName LIKE '%$keyword%' ORDER BY nName LIMIT 100";
+  $sql = "SELECT cuId, nName, mail, cuStatus FROM customer WHERE nName LIKE '%$keyword%' ORDER BY nName LIMIT 100";
 
   // echo $sql;
   // die();
